@@ -17,16 +17,16 @@ import org.apache.log4j.Logger;
 /**
  * Servlet implementation class Servlet
  */
-public class Servlet extends HttpServlet {
+public class ControllerGeneral extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger log = LogManager.getLogger(Servlet.class);
-	private String rutaJSP;
+	private static final Logger log = LogManager.getLogger(ControllerGeneral.class);
+	private String rutaVistaJSP;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet() {
+    public ControllerGeneral() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +39,7 @@ public class Servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		super.init(config);
 		
-		rutaJSP = config.getInitParameter("rutaJSP");
+		rutaVistaJSP = config.getInitParameter("rutaVistaJSP");
 		BasicConfigurator.configure();
 	}
 
@@ -53,15 +53,15 @@ public class Servlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		// Accion representa el nombre de la vista a mostrar
-		String accion = request.getParameter("accion");
+		String vista = request.getParameter("vista");
 		
 		HttpSession sesion = request.getSession();
 		
 		String myToken = (String) sesion.getAttribute("token");
 		
-		if (accion != null || myToken != null) {
+		if (vista != null || myToken != null) {
 			
-			switch (accion) {
+			switch (vista) {
 			
 			case "logout":
 					sesion.invalidate();
@@ -96,11 +96,11 @@ public class Servlet extends HttpServlet {
 	
 	/**
 	 * Retorna la vista JSP
-	 * @param view
+	 * @param vista
 	 * @return RequestDispatcher
 	 */
-	public RequestDispatcher setResponseController(String view) {
-		String url = rutaJSP + view + ".jsp";
+	public RequestDispatcher setResponseController(String vista) {
+		String url = rutaVistaJSP + vista + ".jsp";
 		return getServletContext().getRequestDispatcher(url);
 	}
 

@@ -12,17 +12,17 @@
   
   <servlet>
     <description></description>
-    <display-name>Servlet</display-name>
-    <servlet-name>Servlet</servlet-name>
-    <servlet-class>com.empresa.controller.Servlet</servlet-class>
+    <display-name>ControllerGeneral</display-name>
+    <servlet-name>ControllerGeneral</servlet-name>
+    <servlet-class>com.empresa.controller.ControllerGeneral</servlet-class>
     <init-param>
-    	<param-name>rutaJSP</param-name>
+    	<param-name>rutaVistaJSP</param-name>
     	<param-value>/views/</param-value>
     </init-param>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>Servlet</servlet-name>
+    <servlet-name>ControllerGeneral</servlet-name>
     <url-pattern>//*</url-pattern>
   </servlet-mapping>
   

@@ -3,7 +3,6 @@ package com.empresa.test;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.empresa.conexion.ConexionBD;
 import com.empresa.hash.Hasher;
@@ -38,7 +37,8 @@ public class Test {
 				
 				ContactoDao contactoDao = new ContactoDaoImpl(con);
 				Contacto contacto = new Contacto();
-				contacto.setNombre("Adrian");
+				contacto.setNombre("Remedios");
+				contacto.setApPaterno("Ortiz");
 				contacto.setIdUsuario(usuario.getIdUsuario());
 				
 				if (contactoDao.save(contacto)) {

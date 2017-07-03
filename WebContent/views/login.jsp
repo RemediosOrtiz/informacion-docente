@@ -25,15 +25,15 @@
 				<h1>Inicia sesión</h1>
 				<p>Información Docente</p>
 
-				<form action='<c:url value="/?accion=loginUser" />' method="post" id="form-login">
-					<input type="text" name="user" id="user" placeholder="NOMBRE DE USUARIO" required />
+				<form action='<c:url value="/login?accion=loginUser" />' method="post" id="form-login">
+					<input type="text" name="matricula" id="user" placeholder="MATRICULA DE USUARIO" required />
 					<input type="password" name="password" id="password" placeholder="CONTRASEÑA" required />
 					<input type="submit" value="Enviar" />
 				</form>
 				
-				<c:if test="${requestScope.message != null }">
+				<c:if test="${requestScope.mensaje != null }">
 					<div class="error-login">
-						<c:out value="${requestScope.message }" />
+						<c:out value="${requestScope.mensaje }" />
 					</div>
 				</c:if>
 				

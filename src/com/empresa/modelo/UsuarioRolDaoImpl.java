@@ -2,6 +2,7 @@ package com.empresa.modelo;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -12,8 +13,9 @@ import com.mysql.jdbc.PreparedStatement;
 public class UsuarioRolDaoImpl implements UsuarioRolDao {
 
 	public static final Logger LOG = LogManager.getLogger("UsuarioRolDaoImpl: ");
-	// Singleton conexion
 	private Connection con;
+	private PreparedStatement ps;
+	private ResultSet rs;
 	
 	
 	public UsuarioRolDaoImpl() {}
@@ -29,21 +31,27 @@ public class UsuarioRolDaoImpl implements UsuarioRolDao {
 		
 		try {
 			String sql = "SELECT * FROM USUARIO_ROL WHERE id_usuario_rol = ?";
-			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+			ps = (PreparedStatement) con.prepareStatement(sql);
 			ps.setInt(1, id);
-			
-			ResultSet rs = ps.executeQuery();
+			rs = ps.executeQuery();
 			
 			if (rs.next()) {
 				usuarioRol.setIdUsuarioRol(rs.getInt("id_usuario_rol"));
 				usuarioRol.setDescRol(rs.getString("desc_rol"));
 			}
 			
-			ps.close();
-			rs.close();
+		} catch (SQLException e) {
+			LOG.error("getUsuarioRolById(): " + e.getMessage());
 			
-		} catch (Exception e) {
-			LOG.error("getUsuarioRolById("+ id +") : " + e.getMessage());
+		} finally {
+			
+			try {
+				if(rs!= null) rs.close();
+				if(ps!= null) ps.close();
+				
+			} catch (SQLException e) {
+				LOG.error("Al cerrar conexiones - getUsuarioRolById(): " + e.getMessage());
+			}
 		}
 		
 		return usuarioRol;

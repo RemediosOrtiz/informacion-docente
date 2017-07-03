@@ -71,6 +71,14 @@ public class Usuario {
 	public void setEstatus(Integer estatus) {
 		this.estatus = estatus;
 	}
+	
+	public UsuarioRol getUsuarioRol() {
+		return usuarioRol;
+	}
+
+	public void setUsuarioRol(UsuarioRol usuarioRol) {
+		this.usuarioRol = usuarioRol;
+	}
 
 	public Contacto getContacto() {
 		return contacto;

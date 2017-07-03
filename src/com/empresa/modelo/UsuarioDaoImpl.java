@@ -68,12 +68,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	}
 
 	@Override
-	public Usuario getUsuarioLogin(String matricula, String password) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Boolean save(Usuario usuario) {
 		
 		String sql = "INSERT INTO USUARIO (matricula, password, id_usuario_rol, estatus) VALUES(?,?,?,?)";
@@ -158,6 +152,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				usuario.setPassword(null);
 				usuario.setIdUsuarioRol(rs.getInt("id_usuario_rol"));
 				usuario.setEstatus(rs.getInt("estatus"));
+				usuario.setUsuarioRol(new UsuarioRolDaoImpl(con).getUsuarioRolById(rs.getInt("id_usuario_rol")));
+				usuario.setContacto(new ContactoDaoImpl(con).getContactoByIdUsuario(rs.getInt("id_usuario")));
 			}
 			
 		} catch (SQLException e) {
@@ -199,6 +195,40 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				
 			} catch (SQLException e) {
 				LOG.error("Al cerrar conexiones - removeUsuarioById(): " + e.getMessage());
+			}
+		}
+	}
+
+	@Override
+	public Boolean login(String matricula, String password) {
+		
+		String sql = "SELECT COUNT(*) AS COUNT FROM USUARIO WHERE matricula = ? AND password = ?";
+		Integer contador = 0;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, matricula);
+			ps.setString(2, password);
+			
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				contador = rs.getInt("COUNT");
+			}
+			
+			return (contador == 0) ? false : true;
+			
+		} catch (Exception e) {
+			LOG.error("login() " + e.getMessage());
+			return false;
+			
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(ps!= null) ps.close();
+				
+			} catch (SQLException e) {
+				LOG.error("Al cerrar conexiones - login(): " + e.getMessage());
 			}
 		}
 	}

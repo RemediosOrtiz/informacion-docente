@@ -1,0 +1,18 @@
+DROP DATABASE SISTEMA_GESTOR_DOCENTE;
+
+CREATE database  SISTEMA_GESTOR_DOCENTE;
+
+USE SISTEMA_GESTOR_DOCENTE;
+
+SELECT * FROM USUARIO;
+
+
+DELETE FROM USUARIO WHERE id_usuario = 5;
+
+SELECT * FROM USUARIO_ROL  ORDER BY 1;
+
+SELECT * FROM CONTACTO;
+
+
+INSERT INTO USUARIO_ROL(id_usuario_rol, desc_rol)
+VALUES (1, 'Administrador'), (2, 'Directivo'), (3, 'Secretaria'),  (4, 'Docente'), (5, 'Laboratorista');

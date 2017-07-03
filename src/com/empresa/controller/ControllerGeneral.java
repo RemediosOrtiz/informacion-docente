@@ -52,42 +52,22 @@ public class ControllerGeneral extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		// Accion representa el nombre de la vista a mostrar
-		String vista = request.getParameter("vista");
+		// Accion representa el nombre de la accion a mostrar
+		String accion = request.getParameter("accion");
 		
 		HttpSession sesion = request.getSession();
 		
 		String myToken = (String) sesion.getAttribute("token");
 		
-		if (vista != null || myToken != null) {
+		if (accion != null || myToken != null) {
 			
-			switch (vista) {
-			
-			case "logout":
-					sesion.invalidate();
-					setResponseController("login").forward(request, response);
-				break;
-				
-			case "inicio":
-				request.setAttribute("mensaje", "Bienvenido al Sistems");
-				setResponseController("inicio").forward(request, response);
-				break;
-				
-			case "usuarios":
-				request.setAttribute("mensaje", "Bienvenido al Sistems");
-				setResponseController("inicio").forward(request, response);
-				break;
-
-			default:
-				sesion.invalidate();
-				setResponseController("login").forward(request, response);
-				break;
-			}
+			sesion.invalidate();
+			setResponseController("index").forward(request, response);
 			
 		} else {
-			log.info("Vista Login");
+			log.info("accion Index");
 			sesion.invalidate();
-			setResponseController("login").forward(request, response);
+			setResponseController("index").forward(request, response);
 		}
 	}
 
@@ -101,12 +81,12 @@ public class ControllerGeneral extends HttpServlet {
 	
 	
 	/**
-	 * Retorna la vista JSP
-	 * @param vista
+	 * Retorna la accion JSP
+	 * @param accion
 	 * @return RequestDispatcher
 	 */
-	public RequestDispatcher setResponseController(String vista) {
-		String url = rutaVistaJSP + vista + ".jsp";
+	public RequestDispatcher setResponseController(String accion) {
+		String url = rutaVistaJSP + accion + ".jsp";
 		return getServletContext().getRequestDispatcher(url);
 	}
 

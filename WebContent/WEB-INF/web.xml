@@ -9,21 +9,46 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <description></description>
     <display-name>ControllerGeneral</display-name>
     <servlet-name>ControllerGeneral</servlet-name>
     <servlet-class>com.empresa.controller.ControllerGeneral</servlet-class>
     <init-param>
-    	<param-name>rutaVistaJSP</param-name>
-    	<param-value>/views/</param-value>
+      <param-name>rutaVistaJSP</param-name>
+      <param-value>/views/</param-value>
     </init-param>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>ControllerGeneral</servlet-name>
-    <url-pattern>//*</url-pattern>
+    <url-pattern></url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>LoginController</display-name>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>com.empresa.controller.LoginController</servlet-class>
+    <init-param>
+      <param-name>rutaVistaJSP</param-name>
+      <param-value>/views/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/login/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdministradorController</display-name>
+    <servlet-name>AdministradorController</servlet-name>
+    <servlet-class>com.empresa.controller.AdministradorController</servlet-class>
+    <init-param>
+      <param-name>rutaVistaJSP</param-name>
+      <param-value>/views/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdministradorController</servlet-name>
+    <url-pattern>/admin/*</url-pattern>
+  </servlet-mapping>
 </web-app>

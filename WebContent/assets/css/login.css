@@ -1,0 +1,194 @@
+body {
+    font-family: "Open Sans", Arial;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.bg-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(39, 39, 39, 0.98);
+    position: absolute;
+    top: 0;
+    height: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+.login-content {
+    margin: 0 auto;
+    margin-top: 80px;
+    width: 400px;
+    height: 500px;
+    background-size: auto 100%;
+    background-position: -100px;
+    background-repeat: no-repeat;
+    box-shadow: 0px 2px 90px 0px rgba(0, 0, 0, 0.68);
+    -webkit-box-shadow: 0px 2px 90px 0px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 2px 90px 0px rgba(0, 0, 0, 0.68);
+    -ms-box-shadow: 0px 2px 90px 0px rgba(0, 0, 0, 0.68);
+    -o-box-shadow: 0px 2px 90px 0px rgba(0, 0, 0, 0.68);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.login-content .login-content-color {
+    padding: 12%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(40, 40, 40, 0.8);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.login-content .login-content-color h1, .login-content .login-content-color p {
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    color: #FFF;
+}
+.login-content .login-content-color h1 {
+    font-size: 36px;
+    font-weight: 400;
+}
+.login-content .login-content-color p {
+    font-size: 12px;
+    margin-bottom: 100px;
+}
+form input {
+    margin-bottom: 30px;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    padding-left: 12px !important;
+}
+form input:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+form input:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: solid 2px rgba(74, 144, 226, 0.6);
+    outline: none;
+}
+.footer-company {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    margin-top: 40px;
+}
+.footer-company a {
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+}
+.footer-company a span {
+    display: inline-block;
+}
+.footer-company a .thin-left {
+    width: 22px;
+    height: 2px;
+    background-color: #FFF;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+.footer-company a .text-left {
+    padding-top: 5px;
+    display: inline-block;
+    margin-left: 6px;
+}
+.footer-company a:hover {
+    color: #4A90E2;
+}
+.error-login {
+    width: 100%;
+    height: 20px;
+    color: red;
+    text-align: center;
+    font-size: 12px;
+    padding: 8px 4px;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+@media screen and (max-width: 420px) {
+    .login-content {
+    margin-top: 20px;
+    width: calc(100% - 20px);
+    -webkit-width: calc(100% - 20px);
+    -moz-width: calc(100% - 20px);
+    -ms-width: calc(100% - 20px);
+    -o-width: calc(100% - 20px);
+}
+.login-content .login-content-color h1 {
+    font-size: 30px;
+    font-weight: 400;
+}
+.login-content .login-content-color p {
+    font-size: 14px;
+    margin-bottom: 80px;
+    font-weight: 300;
+}
+}
+input[type=submit], input[type=button], input[type=text], input[type=password], input[type=email], input[type=number], select, textarea, button {
+    width: 100%;
+    height: 36px;
+    background: transparent;
+    -webkit-background: transparent;
+    -moz-background: transparent;
+    -ms-background: transparent;
+    -o-background: transparent;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+    -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+    -ms-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+    -o-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0 0 0 3px;
+    padding-left: 6px;
+    border: none;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    color: #fff;
+}
+input[type=submit]:focus, input[type=button]:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, select:focus, textarea:focus, button:focus {
+    border-bottom: solid 2px rgba(74, 144, 226, 0.6);
+    outline: none;
+}
+textarea {
+    padding-top: 10px;
+    height: 78px;
+}
+input[type=submit], input[type=button] {
+    margin-top: 20px;
+    padding: 6px 30px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #FFF;
+    background-color: rgba(74, 144, 226, 0.6);
+    border-bottom: solid 2px rgba(74, 144, 226, 0.6);
+}
+input[type=submit]:hover, input[type=button]:hover {
+    background-color: #4a90e2;
+    border-bottom: solid 2px #4a90e2;
+}

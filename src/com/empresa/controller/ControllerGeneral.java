@@ -72,6 +72,11 @@ public class ControllerGeneral extends HttpServlet {
 				request.setAttribute("mensaje", "Bienvenido al Sistems");
 				setResponseController("inicio").forward(request, response);
 				break;
+				
+			case "usuarios":
+				request.setAttribute("mensaje", "Bienvenido al Sistems");
+				setResponseController("inicio").forward(request, response);
+				break;
 
 			default:
 				sesion.invalidate();

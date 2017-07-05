@@ -55,34 +55,30 @@ public class LoginController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		// Accion representa el nombre de la accion a mostrar
+		// Accion a realizar (Como mandar a llamar una vista)
 		String accion = request.getParameter("accion");
 		
-		System.out.println(accion);
-		
+		// Recuperar sesion activa
 		HttpSession sesion = request.getSession();
-		String myMatricula = (String) sesion.getAttribute("matricula");
+		Integer myRol = (Integer) sesion.getAttribute("id_usuario_rol");
 		
-		if (myMatricula == null) {
+		// Valida si existe una sesion activa y valida el rol del usuario
+		if (myRol == null) {
+			// Cierra sesion
 			sesion.invalidate();
+			// Llama vista login
 			setResponseController("login").forward(request, response);
-
+			
 		} else if (accion == null) {
-			sesion.invalidate();
+			// Llama vista login
 			setResponseController("login").forward(request, response);
 			
 		} else {
-			switch (accion) {
 			
-			case "logout":
+			// LLamado de vistas en base al nombre del parametro accion
+			if (accion.equals("logout")) {
 				sesion.invalidate();
 				setResponseController("login").forward(request, response);
-				break;
-
-			default:
-				sesion.invalidate();
-				setResponseController("login").forward(request, response);
-				break;
 			}
 		}
 	}
@@ -107,13 +103,10 @@ public class LoginController extends HttpServlet {
 					String matricula = request.getParameter("matricula");
 					String password = request.getParameter("password");
 					
-					LOG.info("Datos obtenidos: [matricula=" + matricula + ", password=" + password + "]");
-					
 					// Validar Matricula y password
 					UsuarioDao usuarioDao = new UsuarioDaoImpl(con);
 					
 					if (usuarioDao.login(matricula, new Hasher().generateHash(password))) {
-						LOG.info("El usuario existe");
 						
 						// Obtener datos usuario logueado
 						Usuario usuario = usuarioDao.getUsuarioByMatricula(matricula);
@@ -127,12 +120,15 @@ public class LoginController extends HttpServlet {
 						sesion.setAttribute("nombre", usuario.getContacto().getNombre());
 						sesion.setAttribute("ap_paterno", usuario.getContacto().getApPaterno());
 						
-						// Enviar datos de usuario a la vista
-						request.setAttribute("usuario", usuario);
-						
 						// Mostrar vista Administrador
 						if (usuario.getIdUsuarioRol() == 1) {
-							setResponseController("administrador").forward(request, response);
+							
+							// Enviar datos de usuario a la vista
+							request.setAttribute("usuario", usuario);
+							
+							// Redirecionar a la URL Admin
+							response.sendRedirect("/admin");
+							
 						} else {
 							setResponseController("inicio").forward(request, response);
 						}
@@ -162,7 +158,7 @@ public class LoginController extends HttpServlet {
 	}
 	
 	/**
-	 * Retorna la accion JSP
+	 * Retorna la accion (Vista JSP)
 	 * @param accion
 	 * @return RequestDispatcher
 	 */

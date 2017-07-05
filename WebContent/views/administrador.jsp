@@ -176,7 +176,7 @@
                               </ul>
                         </li>
                         <li>
-                            <a href='<c:url value="/login" />'>
+                            <a href='<c:url value="/login?accion=logout" />'>
                                 <p>Salir</p>
                             </a>
                         </li>

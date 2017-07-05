@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 /**
  * Servlet implementation class Servlet
  */
-public class ControllerGeneral extends HttpServlet {
+public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final Logger log = LogManager.getLogger("ControllerGeneral: ");
@@ -26,7 +26,7 @@ public class ControllerGeneral extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ControllerGeneral() {
+    public IndexController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,28 +47,14 @@ public class ControllerGeneral extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		// Accion a realizar (Como mandar a llamar una vista)
 		request.setCharacterEncoding("UTF-8");
 		
-		// Accion representa el nombre de la accion a mostrar
+		// Accion a realizar (Como mandar a llamar una vista)
 		String accion = request.getParameter("accion");
 		
-		HttpSession sesion = request.getSession();
-		
-		String myToken = (String) sesion.getAttribute("token");
-		
-		if (accion != null || myToken != null) {
-			
-			sesion.invalidate();
-			setResponseController("index").forward(request, response);
-			
-		} else {
-			log.info("accion Index");
-			sesion.invalidate();
-			setResponseController("index").forward(request, response);
-		}
+		// Manda a llamar la vista Index
+		setResponseController("index").forward(request, response);
 	}
 
 	/**

@@ -46,8 +46,6 @@ public final class ConexionBD {
 		
 		Class.forName(CLASSNAME);
 		con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-		System.out.println("Conectado a la BD");
-
 		return con;
 	}
 	

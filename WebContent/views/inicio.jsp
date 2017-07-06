@@ -12,7 +12,7 @@
 <body>
 	<h1>Vista para usuario NO administrador</h1>
 	<h2>Bienvenido <c:out value="${usuario.matricula }"></c:out></h2>
-	<a href='<c:url value="/login" />'>
+	<a href='<c:url value="/login?acceso=logout" />'>
         <p>Salir</p>
     </a>
     

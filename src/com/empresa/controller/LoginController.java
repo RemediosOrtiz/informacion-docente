@@ -120,11 +120,11 @@ public class LoginController extends HttpServlet {
 						sesion.setAttribute("nombre", usuario.getContacto().getNombre());
 						sesion.setAttribute("ap_paterno", usuario.getContacto().getApPaterno());
 						
+						// Enviar datos de usuario a la vista
+						request.setAttribute("usuario", usuario);
+						
 						// Mostrar vista Administrador
 						if (usuario.getIdUsuarioRol() == 1) {
-							
-							// Enviar datos de usuario a la vista
-							request.setAttribute("usuario", usuario);
 							
 							// Redirecionar a la URL Admin
 							response.sendRedirect("/admin");

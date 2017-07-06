@@ -43,7 +43,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 						rs.getString("password"),
 						rs.getInt("id_usuario_rol"),
 						rs.getInt("estatus"),
-						new UsuarioRol(),
+						new UsuarioRolDaoImpl(con).getUsuarioRolById(rs.getInt("id_usuario_rol")),
 						new ContactoDaoImpl(con).getContactoByIdUsuario(rs.getInt("id_usuario"))
 						);
 				usuarios.add(usuario);
@@ -116,6 +116,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				usuario.setPassword(null);
 				usuario.setIdUsuarioRol(rs.getInt("id_usuario_rol"));
 				usuario.setEstatus(rs.getInt("estatus"));
+				usuario.setUsuarioRol(new UsuarioRolDaoImpl(con).getUsuarioRolById(rs.getInt("id_usuario_rol")));
+				usuario.setContacto(new ContactoDaoImpl(con).getContactoByIdUsuario(rs.getInt("id_usuario")));
 			}
 		} catch (SQLException e) {
 			LOG.error("getUsuarioById() " + e.getMessage());

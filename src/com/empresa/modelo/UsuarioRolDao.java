@@ -1,5 +1,7 @@
 package com.empresa.modelo;
 
+import java.util.ArrayList;
+
 import com.empresa.pojo.UsuarioRol;
 
 public interface UsuarioRolDao {
@@ -9,4 +11,5 @@ public interface UsuarioRolDao {
 	 * @return UsuarioRol
 	 */
 	UsuarioRol getUsuarioRolById(Integer id);
+	ArrayList<UsuarioRol> getAll();
 }

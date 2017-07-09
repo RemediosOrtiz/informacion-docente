@@ -194,17 +194,11 @@
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
 					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
 					                           	<td>
-					                           		<c:url value="/admin" var="urlConsultarUsuario">
-					                           			<c:param name="accion" value="consultar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlConsultarUsuario}" class="btn btn-sm btn-primary">Consultar</a>
-													
 													<c:url value="/admin" var="urlModificarUsuario">
 					                           			<c:param name="accion" value="modificar-usuario" />
 													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
 													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Modificar</a>
+													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
 					                           	</td>
 				                           </tr>
 				                       	</c:if>
@@ -245,17 +239,11 @@
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
 					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
 					                           	<td>
-					                           		<c:url value="/admin" var="urlConsultarUsuario">
-					                           			<c:param name="accion" value="consultar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlConsultarUsuario}" class="btn btn-sm btn-primary">Consultar</a>
-													
 													<c:url value="/admin" var="urlModificarUsuario">
 					                           			<c:param name="accion" value="modificar-usuario" />
 													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
 													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Modificar</a>
+													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
 					                           	</td>
 				                           </tr>
 				                       	</c:if>
@@ -297,17 +285,11 @@
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
 					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
 					                           	<td>
-					                           		<c:url value="/admin" var="urlConsultarUsuario">
-					                           			<c:param name="accion" value="consultar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlConsultarUsuario}" class="btn btn-sm btn-primary">Consultar</a>
-													
 													<c:url value="/admin" var="urlModificarUsuario">
 					                           			<c:param name="accion" value="modificar-usuario" />
 													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
 													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Modificar</a>
+													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
 					                           	</td>
 				                           </tr>
 				                       	</c:if>
@@ -349,17 +331,11 @@
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
 					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
 					                           	<td>
-					                           		<c:url value="/admin" var="urlConsultarUsuario">
-					                           			<c:param name="accion" value="consultar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlConsultarUsuario}" class="btn btn-sm btn-primary">Consultar</a>
-													
 													<c:url value="/admin" var="urlModificarUsuario">
 					                           			<c:param name="accion" value="modificar-usuario" />
 													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
 													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Modificar</a>
+													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
 					                           	</td>
 				                           </tr>
 				                       	</c:if>
@@ -401,17 +377,11 @@
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
 					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
 					                           	<td>
-					                           		<c:url value="/admin" var="urlConsultarUsuario">
-					                           			<c:param name="accion" value="consultar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlConsultarUsuario}" class="btn btn-sm btn-primary">Consultar</a>
-													
 													<c:url value="/admin" var="urlModificarUsuario">
 					                           			<c:param name="accion" value="modificar-usuario" />
 													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
 													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Modificar</a>
+													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
 					                           	</td>
 				                           </tr>
 				                       	</c:if>

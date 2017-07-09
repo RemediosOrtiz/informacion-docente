@@ -23,6 +23,7 @@ import com.empresa.modelo.ContactoDao;
 import com.empresa.modelo.ContactoDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
+import com.empresa.modelo.UsuarioRolDaoImpl;
 import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Usuario;
 import com.mysql.jdbc.log.Log;
@@ -97,18 +98,12 @@ public class AdministradorController extends HttpServlet {
 					setResponseController("admin_usuarios").forward(request, response);
 				}
 				
-				// Consultar Usuario
-				if (accion.equals("consultar-usuario")) {
-					Integer idUsuarioAConsultar = Integer.parseInt(request.getParameter("id-usuario"));
-					request.setAttribute("usuario", new UsuarioDaoImpl(con).getUsuarioById(idUsuarioAConsultar));
-					request.setAttribute("isModificable", 0);
-					setResponseController("admin_consultar_usuario").forward(request, response);
-				}
 				
-				// Consultar usuario a modificar
+				// Consultar o Modificar
 				if (accion.equals("modificar-usuario")) {
 					Integer idUsuarioAConsultar = Integer.parseInt(request.getParameter("id-usuario"));
 					request.setAttribute("usuario", new UsuarioDaoImpl(con).getUsuarioById(idUsuarioAConsultar));
+					request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
 					request.setAttribute("isModificable", 1);
 					setResponseController("admin_consultar_usuario").forward(request, response);
 				}

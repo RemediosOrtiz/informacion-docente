@@ -1,14 +1,16 @@
 package com.empresa.modelo;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import com.empresa.pojo.Usuario;
 import com.empresa.pojo.UsuarioRol;
-import com.mysql.jdbc.PreparedStatement;
 
 public class UsuarioRolDaoImpl implements UsuarioRolDao {
 
@@ -31,7 +33,7 @@ public class UsuarioRolDaoImpl implements UsuarioRolDao {
 		
 		try {
 			String sql = "SELECT * FROM USUARIO_ROL WHERE id_usuario_rol = ?";
-			ps = (PreparedStatement) con.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			
@@ -55,6 +57,43 @@ public class UsuarioRolDaoImpl implements UsuarioRolDao {
 		}
 		
 		return usuarioRol;
+	}
+
+	@Override
+	public ArrayList<UsuarioRol> getAll() {
+		
+		ArrayList<UsuarioRol> usuariosRol = new ArrayList<UsuarioRol>();
+		String sql = "SELECT * FROM USUARIO_ROL";
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				UsuarioRol usuarioRol = new UsuarioRol(
+						rs.getInt("id_usuario_rol"),
+						rs.getString("desc_rol")
+						);
+				usuariosRol.add(usuarioRol);
+			}
+
+		} catch (SQLException e) {
+			usuariosRol.clear();
+			LOG.error("getAll(): " + e.getMessage());
+			
+		} finally {
+			
+			try {
+				if(rs!= null) rs.close();
+				if(ps!= null) ps.close();
+				
+			} catch (SQLException e) {
+				LOG.error("Al cerrar conexiones - getAll(): " + e.getMessage());
+			}
+		}
+		
+		return usuariosRol;
 	}
 
 }

@@ -10,4 +10,5 @@ public interface ContactoDao {
 	Contacto getContactoById(Integer id);
 	Contacto getContactoByIdUsuario(Integer idUsuario);
 	Boolean save(Contacto contacto);
+	Boolean update(Contacto contacto);
 }

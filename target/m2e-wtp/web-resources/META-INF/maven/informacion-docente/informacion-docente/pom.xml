@@ -50,5 +50,12 @@
 		    <artifactId>bcprov-jdk15on</artifactId>
 		    <version>1.57</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20160810</version>
+		</dependency>
+		
 		</dependencies>
 </project>

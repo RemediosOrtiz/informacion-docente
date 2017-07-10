@@ -2,22 +2,22 @@ package com.empresa.pojo;
 
 public class UsuarioRol {
 
-	private Integer IdUsuarioRol;
+	private Integer idUsuarioRol;
 	private String descRol;
 	
 	public UsuarioRol() {}
-	
+
 	public UsuarioRol(Integer idUsuarioRol, String descRol) {
-		IdUsuarioRol = idUsuarioRol;
+		this.idUsuarioRol = idUsuarioRol;
 		this.descRol = descRol;
 	}
 
 	public Integer getIdUsuarioRol() {
-		return IdUsuarioRol;
+		return idUsuarioRol;
 	}
 
 	public void setIdUsuarioRol(Integer idUsuarioRol) {
-		IdUsuarioRol = idUsuarioRol;
+		this.idUsuarioRol = idUsuarioRol;
 	}
 
 	public String getDescRol() {
@@ -30,6 +30,6 @@ public class UsuarioRol {
 
 	@Override
 	public String toString() {
-		return "UsuarioRol [IdUsuarioRol=" + IdUsuarioRol + ", descRol=" + descRol + "]";
+		return "UsuarioRol [idUsuarioRol=" + idUsuarioRol + ", descRol=" + descRol + "]";
 	}
 }

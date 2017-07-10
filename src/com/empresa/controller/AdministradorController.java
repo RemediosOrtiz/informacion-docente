@@ -26,6 +26,7 @@ import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
 import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Usuario;
+import com.empresa.pojo.UsuarioRol;
 import com.mysql.jdbc.log.Log;
 
 /**
@@ -121,8 +122,6 @@ public class AdministradorController extends HttpServlet {
 			}
 		}
 	}
-	
-	
 	
 	
 	

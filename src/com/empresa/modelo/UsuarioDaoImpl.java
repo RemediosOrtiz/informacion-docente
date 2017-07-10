@@ -235,4 +235,35 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		}
 	}
 
+	@Override
+	public Boolean update(Usuario usuario) {
+		String sql = "UPDATE USUARIO SET matricula=?, password=?, id_usuario_rol=?, estatus=? WHERE id_usuario=?";
+		try {
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, usuario.getMatricula());
+			ps.setString(2, usuario.getPassword());
+			ps.setInt(3, usuario.getIdUsuarioRol());
+			ps.setInt(4, usuario.getEstatus());
+			ps.setInt(5, usuario.getIdUsuario());
+			
+			ps.executeUpdate();
+			
+			return true;
+			
+		} catch (SQLException e) {
+			LOG.error("update(): " + e.getMessage());
+			return false;
+			
+		} finally {
+			
+			try {
+				if(ps!= null) ps.close();
+				
+			} catch (SQLException e) {
+				LOG.error("Al cerrar conexiones - update(): " + e.getMessage());
+			}
+		}
+	}
+
 }

@@ -144,4 +144,9 @@ public class ContactoDaoImpl implements ContactoDao {
 		return contacto;
 	}
 
+	@Override
+	public Boolean update(Contacto contacto) {
+		return false;
+	}
+
 }

@@ -202,7 +202,137 @@
 </div>
 
 
+
 </body>
+
+
+	<style>
+		.alertas-contenedor {
+			position: fixed;
+			top: 0;
+			right: 0;
+			max-width: 530px;
+			height: auto;
+			max-width: 100%;
+			z-index: 10000000;
+			padding: 15px;
+			background-color: transparent;
+			overflow: auto;
+		}
+		
+		.alertas-contenedor h5 {
+			font-size: 14px;
+			color: #FFF;
+			padding: 12px 14px 7px 12px;
+			font-weight: bold;
+			margin: 0;
+			width: 100%;
+			border-bottom: solid 1px rgba(0,0,0, 0.1);
+		}
+		
+		.cerrar-alerta {
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			background-color: #FFF;
+			color: #4A4A4A;
+			font-size: 10px;
+			border: solid 1px #FFF;
+			border-radius: 10px;
+			
+		}
+		
+		.cerrar-alerta:focus {
+			outline: none;
+		}
+		
+		.cerrar-alerta:hover {
+			color: red;
+		}
+	
+		.alerta {
+			position: relative;
+			min-width: 300px;
+			max-width: 500px;
+			height: auto;
+			corlo: #fff;
+			background: #4A4A4A;
+			box-shadow: 0 11px 21px 0 rgba(0,0,0,0.27);
+			border-radius: 12px;
+			margin-bottom: 14px;
+			
+		}
+		
+		.alerta-negro {
+			background-color: #4A4A4A;
+		}
+		
+		.alerta-rojo {
+			background-color: #FC404B;
+		}
+		
+		.alerta-verde {
+			background-color: #23B131;
+		}
+		
+		.alerta-azul {
+			background-color: #2662AE;
+		}
+		
+		.alerta p {
+			color: #FFF;
+			padding: 7px 14px 7px 12px;
+			font-size: 13px;
+		}
+		
+		
+		.alerta ul {
+			padding: 0;
+			margin: 0;
+			color: #FFF !important;
+			text-decoration: none;
+			padding: 7px 14px 7px 12px;
+			margin-left: 10px;
+		}
+		
+		.alerta ul li {
+			padding: 0;
+			margin: 0;
+			color: #FFF !important;
+			text-decoration: none;
+			margin-left: 10px;
+		}
+		
+		.alerta a {
+		
+			text-decoration: none;
+			background: #FFF;
+			padding: 4px 8px;
+			text-align: center;
+			color: #000;
+			font-weight: bold;
+			border-radius: 5px;
+			margin: 0 10px 10px 10px;
+			width: calc(100% - 20px);
+			display: inline-block;
+		}
+		
+	</style>
+	
+	
+	<div class="alertas-contenedor">
+	<!--  
+		<div class="alerta alerta-azul">
+			<button class="cerrar-alerta">Cerrar</button>
+			<h5 class="titulo">Error</h5>
+			<p>
+				Para ver los cambios por favor recargue la pagina:
+			</p>
+			<a href="#!">Recargar Página</a>
+		</div>
+		-->
+	</div>
+	
 
 	<jsp:invoke fragment="hideforms" />
 	
@@ -214,7 +344,11 @@
 	<script src='<c:url value="assets/js/light-bootstrap-dashboard.js"></c:url>'></script>
 	<script src='<c:url value="assets/js/demo.js"></c:url>'></script>
 	
+	<script src='<c:url value="assets/js/validador.js"></c:url>'></script>
+	<script src='<c:url value="assets/js/alertas.js"></c:url>'></script>
+	
+	
 	<jsp:invoke fragment="extrajs" />
-
+	
 
 </html>

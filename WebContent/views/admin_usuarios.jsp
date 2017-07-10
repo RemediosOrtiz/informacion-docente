@@ -67,7 +67,7 @@
 
                                     <div class="form-group">
                                         <label for="matricula">Matricula</label>
-                                        <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Ingrea la matricula unica del usuario" minlength="10" required/>
+                                        <input type="number" id="matricula" name="matricula" class="form-control" placeholder="Ingrea la matricula unica del usuario" minlength="10" required/>
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Contraseña</label>

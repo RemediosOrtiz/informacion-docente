@@ -51,8 +51,6 @@
     <servlet-name>AdministradorController</servlet-name>
     <url-pattern>/admin</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <description></description>
     <display-name>CuentasAjaxController</display-name>
@@ -67,4 +65,69 @@
     <servlet-name>CuentasAjaxController</servlet-name>
     <url-pattern>/cuenta-ajax</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>DirectivoController</display-name>
+    <servlet-name>DirectivoController</servlet-name>
+    <servlet-class>com.empresa.controller.DirectivoController</servlet-class>
+    <init-param>
+      <param-name>rutaVistaJSP</param-name>
+      <param-value>/views/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DirectivoController</servlet-name>
+    <url-pattern>/directivo</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>SecretariaController</display-name>
+    <servlet-name>SecretariaController</servlet-name>
+    <servlet-class>com.empresa.controller.SecretariaController</servlet-class>
+    <init-param>
+      <param-name>rutaVistaJSP</param-name>
+      <param-value>/views/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SecretariaController</servlet-name>
+    <url-pattern>/secretaria</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>DocenteController</display-name>
+    <servlet-name>DocenteController</servlet-name>
+    <servlet-class>com.empresa.controller.DocenteController</servlet-class>
+    <init-param>
+      <param-name>rutaVistaJSP</param-name>
+      <param-value>/views/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DocenteController</servlet-name>
+    <url-pattern>/docente</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>LaboratoristaController</display-name>
+    <servlet-name>LaboratoristaController</servlet-name>
+    <servlet-class>com.empresa.controller.LaboratoristaController</servlet-class>
+    <init-param>
+      <param-name>rutaVistaJSP</param-name>
+      <param-value>/views/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LaboratoristaController</servlet-name>
+    <url-pattern>/laboratorista</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

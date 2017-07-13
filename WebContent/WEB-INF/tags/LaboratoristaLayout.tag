@@ -35,7 +35,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color=azure data-image="assets/img/sidebar-4.jpg">
+    <div class="sidebar" data-color=red data-image="assets/img/sidebar-4.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -48,7 +48,7 @@
 
             <ul class="nav">
             	 <li>
-                    <a href='<c:url value="/directivo?accion=dashboard" />'>
+                    <a href='<c:url value="/laboratorista?accion=dashboard" />'>
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>

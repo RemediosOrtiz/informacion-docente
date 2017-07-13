@@ -21,8 +21,15 @@
 	
 	<jsp:attribute name="extrajs">
 
+	<!-- Script AJAX para actualizar la cuenta -->
 	<script src='<c:url value="assets/js/cuenta.js"></c:url>'></script>
-      	
+	
+	<!-- Script AJAX para actualizar el contacto -->
+	<script src='<c:url value="assets/js/contacto.js"></c:url>'></script>
+	
+	
+    
+    <!-- MODAL PARA ACTUALIZAR CUENTA -->  	
     <div class="modal fade" id="modal-cuenta" tabindex="-1" role="dialog" aria-labelledby="modal-cuenta">
 	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content">
@@ -77,8 +84,72 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> <!-- FIN MODAL PARA ACTUALIZAR CUENTA -->
+
+
+<!-- MODAL PARA ACTUALIZAR CONTACTO -->
+<div class="modal fade" id="modal-contacto" tabindex="-1" role="dialog" aria-labelledby="modal-contacto">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="modal-contacto">
+				<b>DATOS DEL CONTACTO</b>
+				</h4>
+			</div>
+			<form action='<c:url value="/cuenta-ajax?accion=actualizar-contacto" />' method="POST" id="form-contacto" name="form-contacto">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+						
+						<input type="hidden" name="id_contacto" class="id_contacto" value="${usuario.contacto.idContacto}">
+
+							<div class="form-group">
+								<label>Nombre</label>
+								<input type="text" name="nombre" class="nombre form-control" placeholder="Ingresa el nombre del contacto" />
+							</div>
+							<div class="form-group">
+								<label>Apellido Paterno</label>
+								<input type="text" name="apPaterno" class="apPaterno form-control" placeholder="Ingresa el apellido paterno" />
+							</div>
+							<div class="form-group">
+								<label>Apellido Materno</label>
+								<input type="text" name="apMaterno" class="apMaterno form-control" placeholder="Ingresa el apellido materno" />
+							</div>
+							
+							<div class="form-group">
+								<label>Fecha de nacimiento</label>
+								<input type="text" name="fNacimiento" class="fNacimiento form-control" placeholder="Ingresa la fecha de nacimiento" />
+							</div>
+							
+							<div class="form-group">
+								<label>Sexo</label>
+								<select name="sexo" class="sexo form-control" required>
+									<option value="Hombre">Hombre</option>
+									<option value="Mujer">Mujer</option>
+								</select>
+							</div>
+							
+							<div class="form-group">
+							  <label for="comment">Discapacidad</label>
+							  <textarea name="discapacidad" class="discapacidad form-control" rows="5" placeholder="Si tienes una discapacidad, por favor ingresala."></textarea>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="cerrar-form-contacto" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="button" id="guardar-form-contacto" class="btn btn-primary">Guardar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div><!-- FIN MODAL PARA ACTUALIZAR CONTACTO -->
+	
 </jsp:attribute>
+
+
 
 <jsp:body>
 <div class="container-fluid">
@@ -134,18 +205,65 @@
 					
 					
 					<c:if test="${requestScope.isModificable == 1 }">
-					<div style="width100%; text-align: right;">
-						<a href="#" class="btn-get-contact-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-cuenta">Modificar cuenta</a>
-					</div>
+						<div style="width100%; text-align: right;">
+							<a href="#" class="btn-get-cuenta-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-cuenta">Modificar cuenta</a>
+						</div>
 					</c:if>
 				</div>
 				
+				
+				<!-- CONTACTO -->
 				<div class="header">
 					<h5 class="title" style="font-weight: bolder;">CONTACTO</h5>
 				</div>
 				<div class="content">
+					
+					<div class="contenedor-cuenta">
+						<table>
+							<tr>
+								<td style="font-weight: bolder; padding-right: 20px;">Nombre:</td>
+								<td class="nombre"><c:out value="${usuario.contacto.nombre}"></c:out></td>
+							</tr>
+							<tr>
+								<td style="font-weight: bolder; padding-right: 20px;">Apellido Paterno:</td>
+								<td class="apPaterno"><c:out value="${usuario.contacto.apPaterno}"></c:out></td>
+							</tr>
+							<tr>
+								<td style="font-weight: bolder; padding-right: 20px;">Apellido Materno:</td>
+								<td class="apMaterno"><c:out value="${usuario.contacto.apMaterno}"></c:out></td>
+							</tr>
+							<tr>
+								<td style="font-weight: bolder; padding-right: 20px;">Sexo:</td>
+								<td class="sexo"><c:out value="${usuario.contacto.sexo}"></c:out></td>
+							</tr>
+							<tr>
+								<td style="font-weight: bolder; padding-right: 20px;">Fecha de nacimiento:</td>
+								<td class="fNacimiento"><c:out value="${usuario.contacto.fNacimiento}"></c:out></td>
+							</tr>
+							<tr>
+								<td style="font-weight: bolder; padding-right: 20px;">Discapacidad:</td>
+								<td class="discapacidad">
+								
+									<c:choose>
+									    <c:when test="${usuario.contacto.discapacidad == null}">
+									        El Usuario no tiene niguna discapacidad 
+									    </c:when>
+									    <c:when test="${usuario.contacto.discapacidad == ''}">
+									        El Usuario no tiene niguna discapacidad 
+									    </c:when>
+									    <c:otherwise>
+									        <c:out value="${usuario.contacto.discapacidad}"></c:out>
+									    </c:otherwise>
+									</c:choose>
+								</td>
+							</tr>
+						</table>
+					</div>
+					
 					<c:if test="${requestScope.isModificable == 1 }">
-					<div style="width100%; text-align: right;"><a href="#" class="btn btn-sm btn-primary">Modificar contacto</a></div>
+						<div style="width100%; text-align: right;">
+							<a href="#" class="btn-get-contacto-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-contacto">Modificar contacto</a>
+						</div>
 					</c:if>
 				</div>
 				

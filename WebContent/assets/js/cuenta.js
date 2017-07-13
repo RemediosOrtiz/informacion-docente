@@ -10,7 +10,7 @@ function llenarFormularioCuenta(formularioNombre, result) {
 		App.ActualizarCuenta();
 	},
 		GetCuenta: function() {
-			$(".btn-get-contact-x").click(function() {
+			$(".btn-get-cuenta-x").click(function() {
 				// alert($(this).attr('data-cuenta'));
 				var formularioNombre = "#form-usuario";
 				$(formularioNombre)[0].reset();

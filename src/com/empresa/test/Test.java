@@ -25,15 +25,15 @@ public class Test {
 			UsuarioDao usuarioDao = new UsuarioDaoImpl(con);
 			
 			Usuario usuario = new Usuario();
-			usuario.setMatricula("222222");
-			usuario.setPassword(new Hasher().generateHash("secret"));
+			usuario.setMatricula("2516160027");
+			usuario.setPassword(new Hasher().generateHash("2516160027"));
 			usuario.setIdUsuarioRol(1);
 			usuario.setEstatus(1);
 			
 			if (usuarioDao.save(usuario)) {
 				System.out.println("Usuarios creado");
 				
-				usuario = usuarioDao.getUsuarioByMatricula("222222");
+				usuario = usuarioDao.getUsuarioByMatricula("2516160027");
 				
 				ContactoDao contactoDao = new ContactoDaoImpl(con);
 				Contacto contacto = new Contacto();

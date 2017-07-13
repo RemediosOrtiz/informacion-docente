@@ -18,8 +18,11 @@ import org.json.JSONTokener;
 
 import com.empresa.conexion.ConexionBD;
 import com.empresa.hash.Hasher;
+import com.empresa.modelo.ContactoDao;
+import com.empresa.modelo.ContactoDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
+import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Usuario;
 
 /**
@@ -57,16 +60,30 @@ public class CuentasAjaxController extends HttpServlet {
 			try {
 				con = ConexionBD.getConexionBD().getCon();
 				
+				// Consultar usuario por id
 				if (accion.equals("actualizar-usuario")) {
 					
 					Integer idUsuario = Integer.parseInt(request.getParameter("id_usuario"));
 					
 					jsonObj = new JSONObject(new UsuarioDaoImpl(con).getUsuarioById(idUsuario));
-					jsonObj.put("mensajeAccion", "Todo salio bien");
+					jsonObj.put("mensajeAccion", "Todo salio bien al consultar Usuario");
 					
 					out.println(jsonObj);
 				}
-			
+				
+				// Consultar contacto por id
+				if (accion.equals("actualizar-contacto")) {
+					Integer idContacto = Integer.parseInt(request.getParameter("id_contacto"));
+					
+					jsonObj = new JSONObject(new ContactoDaoImpl(con).getContactoById(idContacto));
+					jsonObj.put("mensajeAccion", "Todo salio bien al consultar Contacto");
+					jsonObj.put("fNacimientoX", new ContactoDaoImpl(con).getContactoById(idContacto).getfNacimiento());
+					
+					System.out.println(new ContactoDaoImpl(con).getContactoById(idContacto));
+					
+					out.println(jsonObj);
+				}
+			 
 			} catch (ClassNotFoundException | SQLException e) {
 				LOG.error("DO GET: " + e.getMessage());
 				
@@ -99,6 +116,7 @@ public class CuentasAjaxController extends HttpServlet {
 			
 				con = ConexionBD.getConexionBD().getCon();
 				
+				// Actualizar cuenta por id
 				if (accion.equals("actualizar-usuario")) {
 					
 					Usuario usuario = new Usuario();
@@ -118,6 +136,37 @@ public class CuentasAjaxController extends HttpServlet {
 					} else {
 						
 						// El usuario no se pudo actuzar
+						jsonObj.put("mensajeAccion", 0);
+					}
+					
+					out.println(jsonObj);
+				}
+				
+				
+				
+				// Actualizar contacto por id
+				if (accion.equals("actualizar-contacto")) {
+					
+					Contacto contacto = new Contacto();
+					contacto.setIdContacto(Integer.parseInt(request.getParameter("id_contacto")));
+					contacto.setNombre(request.getParameter("nombre"));
+					contacto.setApPaterno(request.getParameter("apPaterno"));
+					contacto.setApMaterno(request.getParameter("apMaterno"));
+					contacto.setfNacimiento(request.getParameter("fNacimiento"));
+					contacto.setSexo(request.getParameter("sexo"));
+					contacto.setDiscapacidad(request.getParameter("discapacidad"));
+					
+					System.out.println(contacto);
+					
+					ContactoDao contactoDao = new ContactoDaoImpl(con);
+					
+					if (contactoDao.update(contacto)) {
+						// El contacto se actuliza
+						jsonObj = new JSONObject(contactoDao.getContactoById(contacto.getIdContacto()));
+						jsonObj.put("mensajeAccion", 1);
+					} else {
+						
+						// El contacto no se pudo actualizar
 						jsonObj.put("mensajeAccion", 0);
 					}
 					

@@ -1,6 +1,5 @@
 package com.empresa.pojo;
 
-import java.util.Date;
 
 public class Contacto {
 
@@ -9,14 +8,14 @@ public class Contacto {
 	private String apPaterno;
 	private String apMaterno;
 	private String sexo;
-	private Date fNacimiento;
+	private String fNacimiento;
 	private Integer idUsuario;
 	private String discapacidad;
 
 	public Contacto() {}
 
 	public Contacto(Integer idContacto, String nombre, String apPaterno, String apMaterno, String sexo,
-			Date fNacimiento, Integer idUsuario, String discapacidad) {
+			String fNacimiento, Integer idUsuario, String discapacidad) {
 		super();
 		this.idContacto = idContacto;
 		this.nombre = nombre;
@@ -68,11 +67,11 @@ public class Contacto {
 		this.sexo = sexo;
 	}
 
-	public Date getfNacimiento() {
+	public String getfNacimiento() {
 		return fNacimiento;
 	}
 
-	public void setfNacimiento(Date fNacimiento) {
+	public void setfNacimiento(String fNacimiento) {
 		this.fNacimiento = fNacimiento;
 	}
 

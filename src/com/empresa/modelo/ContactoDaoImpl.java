@@ -48,7 +48,7 @@ public class ContactoDaoImpl implements ContactoDao {
 				contacto.setApPaterno(rs.getString("ap_paterno"));
 				contacto.setApMaterno(rs.getString("ap_materno"));
 				contacto.setSexo(rs.getString("sexo"));
-				contacto.setfNacimiento(rs.getDate("f_nacimiento"));
+				contacto.setfNacimiento(rs.getString("f_nacimiento"));
 				contacto.setIdUsuario(rs.getInt("id_usuario"));
 				contacto.setDiscapacidad(rs.getString("discapacidad"));
 			}
@@ -80,7 +80,7 @@ public class ContactoDaoImpl implements ContactoDao {
 			ps.setString(2, contacto.getApPaterno());
 			ps.setString(3, contacto.getApMaterno());
 			ps.setString(4, contacto.getSexo());
-			ps.setDate(5, (Date) contacto.getfNacimiento());
+			ps.setString(5, contacto.getfNacimiento());
 			ps.setInt(6, contacto.getIdUsuario());
 			ps.setString(7, contacto.getDiscapacidad());
 			
@@ -121,7 +121,7 @@ public class ContactoDaoImpl implements ContactoDao {
 				contacto.setApPaterno(rs.getString("ap_paterno"));
 				contacto.setApMaterno(rs.getString("ap_materno"));
 				contacto.setSexo(rs.getString("sexo"));
-				contacto.setfNacimiento(rs.getDate("f_nacimiento"));
+				contacto.setfNacimiento(rs.getString("f_nacimiento"));
 				contacto.setIdUsuario(rs.getInt("id_usuario"));
 				contacto.setDiscapacidad(rs.getString("discapacidad"));
 			}
@@ -146,7 +146,36 @@ public class ContactoDaoImpl implements ContactoDao {
 
 	@Override
 	public Boolean update(Contacto contacto) {
-		return false;
+		String sql = "UPDATE CONTACTO SET nombre=?, ap_paterno=?, ap_materno=?, sexo=?, f_nacimiento=?, discapacidad=? WHERE id_contacto=?";
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, contacto.getNombre());
+			ps.setString(2, contacto.getApPaterno());
+			ps.setString(3, contacto.getApMaterno());
+			ps.setString(4, contacto.getSexo());
+			ps.setString(5, contacto.getfNacimiento());
+			ps.setString(6, contacto.getDiscapacidad());
+			ps.setInt(7, contacto.getIdContacto());
+			
+			ps.executeUpdate();
+			
+			return true;
+			
+		} catch (SQLException e) {
+			LOG.error("update(): " + e.getMessage());
+			return false;
+			
+		} finally {
+			
+			try {
+				if(ps!= null) ps.close();
+				
+			} catch (SQLException e) {
+				LOG.error("Al cerrar conexiones - update(): " + e.getMessage());
+			}
+		}
 	}
 
 }

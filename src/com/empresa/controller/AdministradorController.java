@@ -21,10 +21,13 @@ import com.empresa.conexion.ConexionBD;
 import com.empresa.hash.Hasher;
 import com.empresa.modelo.ContactoDao;
 import com.empresa.modelo.ContactoDaoImpl;
+import com.empresa.modelo.DireccionDaoImpl;
+import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
 import com.empresa.pojo.Contacto;
+import com.empresa.pojo.Direccion;
 import com.empresa.pojo.Usuario;
 import com.empresa.pojo.UsuarioRol;
 import com.mysql.jdbc.log.Log;
@@ -75,7 +78,7 @@ public class AdministradorController extends HttpServlet {
 			// Cierra sesion
 			sesion.invalidate();
 			// Redirecionar a la URL login
-			response.sendRedirect("/login");
+			response.sendRedirect("login");
 			
 		} else if (accion == null) {
 			// Llama vista administrador
@@ -102,10 +105,27 @@ public class AdministradorController extends HttpServlet {
 				
 				// Consultar o Modificar
 				if (accion.equals("modificar-usuario")) {
+					
+					// Campturar varible desde la URL
 					Integer idUsuarioAConsultar = Integer.parseInt(request.getParameter("id-usuario"));
-					request.setAttribute("usuario", new UsuarioDaoImpl(con).getUsuarioById(idUsuarioAConsultar));
+					
+					Usuario usurio = new UsuarioDaoImpl(con).getUsuarioById(idUsuarioAConsultar);
+					request.setAttribute("usuario", usurio);
+
 					request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+					
+					// Consultar catalogo tipo lugar
+					request.setAttribute("tipoLugarCatalogo", new TipoLugarDaoImpl(con).getAll());
+					
+					// Consultar direcciones de un usuario
+					request.setAttribute("direcciones", new DireccionDaoImpl(con).getAllByContactoId(usurio.getContacto().getIdContacto()));
+					
+					
+					
 					request.setAttribute("isModificable", 1);
+					
+					
+					
 					setResponseController("admin_consultar_usuario").forward(request, response);
 				}
 				
@@ -147,7 +167,7 @@ public class AdministradorController extends HttpServlet {
 			// Cierra sesion
 			sesion.invalidate();
 			// Redirecionar a la URL login
-			response.sendRedirect("/login");
+			response.sendRedirect("login");
 			
 		} else if (accion == null) {
 			// Llama vista administrador
@@ -211,7 +231,7 @@ public class AdministradorController extends HttpServlet {
 					}
 					
 					// Redireccionar a la URL de admin para usuarios
-					response.sendRedirect("/admin?accion=usuarios");
+					response.sendRedirect("admin?accion=usuarios");
 				}
 				
 				

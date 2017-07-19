@@ -25,7 +25,7 @@
 				<h1>Inicia sesión</h1>
 				<p>Información Docente</p>
 
-				<form action='<c:url value="/login?accion=loginUser" />' method="post" id="form-login">
+				<form action='<c:url value="login?accion=loginUser" />' method="post" id="form-login">
 					<input type="text" name="matricula" id="user" placeholder="MATRICULA DE USUARIO" required />
 					<input type="password" name="password" id="password" placeholder="CONTRASEÑA" required />
 					<input type="submit" value="Enviar" />

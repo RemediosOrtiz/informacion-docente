@@ -267,6 +267,53 @@
 					</c:if>
 				</div>
 				
+				<!-- DIRECCION -->
+				<div class="header">
+					<h5 class="title" style="font-weight: bolder;">DIRECCIÓN</h5>
+				</div>
+				
+				<div class="content">
+				
+					<c:choose>
+						<c:when test="${fn:length(direcciones) gt 0}">
+						
+							
+							<!-- BUCLE DIRECCIONES -->
+								<c:forEach items="${direcciones}" var="direcciones">
+								
+									<c:forEach items="${tipoLugarCatalogo}" var="tipoLugarCatalogo">
+										<c:if test="${tipoLugarCatalogo.idTipoLugar == direcciones.idTipoLugar }">
+											<h4>Dirección ${tipoLugarCatalogo.descLugar}</h4>
+										</c:if>
+									</c:forEach>
+									
+									<p>${direcciones.calle}</p>
+									<p>${direcciones.cp}</p>
+												
+									<c:if test="${requestScope.isModificable == 1 }">
+										<div style="width100%; text-align: right;">
+											<a href="#" class="btn-get-contacto-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-contacto" data-id-direccion="${direcciones.idDireccion}">Modificar dirección</a>
+										</div>
+									</c:if>
+							</c:forEach>
+							
+							
+						</c:when>
+						<c:otherwise>
+							<p>El usuario no tiene aún direcciones registradas</p>
+														
+						</c:otherwise>
+					</c:choose>
+					
+					<c:if test="${requestScope.isModificable == 1 }">
+						<br/>
+						<div style="width100%; text-align: right;">
+							<a href="#" class="btn-get-contacto-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-contacto">Nueva dirección</a>
+						</div>
+					</c:if>
+					
+				</div>
+				
 			</div>
 		</div>
 	</div>

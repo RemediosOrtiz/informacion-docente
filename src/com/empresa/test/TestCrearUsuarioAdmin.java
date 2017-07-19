@@ -13,7 +13,7 @@ import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Usuario;
 
-public class Test {
+public class TestCrearUsuarioAdmin {
 
 	public static void main(String[] args) {
 

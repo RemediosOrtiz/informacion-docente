@@ -67,7 +67,7 @@ public class SecretariaController extends HttpServlet {
 					// Cierra sesion
 					sesion.invalidate();
 					// Redirecionar a la URL login
-					response.sendRedirect("/login");
+					response.sendRedirect("login");
 					
 				} else if (accion == null) {
 					// Llama vista administrador

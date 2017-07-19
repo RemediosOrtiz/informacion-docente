@@ -127,23 +127,23 @@ public class LoginController extends HttpServlet {
 						if (usuario.getIdUsuarioRol() == 1) {
 							
 							// Redirecionar a la URL Admin
-							response.sendRedirect("/admin");
+							response.sendRedirect("admin");
 							
 						} else if (usuario.getIdUsuarioRol() == 2) {
 							// Redirecionar a la URL Directivo
-							response.sendRedirect("/directivo");
+							response.sendRedirect("directivo");
 							
 						} else if (usuario.getIdUsuarioRol() == 3) {
 							// Redirecionar a la URL Directivo
-							response.sendRedirect("/secretaria");
+							response.sendRedirect("secretaria");
 							
 						} else if (usuario.getIdUsuarioRol() == 4) {
 							// Redirecionar a la URL Directivo
-							response.sendRedirect("/docente");
+							response.sendRedirect("docente");
 							
 						} else if (usuario.getIdUsuarioRol() == 5) {
 							// Redirecionar a la URL Directivo
-							response.sendRedirect("/laboratorista");
+							response.sendRedirect("laboratorista");
 							
 						} else {
 							setResponseController("inicio").forward(request, response);

@@ -20,9 +20,12 @@ import com.empresa.conexion.ConexionBD;
 import com.empresa.hash.Hasher;
 import com.empresa.modelo.ContactoDao;
 import com.empresa.modelo.ContactoDaoImpl;
+import com.empresa.modelo.DireccionDao;
+import com.empresa.modelo.DireccionDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.pojo.Contacto;
+import com.empresa.pojo.Direccion;
 import com.empresa.pojo.Usuario;
 
 /**
@@ -83,6 +86,18 @@ public class CuentasAjaxController extends HttpServlet {
 					
 					out.println(jsonObj);
 				}
+				
+				
+				// Consultar direccion por id
+				if (accion.equals("consultar-direccion")) {
+					Integer idDireccion = Integer.parseInt(request.getParameter("idDireccion"));
+					
+					jsonObj = new JSONObject(new DireccionDaoImpl(con).getDireccionById(idDireccion));
+					jsonObj.put("mensajeAccion", 1);
+					
+					out.println(jsonObj);
+				}
+				
 			 
 			} catch (ClassNotFoundException | SQLException e) {
 				LOG.error("DO GET: " + e.getMessage());
@@ -156,8 +171,6 @@ public class CuentasAjaxController extends HttpServlet {
 					contacto.setSexo(request.getParameter("sexo"));
 					contacto.setDiscapacidad(request.getParameter("discapacidad"));
 					
-					System.out.println(contacto);
-					
 					ContactoDao contactoDao = new ContactoDaoImpl(con);
 					
 					if (contactoDao.update(contacto)) {
@@ -167,6 +180,72 @@ public class CuentasAjaxController extends HttpServlet {
 					} else {
 						
 						// El contacto no se pudo actualizar
+						jsonObj.put("mensajeAccion", 0);
+					}
+					
+					out.println(jsonObj);
+				}
+				
+
+				// Crear direccion por idContacto
+				if (accion.equals("nueva-direccion")) {
+					
+					Direccion direccion = new Direccion();
+					
+					direccion.setNumero(request.getParameter("numero"));
+					direccion.setCalle(request.getParameter("calle"));
+					direccion.setCp(Integer.parseInt(request.getParameter("cp")));
+					direccion.setIdContacto(Integer.parseInt(request.getParameter("idContacto")));
+					direccion.setIdTipoLugar(Integer.parseInt(request.getParameter("idTipoLugar")));
+					
+					DireccionDao direccionDao = new DireccionDaoImpl(con);
+					
+					if (direccionDao.save(direccion)) {
+						jsonObj.put("mensajeAccion", 1);
+					} else {
+						jsonObj.put("mensajeAccion", 0);
+					}
+					
+					out.println(jsonObj);
+				}
+				
+				
+				// Actualiza direccion por id direccion
+				if (accion.equals("actualizar-direccion")) {
+					
+					Direccion direccion = new Direccion();
+					
+					direccion.setIdDireccion(Integer.parseInt(request.getParameter("idDireccion")));
+					direccion.setNumero(request.getParameter("numero"));
+					direccion.setCalle(request.getParameter("calle"));
+					direccion.setCp(Integer.parseInt(request.getParameter("cp")));
+					direccion.setIdContacto(Integer.parseInt(request.getParameter("idContacto")));
+					direccion.setIdTipoLugar(Integer.parseInt(request.getParameter("idTipoLugar")));
+					
+					
+					
+					DireccionDao direccionDao = new DireccionDaoImpl(con);
+					
+					if (direccionDao.update(direccion)) {
+						jsonObj.put("mensajeAccion", 1);
+					} else {
+						jsonObj.put("mensajeAccion", 0);
+					}
+					
+					out.println(jsonObj);
+				}
+				
+				
+				// eliminar-direccion
+				if (accion.equals("eliminar-direccion")) {
+					
+					Integer idDireccion = Integer.parseInt(request.getParameter("idDireccion"));
+					
+					DireccionDao direccionDao = new DireccionDaoImpl(con);
+					
+					if (direccionDao.deleteDireccionById(idDireccion)) {
+						jsonObj.put("mensajeAccion", 1);
+					} else {
 						jsonObj.put("mensajeAccion", 0);
 					}
 					

@@ -7,6 +7,9 @@ import com.empresa.pojo.Direccion;
 public interface DireccionDao {
 
 	ArrayList<Direccion> getAll();
-	Boolean save(Direccion direcion);
+	Boolean save(Direccion direccion);
 	ArrayList<Direccion> getAllByContactoId(Integer id_contacto);
+	Direccion getDireccionById(Integer idDireccion);
+	Boolean update(Direccion direccion);
+	Boolean deleteDireccionById(Integer idDireccion);
 }

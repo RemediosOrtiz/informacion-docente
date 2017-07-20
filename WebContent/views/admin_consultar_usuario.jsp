@@ -27,6 +27,9 @@
 	<!-- Script AJAX para actualizar el contacto -->
 	<script src='<c:url value="assets/js/contacto.js"></c:url>'></script>
 	
+	<!-- Scrip AJAX para actualizar direccion -->
+	<script src='<c:url value="assets/js/direccion.js"></c:url>'></script>
+	
 	
     
     <!-- MODAL PARA ACTUALIZAR CUENTA -->  	
@@ -35,10 +38,11 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="modal-cuenta">
+				<h4 class="modal-title">
 				<b>DATOS DE LA CUENTA</b>
 				</h4>
 			</div>
+			
 			<form action='<c:url value="/cuenta-ajax?accion=actualizar-usuario" />' method="POST" id="form-usuario" name="form-usuario">
 				<div class="modal-body">
 					<div class="row">
@@ -93,7 +97,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="modal-contacto">
+				<h4 class="modal-title">
 				<b>DATOS DEL CONTACTO</b>
 				</h4>
 			</div>
@@ -146,6 +150,65 @@
 		</div>
 	</div>
 </div><!-- FIN MODAL PARA ACTUALIZAR CONTACTO -->
+
+
+
+
+<!-- MODAL PARA DIRECCIONES -->
+<div class="modal fade" id="modal-direccion" tabindex="-1" role="dialog" aria-labelledby="modal-direccion">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">
+				<b>DATOS DE LA DIRECCIÓN</b>
+				</h4>
+			</div>
+			<form action='<c:url value="/cuenta-ajax?accion=" />' method="POST" id="form-direccion" name="form-direccion">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+						
+						<input type="hidden" name="idDireccion" class="idDireccion">
+						<input type="hidden" name="idContacto" class="idContacto">
+						
+							<div class="form-group">
+								<label>Tipo de dirección</label>
+								<select name="idTipoLugar" class="idTipoLugar form-control" required>
+									<c:forEach items="${tipoLugarCatalogo}" var="tipoLugarCatalogo">
+										<option value="${tipoLugarCatalogo.idTipoLugar}">${tipoLugarCatalogo.descLugar}</option>
+									</c:forEach>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<label>Calle</label>
+								<input type="text" name="calle" class="calle form-control" placeholder="Ingresa el nombre de la calle" />
+							</div>
+
+							<div class="form-group">
+								<label>Número</label>
+								<input type="text" name="numero" class="numero form-control" placeholder="Ingresa el número de la calle" />
+							</div>
+							
+							<div class="form-group">
+								<label>Código Postal</label>
+								<input type="text" name="cp" class="cp form-control" placeholder="Ingresa el código postal" />
+							</div>
+							
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="cerrar-form-direccion" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="button" id="guardar-form-direccion" class="btn btn-primary">Guardar</button>
+					<button type="button" id="actualizar-form-direccion" class="btn btn-primary">Actualizar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div><!-- FIN MODAL PARA DIRECCIONES -->
 	
 </jsp:attribute>
 
@@ -272,43 +335,56 @@
 					<h5 class="title" style="font-weight: bolder;">DIRECCIÓN</h5>
 				</div>
 				
-				<div class="content">
+				<div class="content contenedor-direccion-base">
 				
 					<c:choose>
 						<c:when test="${fn:length(direcciones) gt 0}">
+							<c:forEach items="${direcciones}" var="direcciones">
+							<div class="contenedor-direccion" style="border-bottom: solid 1px #E3E3E5; padding-bottom: 10px; margin-bottom: 10px;">
+								<table>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Lugar:</td>
+										<td class="lugar">
+											<c:forEach items="${tipoLugarCatalogo}" var="tipoLugarCatalogo">
+												<c:if test="${tipoLugarCatalogo.idTipoLugar == direcciones.idTipoLugar }">
+													<c:out value="${tipoLugarCatalogo.descLugar}"></c:out>
+												</c:if>
+											</c:forEach>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Calle:</td>
+										<td class="calle"><c:out value="${direcciones.calle}"></c:out></td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Número:</td>
+										<td class="numero"><c:out value="${direcciones.numero}"></c:out></td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">CP:</td>
+										<td class="cp"><c:out value="${direcciones.cp}"></c:out></td>
+									</tr>
+								</table>
 						
-							
-							<!-- BUCLE DIRECCIONES -->
-								<c:forEach items="${direcciones}" var="direcciones">
-								
-									<c:forEach items="${tipoLugarCatalogo}" var="tipoLugarCatalogo">
-										<c:if test="${tipoLugarCatalogo.idTipoLugar == direcciones.idTipoLugar }">
-											<h4>Dirección ${tipoLugarCatalogo.descLugar}</h4>
-										</c:if>
-									</c:forEach>
+							<c:if test="${requestScope.isModificable == 1 }">
+								<div style="width100%; text-align: right;">
+									<a href="#!" class="btn-get-direccion-actualizar btn btn-sm btn-primary btn-modificar-direccion"" data-toggle="modal" data-target="#modal-direccion" data-id-direccion="${direcciones.idDireccion}">Modificar</a>
+									<a href="#!" class="btn-get-direccion-eliminar btn btn-sm btn-danger" data-id-direccion="${direcciones.idDireccion}">Eliminar</a>
+								</div>
+							</c:if>
+					</div>
 									
-									<p>${direcciones.calle}</p>
-									<p>${direcciones.cp}</p>
-												
-									<c:if test="${requestScope.isModificable == 1 }">
-										<div style="width100%; text-align: right;">
-											<a href="#" class="btn-get-contacto-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-contacto" data-id-direccion="${direcciones.idDireccion}">Modificar dirección</a>
-										</div>
-									</c:if>
 							</c:forEach>
-							
-							
 						</c:when>
 						<c:otherwise>
 							<p>El usuario no tiene aún direcciones registradas</p>
-														
 						</c:otherwise>
 					</c:choose>
 					
 					<c:if test="${requestScope.isModificable == 1 }">
 						<br/>
 						<div style="width100%; text-align: right;">
-							<a href="#" class="btn-get-contacto-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-contacto">Nueva dirección</a>
+							<a href="#" class="btn btn-sm btn-primary btn-crear-direccion" data-toggle="modal" data-target="#modal-direccion" data-id-contacto="${usuario.contacto.idContacto}">Nueva dirección</a>
 						</div>
 					</c:if>
 					

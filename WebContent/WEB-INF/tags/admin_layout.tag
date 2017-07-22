@@ -28,6 +28,7 @@
     <link href='<c:url value="assets/css/demo.css"></c:url>' rel="stylesheet" />
     <link href='<c:url value="assets/font-awesome-4.7.0/css/font-awesome.min.css"></c:url>' rel="stylesheet">
     <link href='<c:url value="assets/css/pe-icon-7-stroke.css"></c:url>' rel="stylesheet" />
+    <link href='<c:url value="assets/css/jquery-ui.css"></c:url>' rel="stylesheet" />
     
     <jsp:invoke fragment="extracss" />
     
@@ -342,6 +343,8 @@
 	<script src='<c:url value="assets/js/chartist.min.js"></c:url>'></script>
     <script src='<c:url value="assets/js/bootstrap-notify.js"></c:url>'></script>
 	<script src='<c:url value="assets/js/light-bootstrap-dashboard.js"></c:url>'></script>
+	<script src='<c:url value="assets/js/jquery-ui.min.js"></c:url>'></script>
+	
 	<script src='<c:url value="assets/js/demo.js"></c:url>'></script>
 	
 	<script src='<c:url value="assets/js/validador.js"></c:url>'></script>

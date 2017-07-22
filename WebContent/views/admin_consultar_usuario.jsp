@@ -123,8 +123,8 @@
 							
 							<div class="form-group">
 								<label>Fecha de nacimiento</label>
-								<input type="text" name="fNacimiento" class="fNacimiento form-control" placeholder="Ingresa la fecha de nacimiento" />
-							</div>
+							      <input type="text" name="fNacimiento" id="fNacimientoContacto" class="fNacimiento form-control" placeholder="Ingresa la fecha de nacimiento" readonly="readonly">
+						    </div>
 							
 							<div class="form-group">
 								<label>Sexo</label>

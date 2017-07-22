@@ -33,11 +33,13 @@ function vEsIgual(nombreElementoA, nombreElementoB, vErrores, mensaje) {
 	}
 }
 
-
+// (MM/DD/YYYY) 
+// YYYY/MM/DD
 function vFecha(nombreElemento, vErrores, mensaje) {
-    
-    var date_regex = /^(0?[1-9]|1[0-2])\/(0?[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
-    if ( date_regex.test($(nombreElemento).val()) == false) {
+    var date_regex = /^\d{4}-\d{2}-\d{2}$/ ;
+    if ( !date_regex.test($(nombreElemento).val())) {
     	vErrores.push(mensaje);
     }
+    
+    console.log($(nombreElemento).val());
 }

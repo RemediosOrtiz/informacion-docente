@@ -13,9 +13,20 @@ function llenarFormularioContacto(formularioNombre, result) {
 
 (function($){
 	var App = { init: function(){
+		App.FormDatepicker();
 		App.GetContacto();
 		App.ActualizarContacto();
 	},
+		FormDatepicker: function() {
+			
+		    $("#fNacimientoContacto").datepicker({
+		    	dateFormat: 'yy-mm-dd',
+		    	maxDate : 0,
+		    	changeMonth: true,
+		        changeYear: true
+		    });
+		},
+		
 		GetContacto: function() {
 			$(".btn-get-contacto-x").click(function() {
 				var formularioNombre = "#form-contacto";

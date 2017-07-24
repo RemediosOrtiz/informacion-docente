@@ -111,43 +111,51 @@ public class LoginController extends HttpServlet {
 						// Obtener datos usuario logueado
 						Usuario usuario = usuarioDao.getUsuarioByMatricula(matricula);
 						
-						// Generar sesion en el sistema con los datos del usuario logueado
-						sesion.setAttribute("id_usuario", usuario.getIdUsuario());
-						sesion.setAttribute("matricula", usuario.getMatricula());
-						sesion.setAttribute("id_usuario_rol", usuario.getIdUsuarioRol());
-						sesion.setAttribute("desc_rol", usuario.getUsuarioRol().getDescRol());
-						sesion.setAttribute("id_contacto", usuario.getContacto().getIdContacto());
-						sesion.setAttribute("nombre", usuario.getContacto().getNombre());
-						sesion.setAttribute("ap_paterno", usuario.getContacto().getApPaterno());
-						
-						// Enviar datos de usuario a la vista
-						request.setAttribute("usuario", usuario);
-						
-						// Mostrar vista Administrador
-						if (usuario.getIdUsuarioRol() == 1) {
+						if (usuario.getEstatus() == 0) {
 							
-							// Redirecionar a la URL Admin
-							response.sendRedirect("admin");
-							
-						} else if (usuario.getIdUsuarioRol() == 2) {
-							// Redirecionar a la URL Directivo
-							response.sendRedirect("directivo");
-							
-						} else if (usuario.getIdUsuarioRol() == 3) {
-							// Redirecionar a la URL Directivo
-							response.sendRedirect("secretaria");
-							
-						} else if (usuario.getIdUsuarioRol() == 4) {
-							// Redirecionar a la URL Directivo
-							response.sendRedirect("docente");
-							
-						} else if (usuario.getIdUsuarioRol() == 5) {
-							// Redirecionar a la URL Directivo
-							response.sendRedirect("laboratorista");
+							// Redirigir al login y mostrar errores
+							LOG.error("Usuario con estatus inactivo");
+							request.setAttribute("mensaje", " * Usuario desactivado. Vuelva a intentarlo más tarde.");
+							setResponseController("login").forward(request, response);
 							
 						} else {
-							setResponseController("inicio").forward(request, response);
+							// Generar sesion en el sistema con los datos del usuario logueado
+							sesion.setAttribute("id_usuario", usuario.getIdUsuario());
+							sesion.setAttribute("matricula", usuario.getMatricula());
+							sesion.setAttribute("id_usuario_rol", usuario.getIdUsuarioRol());
+							sesion.setAttribute("desc_rol", usuario.getUsuarioRol().getDescRol());
+							sesion.setAttribute("id_contacto", usuario.getContacto().getIdContacto());
+							sesion.setAttribute("nombre", usuario.getContacto().getNombre());
+							sesion.setAttribute("ap_paterno", usuario.getContacto().getApPaterno());
 							
+							// Enviar datos de usuario a la vista
+							request.setAttribute("usuario", usuario);
+							
+							// Mostrar vista Administrador
+							if (usuario.getIdUsuarioRol() == 1) {
+								
+								// Redirecionar a la URL Admin
+								response.sendRedirect("admin");
+								
+							} else if (usuario.getIdUsuarioRol() == 2) {
+								// Redirecionar a la URL Directivo
+								response.sendRedirect("directivo");
+								
+							} else if (usuario.getIdUsuarioRol() == 3) {
+								// Redirecionar a la URL Directivo
+								response.sendRedirect("secretaria");
+								
+							} else if (usuario.getIdUsuarioRol() == 4) {
+								// Redirecionar a la URL Directivo
+								response.sendRedirect("docente");
+								
+							} else if (usuario.getIdUsuarioRol() == 5) {
+								// Redirecionar a la URL Directivo
+								response.sendRedirect("laboratorista");
+								
+							} else {
+								setResponseController("inicio").forward(request, response);
+							}
 						}
 						
 					} else {

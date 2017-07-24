@@ -17,8 +17,14 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.empresa.conexion.ConexionBD;
+import com.empresa.modelo.CarreraCDaoImpl;
+import com.empresa.modelo.DireccionDaoImpl;
+import com.empresa.modelo.DocenteLaboralDaoImpl;
+import com.empresa.modelo.NivelEstudioCDaoImpl;
+import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
+import com.empresa.pojo.Usuario;
 
 /**
  * Servlet implementation class DirectivoController
@@ -83,6 +89,41 @@ public class DocenteController extends HttpServlet {
 						// Dashboard Administrador
 						if (accion.equals("dashboard")) {
 							setResponseController("docente_dashboard").forward(request, response);
+						}
+						
+						// Consultar o Modificar
+						if (accion.equals("modificar-usuario")) {
+							
+							// Campturar varible desde la URL
+							Integer idUsuarioAConsultar = Integer.parseInt(request.getParameter("id-usuario"));
+							
+							Usuario usurio = new UsuarioDaoImpl(con).getUsuarioById(idUsuarioAConsultar);
+							request.setAttribute("usuario", usurio);
+
+							request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+							
+							// Consultar catalogo tipo lugar
+							request.setAttribute("tipoLugarCatalogo", new TipoLugarDaoImpl(con).getAll());
+							
+							// Consultar direcciones de un usuario
+							request.setAttribute("direcciones", new DireccionDaoImpl(con).getAllByContactoId(usurio.getContacto().getIdContacto()));
+							
+							
+							// Consultar Docente Labora por id usuario
+							request.setAttribute("docenteLaboral", new DocenteLaboralDaoImpl(con).getDocenteLaboralByIdUsuario(idUsuarioAConsultar));
+							
+							
+							// Consultar catalogo carrera
+							request.setAttribute("carreraCatalogo", new CarreraCDaoImpl(con).getAll());
+							
+							// Consultar catalogo nivel de estudio
+							request.setAttribute("nivelEstudioCatalogo", new NivelEstudioCDaoImpl(con).getAll());
+							
+							
+							request.setAttribute("isModificable", 1);
+							
+							
+							setResponseController("docente_consultar_perfil").forward(request, response);
 						}
 						
 						

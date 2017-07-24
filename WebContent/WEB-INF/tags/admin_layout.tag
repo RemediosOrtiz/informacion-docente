@@ -35,6 +35,11 @@
 </head>
 <body>
 
+<c:url value="/admin" var="urlModificarMyUsuario">
+    <c:param name="accion" value="modificar-usuario" />
+    <c:param name="id-usuario" value="${sessionScope.id_usuario}" />
+</c:url>
+					
 <div class="wrapper">
     <div class="sidebar" data-color=blue data-image="assets/img/sidebar-4.jpg">
 
@@ -55,7 +60,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="${urlModificarMyUsuario}">
                         <i class="pe-7s-user"></i>
                         <p>Perfil de Usuario</p>
                     </a>
@@ -64,24 +69,6 @@
                     <a href='<c:url value="/admin?accion=usuarios" />'>
                         <i class="pe-7s-users"></i>
                         <p>Usuarios</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
                     </a>
                 </li>
                 <li>
@@ -147,7 +134,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
+                           <a href="${urlModificarMyUsuario}">
                                <p><c:out value="${sessionScope.nombre }"/></p>
                             </a>
                         </li>

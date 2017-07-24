@@ -16,6 +16,17 @@ $(document).ready(function() {
 			$("#actualizar-form-info-docente").hide();
 		});
 		
+		$(".btn-modificar-docente-laboral").on("click", function() {
+			$(formularioNombre)[0].reset();
+			
+			// Agregar idContacto al formulario de nueva direccion
+			$(formularioNombre + " .idUsuario").val($(".btn-modificar-docente-laboral").attr("data-id-usuario"));
+			$(formularioNombre).attr("action", formInfDocenteAction+"actualizar-info-laboral");
+			
+			$("#guardar-form-info-docente").hide();
+			$("#actualizar-form-info-docente").show();
+		});
+		
 	}
 	
 	

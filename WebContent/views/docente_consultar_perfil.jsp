@@ -4,13 +4,13 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<t:admin_layout>
+<t:DocenteLayout>
 	<jsp:attribute name="viewtitlename">
-     	<title>Admin - Consultar Usuario</title>
+     	<title>Docente - Consultar Usuario</title>
     </jsp:attribute>
 
 	<jsp:attribute name="viewuserrol">
-     	Administrador
+     	Docente
     </jsp:attribute>
 
 	<jsp:attribute name="viewtitleseccion">
@@ -53,7 +53,7 @@
 						
 						<input type="hidden" name="id_usuario" value="${usuario.idUsuario}">
 						
-							<div class="form-group">
+							<div class="form-group" style="display: none;">
 								<label>Rol de usuario</label>
 								<select name="id-usuario-rol" class="id-usuario-rol form-control" required>
 									<c:forEach items="${usuariosRolCatalogo}" var="usuarioRolCatalogo">
@@ -74,7 +74,7 @@
 								<input type="password" name="password-confirmar" class="password-confirmar form-control" placeholder="Ingresa nuevamente la contraseña" minlength="8" required/>
 							</div>
 							
-							<div class="form-group">
+							<div class="form-group" style="display: none;">
 								<label>Estatus del usuario</label>
 								<select name="estatus" class="estatus form-control" required>
 									<option value="1">Activo</option>
@@ -788,4 +788,4 @@
 
 </jsp:body>
 
-</t:admin_layout>
+</t:DocenteLayout>

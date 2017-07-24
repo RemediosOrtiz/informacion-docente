@@ -4,17 +4,17 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<t:DocenteLayout>
+<t:SecretariaLayout>
 	<jsp:attribute name="viewtitlename">
-     	<title>Docente - Consultar Usuario</title>
+     	<title>Secretaria - Consultar Usuario</title>
     </jsp:attribute>
 
 	<jsp:attribute name="viewuserrol">
-     	Docente
+     	Secretaria
     </jsp:attribute>
 
 	<jsp:attribute name="viewtitleseccion">
-     	Consultar Usuario
+     	Usuario
     </jsp:attribute>
 
 	<jsp:attribute name="extracss"> </jsp:attribute>
@@ -788,4 +788,4 @@
 
 </jsp:body>
 
-</t:DocenteLayout>
+</t:SecretariaLayout>

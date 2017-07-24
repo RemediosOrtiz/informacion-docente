@@ -95,7 +95,7 @@ public class DocenteController extends HttpServlet {
 						if (accion.equals("modificar-usuario")) {
 							
 							// Campturar varible desde la URL
-							Integer idUsuarioAConsultar = Integer.parseInt(request.getParameter("id-usuario"));
+							Integer idUsuarioAConsultar = (Integer) sesion.getAttribute("id_usuario");
 							
 							Usuario usurio = new UsuarioDaoImpl(con).getUsuarioById(idUsuarioAConsultar);
 							request.setAttribute("usuario", usurio);

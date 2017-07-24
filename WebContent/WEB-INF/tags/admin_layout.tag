@@ -72,13 +72,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.html">
+                    <a href="#!">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>
                     </a>
                 </li>
 				<li class="active-pro">
-                    <a href="upgrade.html">
+                    <a href="#!">
                         <i class="pe-7s-rocket"></i>
                         <p>Upgrade to PRO</p>
                     </a>

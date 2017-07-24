@@ -4,17 +4,17 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<t:DocenteLayout>
+<t:LaboratoristaLayout>
 	<jsp:attribute name="viewtitlename">
-     	<title>Docente - Consultar Usuario</title>
+     	<title>Laboratorista - Consultar Usuario</title>
     </jsp:attribute>
 
 	<jsp:attribute name="viewuserrol">
-     	Docente
+     	Laboratorista
     </jsp:attribute>
 
 	<jsp:attribute name="viewtitleseccion">
-     	Consultar Usuario
+     	Usuario
     </jsp:attribute>
 
 	<jsp:attribute name="extracss"> </jsp:attribute>
@@ -788,4 +788,4 @@
 
 </jsp:body>
 
-</t:DocenteLayout>
+</t:LaboratoristaLayout>

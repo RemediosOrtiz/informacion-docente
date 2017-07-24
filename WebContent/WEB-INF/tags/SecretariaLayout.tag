@@ -28,11 +28,17 @@
     <link href='<c:url value="assets/css/demo.css"></c:url>' rel="stylesheet" />
     <link href='<c:url value="assets/font-awesome-4.7.0/css/font-awesome.min.css"></c:url>' rel="stylesheet">
     <link href='<c:url value="assets/css/pe-icon-7-stroke.css"></c:url>' rel="stylesheet" />
+    <link href='<c:url value="assets/css/jquery-ui.css"></c:url>' rel="stylesheet" />
     
     <jsp:invoke fragment="extracss" />
     
 </head>
 <body>
+
+<c:url value="/secretaria" var="urlModificarMyUsuario">
+    <c:param name="accion" value="modificar-usuario" />
+    <c:param name="id-usuario" value="${sessionScope.id_usuario}" />
+</c:url>
 
 <div class="wrapper">
     <div class="sidebar" data-color=purple data-image="assets/img/sidebar-4.jpg">
@@ -54,37 +60,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="${urlModificarMyUsuario}">
                         <i class="pe-7s-user"></i>
                         <p>Perfil de Usuario</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
+                    <a href="#!">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>
                     </a>
                 </li>
 				<li class="active-pro">
-                    <a href="upgrade.html">
+                    <a href="#!">
                         <i class="pe-7s-rocket"></i>
                         <p>Upgrade to PRO</p>
                     </a>
@@ -140,7 +128,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
+                           <a href="${urlModificarMyUsuario}">
                                <p><c:out value="${sessionScope.nombre }"/></p>
                             </a>
                         </li>
@@ -336,6 +324,8 @@
 	<script src='<c:url value="assets/js/chartist.min.js"></c:url>'></script>
     <script src='<c:url value="assets/js/bootstrap-notify.js"></c:url>'></script>
 	<script src='<c:url value="assets/js/light-bootstrap-dashboard.js"></c:url>'></script>
+	<script src='<c:url value="assets/js/jquery-ui.min.js"></c:url>'></script>
+	
 	<script src='<c:url value="assets/js/demo.js"></c:url>'></script>
 	
 	<script src='<c:url value="assets/js/validador.js"></c:url>'></script>

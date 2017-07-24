@@ -40,6 +40,4 @@ function vFecha(nombreElemento, vErrores, mensaje) {
     if ( !date_regex.test($(nombreElemento).val())) {
     	vErrores.push(mensaje);
     }
-    
-    console.log($(nombreElemento).val());
 }

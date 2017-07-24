@@ -30,6 +30,9 @@
 	<!-- Scrip AJAX para actualizar direccion -->
 	<script src='<c:url value="assets/js/direccion.js"></c:url>'></script>
 	
+	<!-- Scrip AJAX para actualizar direccion -->
+	<script src='<c:url value="assets/js/docente-laboral.js"></c:url>'></script>
+	
 	
     
     <!-- MODAL PARA ACTUALIZAR CUENTA -->  	
@@ -209,6 +212,227 @@
 		</div>
 	</div>
 </div><!-- FIN MODAL PARA DIRECCIONES -->
+
+
+
+
+<!-- MODAL PARA INFORMACION DOCENTE -->
+<div class="modal fade" id="modal-info-docente" tabindex="-1" role="dialog" aria-labelledby="modal-direccion">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">
+				<b>INFORMACIÓN DOCENTE</b>
+				</h4>
+			</div>
+			<form action='<c:url value="/cuenta-ajax?accion=" />' method="POST" id="form-info-docente" name="form-info-docente">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+						
+						<input type="hidden" name="idUsuario" class="idUsuario">
+						<input type="hidden" name="alertOpcionActializar" class="alertOpcionActializar" value="0">
+						
+							<div class="form-group">
+								<label>Carrera:</label>
+								<select name="idCarreraC" class="idCarreraC form-control" required>
+									<c:forEach items="${carreraCatalogo}" var="carreraCatalogo">
+										<option value="${carreraCatalogo.idCarreraC}">${carreraCatalogo.acronimoCarrera} - ${carreraCatalogo.nombreCarrera}</option>
+									</c:forEach>
+								</select>
+							</div>
+							
+							
+							<!-- especialidadDesc -->
+							<div class="form-group">
+								<label>Nivel de Estudios:</label>
+								<select name="idNivelEstudio" class="idNivelEstudio form-control" required>
+									<c:forEach items="${nivelEstudioCatalogo}" var="nivelEstudioCatalogo">
+										<option value="${nivelEstudioCatalogo.idNivelEstudioC}">${nivelEstudioCatalogo.descNivelEstudio}</option>
+									</c:forEach>
+								</select>
+							</div>
+							
+							<div class="form-group idNivelEstudio-div" style="display: none">
+								<label>Nombre especialidad:</label>
+								<input type="text" name="especialidadDesc" class="especialidadDesc form-control" placeholder="Nombre de la especialidad" />
+							</div>
+
+
+							<!-- reconocimientoPerfilPromepSep -->
+							<div class="form-group">
+								<label>Reconocimiento Perfil PROMEP-SEP:</label>
+								<select name="reconocimientoPerfilPromepSep" class="reconocimientoPerfilPromepSep form-control" required>
+									<option value="0">No</option>
+									<option value="1">Si</option>
+								</select>
+							</div>
+							
+							<div class="form-group reconocimientoPerfilPromepSep-div" style="display: none">
+								<label>Ingresar PROMEP-SEP:</label>
+								<input type="text" name="reconocimientoPerfilPromepSepDesc" class="reconocimientoPerfilPromepSepDesc form-control" placeholder="Ingresa Reconocimiento Perfil PROMEP-SEP" />
+							</div>
+							
+							
+							<!-- perteneceCA -->
+							<div class="form-group">
+								<label>Pertenece a CA:</label>
+								<select name="perteneceCA" class="perteneceCA form-control" required>
+									<option value="0">No</option>
+									<option value="1">Si</option>
+								</select>
+							</div>
+							
+							<div class="form-group perteneceCA-div" style="display: none">
+								<label>Ingresar CA:</label>
+								<input type="text" name="perteneceCADesc" class="perteneceCADesc form-control" placeholder="Ingresa CA" />
+							</div>
+							
+							
+							<!-- innovadoraConocimiento -->
+							<div class="form-group">
+								<label>Líneas de generación o Aplicación innovadora del conocimiento:</label>
+								<select name="innovadoraConocimiento" class="innovadoraConocimiento form-control" required>
+									<option value="0">No</option>
+									<option value="1">Si</option>
+								</select>
+							</div>
+							
+							<div class="form-group innovadoraConocimiento-div" style="display: none">
+								<label>Ingresar Línea de generación o Aplicación Innovadora del conocimiento:</label>
+								<input type="text" name="innovadoraConocimientoDesc" class="innovadoraConocimientoDesc form-control" placeholder="Ingresa Nombre de Línea de generación o Aplicación Innovadora del conocimiento" />
+							</div>
+							
+							
+							
+							
+							<!-- ptcRegistradoSNI -->
+							<div class="form-group">
+								<label>PTC registrados en el SNI:</label>
+								<select name="ptcRegistradoSNI" class="ptcRegistradoSNI form-control" required>
+									<option value="0">No</option>
+									<option value="1">Si</option>
+								</select>
+							</div>
+							
+							<div class="form-group ptcRegistradoSNI-div" style="display: none">
+								<label>Ingresar PTC registrados en el SNI:</label>
+								<input type="text" name="ptcRegistradoSNIDesc" class="ptcRegistradoSNIDesc form-control" placeholder="Ingresar PTC registrados en el SNI" />
+							</div>
+							
+							<!-- continuidadEstudios -->
+							<div class="form-group">
+								<label>¿Continuidad de estudios?:</label>
+								<select name="continuidadEstudios" class="continuidadEstudios form-control" required>
+									<option value="0">No</option>
+									<option value="1">Si</option>
+								</select>
+							</div>
+							
+							<div class="form-group continuidadEstudios-div" style="display: none">
+								<label>¿Qué estudia?:</label>
+								<input type="text" name="continuidadEstudiosQueEstudio" class="continuidadEstudiosQueEstudio form-control" placeholder="Ingresr lo que está estudiando" />
+							</div>
+							
+							<div class="form-group continuidadEstudios-div" style="display: none">
+								<label>Lugar dónde estudia:</label>
+								<input type="text" name="continuidadEstudiosLugar" class="continuidadEstudiosLugar form-control" placeholder="Ingresar lugar donde estudia" />
+							</div>
+							
+							<div class="form-group continuidadEstudios-div" style="display: none">
+								<label>¿Está Becado?:</label>
+								<select name="continuidadEstudiosTieneBeca" class="continuidadEstudiosTieneBeca form-control" required>
+									<option value="0">No</option>
+									<option value="1">Si</option>
+								</select>
+							</div>
+							
+							<div class="form-group continuidadEstudiosTieneBeca-div" style="display: none">
+								<label>Especificar Beca:</label>
+								<input type="text" name="continuidadEstudiosTieneBecaDesc" class="continuidadEstudiosTieneBecaDesc form-control" placeholder="Especificar Beca" />
+							</div>
+							
+							
+							
+							<!-- imparteLicOtroPe -->
+							<div class="form-group">
+								<label>Imparte otras licenciaturas en otros PE:</label>
+								<select name="imparteLicOtroPe" class="imparteLicOtroPe form-control" required>
+									<option value="0">No</option>
+									<option value="1">Si</option>
+								</select>
+							</div>
+							
+							<div class="form-group imparteLicOtroPe-div" style="display: none">
+								<label>Especificar PE:</label>
+								<input type="text" name="imparteLicOtroPeDesc" class="imparteLicOtroPeDesc form-control" placeholder="Ingresar PE" />
+							</div>
+							
+							
+							<!-- fIngreso -->
+							<div class="form-group">
+								<label>Fecha de ingreso a la universidad:</label>
+								<input type="text" name="fIngreso" id="fIngreso" class="fIngreso form-control" placeholder="Ingresar fecha de ingreso a la Univesridad" readonly="readonly" />
+							</div>
+							
+							
+							
+							<!-- experienciaLaboral -->
+							<div class="form-group">
+								<label>Años de experiencia laboral:</label>
+								<select name="experienciaLaboral" class="experienciaLaboral form-control" required>
+								<c:forEach var = "i" begin = "0" end = "90">
+							    	<c:choose>
+										<c:when test="${i == 0}">
+											<option value="${i}">Sin experiencia laboral</option>
+										</c:when>
+										<c:when test="${i == 1}">
+											<option value="${i}">${i} Año</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${i}">${i} Años</option>
+										</c:otherwise>
+									</c:choose>
+						    	</c:forEach>
+						    	</select>
+							</div>
+							
+							
+							<!-- experienciaDocente -->
+							<div class="form-group">
+								<label>Años de experiencia como docente:</label>
+								<select name="experienciaDocente" class="experienciaDocente form-control" required>
+								<c:forEach var = "i" begin = "0" end = "90">
+							    	<c:choose>
+										<c:when test="${i == 0}">
+											<option value="${i}">Sin experiencia como docente</option>
+										</c:when>
+										<c:when test="${i == 1}">
+											<option value="${i}">${i} Año</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${i}">${i} Años</option>
+										</c:otherwise>
+									</c:choose>
+						    	</c:forEach>
+						    	</select>
+							</div>
+						
+							
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="cerrar-form-info-docente" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="button" id="guardar-form-info-docente" class="btn btn-primary">Guardar</button>
+					<button type="button" id="actualizar-form-info-docente" class="btn btn-primary">Actualizar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div><!-- FIN MODAL PARA INFORMACION DOCENTE -->
 	
 </jsp:attribute>
 
@@ -389,6 +613,173 @@
 					</c:if>
 					
 				</div>
+				
+				<c:if test="${usuario.idUsuarioRol == 4}">
+				
+				<!-- Datos como docente laboral -->
+				<div class="header">
+					<h5 class="title" style="font-weight: bolder;">INFORMACIÓN DOCENTE</h5>
+				</div>
+				
+				<div class="content contenedor-info-docente-base">
+				
+					<c:choose>
+						<c:when test="${docenteLaboral.idUsuario > 0 }">
+							<div class="contenedor-direccion" style="border-bottom: solid 1px #E3E3E5; padding-bottom: 10px; margin-bottom: 10px;">
+								<table>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Carrera:</td>
+										<td>
+											<c:forEach items="${carreraCatalogo}" var="carreraCatalogo">
+												<c:if test="${docenteLaboral.idCarreraC == carreraCatalogo.idCarreraC }">
+													<c:out value="${carreraCatalogo.nombreCarrera}"></c:out> - <c:out value="${carreraCatalogo.acronimoCarrera}"></c:out>
+												</c:if>
+											</c:forEach>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Nivel de estudios:</td>
+										<td>
+											<c:forEach items="${nivelEstudioCatalogo}" var="nivelEstudioCatalogo">
+												<c:if test="${docenteLaboral.idNivelEstudio == nivelEstudioCatalogo.idNivelEstudioC }">
+													<c:out value="${nivelEstudioCatalogo.descNivelEstudio}"></c:out>
+													
+													<c:if test="${docenteLaboral.idNivelEstudio == 4 }">
+														- <c:out value="${docenteLaboral.especialidadDesc}"></c:out>
+													</c:if>
+												</c:if>
+											</c:forEach>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Reconocimiento Perfil PROMEP-SEP:</td>
+										<td>
+											<c:choose>
+												<c:when test="${docenteLaboral.reconocimientoPerfilPromepSep == 1 }">
+													SI - <c:out value="${docenteLaboral.reconocimientoPerfilPromepSepDesc}"></c:out>
+												</c:when>
+												<c:otherwise>
+												NO
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Pertenece a CA:</td>
+										<td>
+											<c:choose>
+												<c:when test="${docenteLaboral.perteneceCA == 1 }">
+													SI - <c:out value="${docenteLaboral.perteneceCADesc}"></c:out>
+												</c:when>
+												<c:otherwise>
+												NO
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Líneas de generación o Aplicación innovadora del conocimiento:</td>
+										<td>
+											<c:choose>
+												<c:when test="${docenteLaboral.innovadoraConocimiento == 1 }">
+													SI - <c:out value="${docenteLaboral.innovadoraConocimientoDesc}"></c:out>
+												</c:when>
+												<c:otherwise>
+												NO
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">PTC registrados en el SNI:</td>
+										<td>
+											<c:choose>
+												<c:when test="${docenteLaboral.ptcRegistradoSNI == 1 }">
+													SI - <c:out value="${docenteLaboral.ptcRegistradoSNIDesc}"></c:out>
+												</c:when>
+												<c:otherwise>
+												NO
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Continuidad de estudios:</td>
+										<td>
+											<c:choose>
+												<c:when test="${docenteLaboral.continuidadEstudios == 1 }">
+													SI
+													<br/><span style="font-weight: bold;">¿Qué estudia?: </span> <c:out value="${docenteLaboral.continuidadEstudiosQueEstudio}"></c:out>
+													<br/><span style="font-weight: bold;">¿Qué Lugar?: </span> <c:out value="${docenteLaboral.continuidadEstudiosLugar}"></c:out>
+													<br/><span style="font-weight: bold;">¿Tiene Beca?: </span> 
+													<c:choose>
+														<c:when test="${docenteLaboral.continuidadEstudiosTieneBeca == 1 }">
+															SI - <c:out value="${docenteLaboral.continuidadEstudiosTieneBecaDesc}"></c:out>
+														</c:when>
+														<c:otherwise>
+														NO
+														</c:otherwise>
+													</c:choose>
+											
+												</c:when>
+												<c:otherwise>
+												NO
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Imparte otras licenciaturas en otros PE:</td>
+										<td>
+											<c:choose>
+												<c:when test="${docenteLaboral.imparteLicOtroPe == 1 }">
+													SI - <c:out value="${docenteLaboral.imparteLicOtroPeDesc}"></c:out>
+												</c:when>
+												<c:otherwise>
+												NO
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Fecha de ingreso a la universidad:</td>
+										<td><c:out value="${docenteLaboral.fIngreso}"></c:out></td>
+									</tr>
+									
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Años de experiencia laboral:</td>
+										<td><c:out value="${docenteLaboral.experienciaLaboral}"></c:out> Años</td>
+									</tr>
+									
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Años de experiencia como docente:</td>
+										<td><c:out value="${docenteLaboral.experienciaDocente}"></c:out> Años</td>
+									</tr>
+								</table>
+						
+							<c:if test="${requestScope.isModificable == 1 }">
+								<div style="width100%; text-align: right;">
+									<a href="#!" class="btn-get-direccion-actualizar btn btn-sm btn-primary btn-modificar-direccion"" data-toggle="modal" data-target="#modal-info-docente" data-id-usuario="${usuario.contacto.idUsuario}">Modificar Inf. laboral</a>
+								</div>
+							</c:if>
+						</div>
+						</c:when>
+						
+						<c:otherwise>
+							<p>El usuario no tiene datos como docente laboral</p>
+							<c:if test="${requestScope.isModificable == 1 }">
+								<br/>
+								<div style="width100%; text-align: right;">
+									<a href="#" class="btn btn-sm btn-primary btn-crear-docente-laboral" data-toggle="modal" data-target="#modal-info-docente" data-id-usuario="${usuario.contacto.idUsuario}">Agregar Info. Laboral</a>
+								</div>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
+					
+				</div>
+				
+				</c:if>
+				
 				
 			</div>
 		</div>

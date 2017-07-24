@@ -22,10 +22,15 @@ import com.empresa.modelo.ContactoDao;
 import com.empresa.modelo.ContactoDaoImpl;
 import com.empresa.modelo.DireccionDao;
 import com.empresa.modelo.DireccionDaoImpl;
+import com.empresa.modelo.DocenteLaboralDao;
+import com.empresa.modelo.DocenteLaboralDaoImpl;
+import com.empresa.modelo.NivelEstudioCDao;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Direccion;
+import com.empresa.pojo.DocenteLaboral;
+import com.empresa.pojo.NivelEstudioC;
 import com.empresa.pojo.Usuario;
 
 /**
@@ -244,6 +249,46 @@ public class CuentasAjaxController extends HttpServlet {
 					DireccionDao direccionDao = new DireccionDaoImpl(con);
 					
 					if (direccionDao.deleteDireccionById(idDireccion)) {
+						jsonObj.put("mensajeAccion", 1);
+					} else {
+						jsonObj.put("mensajeAccion", 0);
+					}
+					
+					out.println(jsonObj);
+				}
+				
+				
+				// Crear info laboral por id user
+				if (accion.equals("nueva-info-laboral")) {
+					
+					DocenteLaboral docenteLaboral = new DocenteLaboral();
+					docenteLaboral.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+					docenteLaboral.setIdCarreraC(Integer.parseInt(request.getParameter("idCarreraC")));
+					docenteLaboral.setAlertOpcionActializar(Integer.parseInt(request.getParameter("alertOpcionActializar")));
+					docenteLaboral.setIdNivelEstudio(Integer.parseInt(request.getParameter("idNivelEstudio")));
+					docenteLaboral.setEspecialidadDesc(request.getParameter("especialidadDesc"));
+					docenteLaboral.setReconocimientoPerfilPromepSep(Integer.parseInt(request.getParameter("reconocimientoPerfilPromepSep")));
+					docenteLaboral.setReconocimientoPerfilPromepSepDesc(request.getParameter("reconocimientoPerfilPromepSepDesc"));
+					docenteLaboral.setPerteneceCA(Integer.parseInt(request.getParameter("perteneceCA")));
+					docenteLaboral.setPerteneceCADesc(request.getParameter("perteneceCADesc"));
+					docenteLaboral.setInnovadoraConocimiento(Integer.parseInt(request.getParameter("innovadoraConocimiento")));
+					docenteLaboral.setInnovadoraConocimientoDesc(request.getParameter("innovadoraConocimientoDesc"));
+					docenteLaboral.setPtcRegistradoSNI(Integer.parseInt(request.getParameter("ptcRegistradoSNI")));
+					docenteLaboral.setPtcRegistradoSNIDesc(request.getParameter("ptcRegistradoSNIDesc"));
+					docenteLaboral.setContinuidadEstudios(Integer.parseInt(request.getParameter("continuidadEstudios")));
+					docenteLaboral.setContinuidadEstudiosQueEstudio(request.getParameter("continuidadEstudiosQueEstudio"));
+					docenteLaboral.setContinuidadEstudiosLugar(request.getParameter("continuidadEstudiosLugar"));
+					docenteLaboral.setContinuidadEstudiosTieneBeca(Integer.parseInt(request.getParameter("continuidadEstudiosTieneBeca")));
+					docenteLaboral.setContinuidadEstudiosTieneBecaDesc(request.getParameter("continuidadEstudiosTieneBecaDesc"));
+					docenteLaboral.setImparteLicOtroPe(Integer.parseInt(request.getParameter("imparteLicOtroPe")));
+					docenteLaboral.setImparteLicOtroPeDesc(request.getParameter("imparteLicOtroPeDesc"));
+					docenteLaboral.setfIngreso(request.getParameter("fIngreso"));
+					docenteLaboral.setExperienciaLaboral(Integer.parseInt(request.getParameter("experienciaLaboral")));
+					docenteLaboral.setExperienciaDocente(Integer.parseInt(request.getParameter("experienciaDocente")));
+					
+					DocenteLaboralDao docenteLaboralDao = new DocenteLaboralDaoImpl(con);
+					
+					if (docenteLaboralDao.saveDocenteLaboral(docenteLaboral)) {
 						jsonObj.put("mensajeAccion", 1);
 					} else {
 						jsonObj.put("mensajeAccion", 0);

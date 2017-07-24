@@ -19,9 +19,12 @@ import org.apache.log4j.Logger;
 
 import com.empresa.conexion.ConexionBD;
 import com.empresa.hash.Hasher;
+import com.empresa.modelo.CarreraCDaoImpl;
 import com.empresa.modelo.ContactoDao;
 import com.empresa.modelo.ContactoDaoImpl;
 import com.empresa.modelo.DireccionDaoImpl;
+import com.empresa.modelo.DocenteLaboralDaoImpl;
+import com.empresa.modelo.NivelEstudioCDaoImpl;
 import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
@@ -121,9 +124,18 @@ public class AdministradorController extends HttpServlet {
 					request.setAttribute("direcciones", new DireccionDaoImpl(con).getAllByContactoId(usurio.getContacto().getIdContacto()));
 					
 					
+					// Consultar Docente Labora por id usuario
+					request.setAttribute("docenteLaboral", new DocenteLaboralDaoImpl(con).getDocenteLaboralByIdUsuario(idUsuarioAConsultar));
+					
+					
+					// Consultar catalogo carrera
+					request.setAttribute("carreraCatalogo", new CarreraCDaoImpl(con).getAll());
+					
+					// Consultar catalogo nivel de estudio
+					request.setAttribute("nivelEstudioCatalogo", new NivelEstudioCDaoImpl(con).getAll());
+					
 					
 					request.setAttribute("isModificable", 1);
-					
 					
 					
 					setResponseController("admin_consultar_usuario").forward(request, response);

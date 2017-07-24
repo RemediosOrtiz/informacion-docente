@@ -7,12 +7,9 @@ import java.util.ArrayList;
 import com.empresa.conexion.ConexionBD;
 import com.empresa.modelo.DireccionDao;
 import com.empresa.modelo.DireccionDaoImpl;
-import com.empresa.modelo.DocenteLaboralDao;
-import com.empresa.modelo.DocenteLaboralDaoImpl;
 import com.empresa.pojo.Direccion;
-import com.empresa.pojo.DocenteLaboral;
 
-public class TestDirecciones {
+public class TestDocenteLaboral {
 
 	public static void main(String[] args) {
 		
@@ -21,10 +18,13 @@ public class TestDirecciones {
 		try {
 			con = ConexionBD.getConexionBD().getCon();
 			
-			DocenteLaboralDao docenteLaboralDao = new DocenteLaboralDaoImpl(con);
-			DocenteLaboral docenteLaboral = docenteLaboralDao.getDocenteLaboralByIdUsuario(3);
+			DireccionDao direccionDao = new DireccionDaoImpl(con);
 			
-			System.out.println(docenteLaboral.toString());
+			ArrayList<Direccion> direcciones = direccionDao.getAllByContactoId(1);
+			
+			for (Direccion direccion : direcciones) {
+				System.out.println(direccion.toString());
+			}
 		
 			
 		} catch (ClassNotFoundException | SQLException e) {

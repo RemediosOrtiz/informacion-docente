@@ -41,6 +41,12 @@ $(document).ready(function() {
 	
 	function mostrarOcultarSelect() {
 		
+		if($(".idNivelEstudio").val() == 4) {
+			$(".idNivelEstudio-div").slideDown();
+		} else {
+			$(".idNivelEstudio-div").slideUp();
+		}
+		
 		if($(".reconocimientoPerfilPromepSep").val() == 1) {
 			$(".reconocimientoPerfilPromepSep-div").slideDown();
 		} else {
@@ -63,6 +69,18 @@ $(document).ready(function() {
 			$(".ptcRegistradoSNI-div").slideDown();
 		} else {
 			$(".ptcRegistradoSNI-div").slideUp();
+		}
+		
+		if($(".continuidadEstudios").val() == 1) {
+			$(".continuidadEstudios-div").slideDown();
+		} else {
+			$(".continuidadEstudios-div").slideUp();
+		}
+		
+		if($(".continuidadEstudiosTieneBeca").val() == 1) {
+			$(".continuidadEstudiosTieneBeca-div").slideDown();
+		} else {
+			$(".continuidadEstudiosTieneBeca-div").slideUp();
 		}
 		
 		if($(".imparteLicOtroPe").val() == 1) {
@@ -89,9 +107,20 @@ $(document).ready(function() {
 (function($){ 	
 	
 	var App = { init: function(){
+		App.FormDatepickerInfDocente();
 		App.NuevaInfDocente();
 	},
-
+	
+	FormDatepickerInfDocente: function() {
+		
+	    $("#fIngreso").datepicker({
+	    	dateFormat: 'yy-mm-dd',
+	    	maxDate : 0,
+	    	changeMonth: true,
+	        changeYear: true
+	    });
+	},
+	
 	NuevaInfDocente: function() {
 		$("#guardar-form-info-docente").click(function() {
 			var formularioNombre = "#form-info-docente";
@@ -101,6 +130,12 @@ $(document).ready(function() {
 
 			vRequerido(formularioNombre + " .idUsuario", vErrores, "Falta el id del usuario");
 			vRequerido(formularioNombre + " .alertOpcionActializar", vErrores, "Falta el alertOpcionActializar");
+			
+			if($(".idNivelEstudio").val() == 4) {
+				vRequerido(formularioNombre + " .especialidadDesc", vErrores, "Falta Nombre de la especialidad");
+			} else {
+				$(formularioNombre + " .especialidadDesc").val("");
+			}
 			
 			if($(".reconocimientoPerfilPromepSep").val() == 1) {
 				vRequerido(formularioNombre + " .reconocimientoPerfilPromepSepDesc", vErrores, "Ingresa Reconocimiento Perfil PROMEP-SEP");
@@ -126,11 +161,32 @@ $(document).ready(function() {
 				$(formularioNombre + " .ptcRegistradoSNIDesc").val("");
 			}
 			
+			if($(".continuidadEstudios").val() == 1) {
+				vRequerido(formularioNombre + " .continuidadEstudiosQueEstudio", vErrores, "Ingresar lo que se estudia");
+				vRequerido(formularioNombre + " .continuidadEstudiosLugar", vErrores, "Ingresar lugar donde estudia");
+				
+				if($(".continuidadEstudiosTieneBeca").val() == 1) {
+					vRequerido(formularioNombre + " .continuidadEstudiosTieneBecaDesc", vErrores, "Falta Especificar Beca");
+				} else {
+					$(formularioNombre + " .continuidadEstudiosTieneBecaDesc").val("");
+				}
+				
+			} else {
+				$(formularioNombre + " .continuidadEstudiosQueEstudio").val("");
+				$(formularioNombre + " .continuidadEstudiosLugar").val("");
+				$(formularioNombre + " .continuidadEstudiosTieneBecaDesc").val("");
+			}
+			
+			
 			if($(".imparteLicOtroPe").val() == 1) {
 				vRequerido(formularioNombre + " .imparteLicOtroPeDesc", vErrores, "Ingresar PE");
 			} else {
 				$(formularioNombre + " .imparteLicOtroPeDesc").val("");
 			}
+			
+			vRequerido(formularioNombre + " .fIngreso", vErrores, "Por favor ingresa la fecha de ingreso a la Universidad");
+			vFecha(formularioNombre + " .fIngreso", vErrores, "El formato de la fecha no es valido (YYYY-MM-DD)")
+			
 			
 			if (vErrores.length == 0) {
 				// Iniciar guardado

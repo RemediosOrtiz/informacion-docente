@@ -3,12 +3,7 @@ package com.empresa.pojo;
 public class DocenteLaboral {
 	
 	private Integer idUsuario;
-	
 	private Integer idCarreraC;
-	
-	private Integer idNivelEstudio;
-	private String especialidadDesc;
-	
 	private Integer reconocimientoPerfilPromepSep;
 	private String reconocimientoPerfilPromepSepDesc;
 	private Integer perteneceCA;
@@ -17,39 +12,23 @@ public class DocenteLaboral {
 	private String innovadoraConocimientoDesc;
 	private Integer ptcRegistradoSNI;
 	private String ptcRegistradoSNIDesc;
-	
-	private Integer continuidadEstudios;
-	private String continuidadEstudiosQueEstudio;
-	private String continuidadEstudiosLugar;
-	private Integer continuidadEstudiosTieneBeca;
-	private String continuidadEstudiosTieneBecaDesc;
-	
 	private Integer imparteLicOtroPe;
 	private String imparteLicOtroPeDesc;
-	
-	private String fIngreso;
-	
-	private Integer experienciaLaboral;
 	private Integer experienciaDocente;
-	
 	private Integer alertOpcionActializar; // Puede ser de un select con valor 1, 2, 3, etc
 	
 	
 	public DocenteLaboral(){}
 
 
-	public DocenteLaboral(Integer idUsuario, Integer idCarreraC, Integer idNivelEstudio, String especialidadDesc,
-			Integer reconocimientoPerfilPromepSep, String reconocimientoPerfilPromepSepDesc, Integer perteneceCA,
-			String perteneceCADesc, Integer innovadoraConocimiento, String innovadoraConocimientoDesc,
-			Integer ptcRegistradoSNI, String ptcRegistradoSNIDesc, Integer continuidadEstudios,
-			String continuidadEstudiosQueEstudio, String continuidadEstudiosLugar, Integer continuidadEstudiosTieneBeca,
-			String continuidadEstudiosTieneBecaDesc, Integer imparteLicOtroPe, String imparteLicOtroPeDesc,
-			String fIngreso, Integer experienciaLaboral, Integer experienciaDocente, Integer alertOpcionActializar) {
+	public DocenteLaboral(Integer idUsuario, Integer idCarreraC, Integer reconocimientoPerfilPromepSep,
+			String reconocimientoPerfilPromepSepDesc, Integer perteneceCA, String perteneceCADesc,
+			Integer innovadoraConocimiento, String innovadoraConocimientoDesc, Integer ptcRegistradoSNI,
+			String ptcRegistradoSNIDesc, Integer imparteLicOtroPe, String imparteLicOtroPeDesc,
+			Integer experienciaDocente, Integer alertOpcionActializar) {
 		super();
 		this.idUsuario = idUsuario;
 		this.idCarreraC = idCarreraC;
-		this.idNivelEstudio = idNivelEstudio;
-		this.especialidadDesc = especialidadDesc;
 		this.reconocimientoPerfilPromepSep = reconocimientoPerfilPromepSep;
 		this.reconocimientoPerfilPromepSepDesc = reconocimientoPerfilPromepSepDesc;
 		this.perteneceCA = perteneceCA;
@@ -58,15 +37,8 @@ public class DocenteLaboral {
 		this.innovadoraConocimientoDesc = innovadoraConocimientoDesc;
 		this.ptcRegistradoSNI = ptcRegistradoSNI;
 		this.ptcRegistradoSNIDesc = ptcRegistradoSNIDesc;
-		this.continuidadEstudios = continuidadEstudios;
-		this.continuidadEstudiosQueEstudio = continuidadEstudiosQueEstudio;
-		this.continuidadEstudiosLugar = continuidadEstudiosLugar;
-		this.continuidadEstudiosTieneBeca = continuidadEstudiosTieneBeca;
-		this.continuidadEstudiosTieneBecaDesc = continuidadEstudiosTieneBecaDesc;
 		this.imparteLicOtroPe = imparteLicOtroPe;
 		this.imparteLicOtroPeDesc = imparteLicOtroPeDesc;
-		this.fIngreso = fIngreso;
-		this.experienciaLaboral = experienciaLaboral;
 		this.experienciaDocente = experienciaDocente;
 		this.alertOpcionActializar = alertOpcionActializar;
 	}
@@ -89,26 +61,6 @@ public class DocenteLaboral {
 
 	public void setIdCarreraC(Integer idCarreraC) {
 		this.idCarreraC = idCarreraC;
-	}
-
-
-	public Integer getIdNivelEstudio() {
-		return idNivelEstudio;
-	}
-
-
-	public void setIdNivelEstudio(Integer idNivelEstudio) {
-		this.idNivelEstudio = idNivelEstudio;
-	}
-
-
-	public String getEspecialidadDesc() {
-		return especialidadDesc;
-	}
-
-
-	public void setEspecialidadDesc(String especialidadDesc) {
-		this.especialidadDesc = especialidadDesc;
 	}
 
 
@@ -192,56 +144,6 @@ public class DocenteLaboral {
 	}
 
 
-	public Integer getContinuidadEstudios() {
-		return continuidadEstudios;
-	}
-
-
-	public void setContinuidadEstudios(Integer continuidadEstudios) {
-		this.continuidadEstudios = continuidadEstudios;
-	}
-
-
-	public String getContinuidadEstudiosQueEstudio() {
-		return continuidadEstudiosQueEstudio;
-	}
-
-
-	public void setContinuidadEstudiosQueEstudio(String continuidadEstudiosQueEstudio) {
-		this.continuidadEstudiosQueEstudio = continuidadEstudiosQueEstudio;
-	}
-
-
-	public String getContinuidadEstudiosLugar() {
-		return continuidadEstudiosLugar;
-	}
-
-
-	public void setContinuidadEstudiosLugar(String continuidadEstudiosLugar) {
-		this.continuidadEstudiosLugar = continuidadEstudiosLugar;
-	}
-
-
-	public Integer getContinuidadEstudiosTieneBeca() {
-		return continuidadEstudiosTieneBeca;
-	}
-
-
-	public void setContinuidadEstudiosTieneBeca(Integer continuidadEstudiosTieneBeca) {
-		this.continuidadEstudiosTieneBeca = continuidadEstudiosTieneBeca;
-	}
-
-
-	public String getContinuidadEstudiosTieneBecaDesc() {
-		return continuidadEstudiosTieneBecaDesc;
-	}
-
-
-	public void setContinuidadEstudiosTieneBecaDesc(String continuidadEstudiosTieneBecaDesc) {
-		this.continuidadEstudiosTieneBecaDesc = continuidadEstudiosTieneBecaDesc;
-	}
-
-
 	public Integer getImparteLicOtroPe() {
 		return imparteLicOtroPe;
 	}
@@ -259,26 +161,6 @@ public class DocenteLaboral {
 
 	public void setImparteLicOtroPeDesc(String imparteLicOtroPeDesc) {
 		this.imparteLicOtroPeDesc = imparteLicOtroPeDesc;
-	}
-
-
-	public String getfIngreso() {
-		return fIngreso;
-	}
-
-
-	public void setfIngreso(String fIngreso) {
-		this.fIngreso = fIngreso;
-	}
-
-
-	public Integer getExperienciaLaboral() {
-		return experienciaLaboral;
-	}
-
-
-	public void setExperienciaLaboral(Integer experienciaLaboral) {
-		this.experienciaLaboral = experienciaLaboral;
 	}
 
 
@@ -304,20 +186,15 @@ public class DocenteLaboral {
 
 	@Override
 	public String toString() {
-		return "DocenteLaboral [idUsuario=" + idUsuario + ", idCarreraC=" + idCarreraC + ", idNivelEstudio="
-				+ idNivelEstudio + ", especialidadDesc=" + especialidadDesc + ", reconocimientoPerfilPromepSep="
-				+ reconocimientoPerfilPromepSep + ", reconocimientoPerfilPromepSepDesc="
-				+ reconocimientoPerfilPromepSepDesc + ", perteneceCA=" + perteneceCA + ", perteneceCADesc="
-				+ perteneceCADesc + ", innovadoraConocimiento=" + innovadoraConocimiento
-				+ ", innovadoraConocimientoDesc=" + innovadoraConocimientoDesc + ", ptcRegistradoSNI="
-				+ ptcRegistradoSNI + ", ptcRegistradoSNIDesc=" + ptcRegistradoSNIDesc + ", continuidadEstudios="
-				+ continuidadEstudios + ", continuidadEstudiosQueEstudio=" + continuidadEstudiosQueEstudio
-				+ ", continuidadEstudiosLugar=" + continuidadEstudiosLugar + ", continuidadEstudiosTieneBeca="
-				+ continuidadEstudiosTieneBeca + ", continuidadEstudiosTieneBecaDesc="
-				+ continuidadEstudiosTieneBecaDesc + ", imparteLicOtroPe=" + imparteLicOtroPe
-				+ ", imparteLicOtroPeDesc=" + imparteLicOtroPeDesc + ", fIngreso=" + fIngreso + ", experienciaLaboral="
-				+ experienciaLaboral + ", experienciaDocente=" + experienciaDocente + ", alertOpcionActializar="
-				+ alertOpcionActializar + "]";
+		return "DocenteLaboral [idUsuario=" + idUsuario + ", idCarreraC=" + idCarreraC
+				+ ", reconocimientoPerfilPromepSep=" + reconocimientoPerfilPromepSep
+				+ ", reconocimientoPerfilPromepSepDesc=" + reconocimientoPerfilPromepSepDesc + ", perteneceCA="
+				+ perteneceCA + ", perteneceCADesc=" + perteneceCADesc + ", innovadoraConocimiento="
+				+ innovadoraConocimiento + ", innovadoraConocimientoDesc=" + innovadoraConocimientoDesc
+				+ ", ptcRegistradoSNI=" + ptcRegistradoSNI + ", ptcRegistradoSNIDesc=" + ptcRegistradoSNIDesc
+				+ ", imparteLicOtroPe=" + imparteLicOtroPe + ", imparteLicOtroPeDesc=" + imparteLicOtroPeDesc
+				+ ", experienciaDocente=" + experienciaDocente + ", alertOpcionActializar=" + alertOpcionActializar
+				+ "]";
 	}
 	
 }

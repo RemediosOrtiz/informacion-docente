@@ -41,7 +41,6 @@ public class CarreraCDaoImpl implements CarreraCDao {
 				
 				CarreraC carreraC = new CarreraC(
 						rs.getInt("id_carrera_c"),
-						rs.getInt("id_edificio"),
 						rs.getString("nombre_carrera"),
 						rs.getString("acronimo_carrera"),
 						rs.getString("nivel_estudio")

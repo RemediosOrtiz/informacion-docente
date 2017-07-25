@@ -38,7 +38,6 @@ public class DocenteLaboralDaoImpl implements DocenteLaboralDao{
 			
 			if (rs.next()) {
 				docenteLaboral.setIdUsuario(rs.getInt("id_usuario"));
-				docenteLaboral.setIdNivelEstudio(rs.getInt("id_nivel_estudio_c"));
 				docenteLaboral.setIdCarreraC(rs.getInt("id_carrera_c"));
 				docenteLaboral.setReconocimientoPerfilPromepSep(rs.getInt("reconocimiento_perfil_promep_sep"));
 				docenteLaboral.setReconocimientoPerfilPromepSepDesc(rs.getString("reconocimiento_perfil_promep_sep_desc"));
@@ -48,20 +47,10 @@ public class DocenteLaboralDaoImpl implements DocenteLaboralDao{
 				docenteLaboral.setInnovadoraConocimientoDesc(rs.getString("innovadora_conocimiento_desc"));
 				docenteLaboral.setPtcRegistradoSNI(rs.getInt("ptc_registrado_sni"));
 				docenteLaboral.setPtcRegistradoSNIDesc(rs.getString("ptc_registrado_sni_desc"));
-				docenteLaboral.setEspecialidadDesc(rs.getString("especialidad_desc"));
-				
-				docenteLaboral.setContinuidadEstudios(rs.getInt("continuidad_estudios"));
-				docenteLaboral.setContinuidadEstudiosQueEstudio(rs.getString("continuidad_estudios_que_estudia"));
-				docenteLaboral.setContinuidadEstudiosLugar(rs.getString("continuidad_estudios_lugar"));
-				docenteLaboral.setContinuidadEstudiosTieneBeca(rs.getInt("continuidad_estudios_tiene_beca"));
-				docenteLaboral.setContinuidadEstudiosTieneBecaDesc(rs.getString("continuidad_estudios_tiene_beca_desc"));
 				docenteLaboral.setImparteLicOtroPe(rs.getInt("imparte_lic_otro_pe"));
 				docenteLaboral.setImparteLicOtroPeDesc(rs.getString("imparte_lic_otro_pe_desc"));
-				docenteLaboral.setfIngreso(rs.getString("f_ingreso"));
-				docenteLaboral.setExperienciaLaboral(rs.getInt("experiencia_laboral"));
 				docenteLaboral.setExperienciaDocente(rs.getInt("experiencia_docente"));
 				docenteLaboral.setAlertOpcionActializar(rs.getInt("alert_opcion_actializar"));
-				
 			}
 			
 			
@@ -84,37 +73,26 @@ public class DocenteLaboralDaoImpl implements DocenteLaboralDao{
 
 	@Override
 	public Boolean saveDocenteLaboral(DocenteLaboral docenteLaboral) {
-		String sql = "INSERT INTO DOCENTE_LABORAL (id_nivel_estudio_c, id_usuario, id_carrera_c, reconocimiento_perfil_promep_sep, reconocimiento_perfil_promep_sep_desc,"
-				+ "pertenece_ca, pertenece_ca_desc, innovadora_conocimiento, innovadora_conocimiento_desc, ptc_registrado_sni, ptc_registrado_sni_desc,"
-				+ "especialidad_desc, continuidad_estudios, continuidad_estudios_que_estudia, continuidad_estudios_lugar, continuidad_estudios_tiene_beca,"
-				+ "continuidad_estudios_tiene_beca_desc, imparte_lic_otro_pe, imparte_lic_otro_pe_desc, f_ingreso, experiencia_laboral,"
-				+ "experiencia_docente, alert_opcion_actializar) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO DOCENTE_LABORAL (id_usuario, id_carrera_c, reconocimiento_perfil_promep_sep, reconocimiento_perfil_promep_sep_desc, pertenece_ca,"
+				+ "pertenece_ca_desc, innovadora_conocimiento, innovadora_conocimiento_desc, ptc_registrado_sni, ptc_registrado_sni_desc, imparte_lic_otro_pe, imparte_lic_otro_pe_desc, "
+				+ "experiencia_docente, alert_opcion_actializar) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, docenteLaboral.getIdNivelEstudio());
-			ps.setInt(2, docenteLaboral.getIdUsuario());
-			ps.setInt(3, docenteLaboral.getIdCarreraC());
-			ps.setInt(4, docenteLaboral.getReconocimientoPerfilPromepSep());
-			ps.setString(5, docenteLaboral.getReconocimientoPerfilPromepSepDesc());
-			ps.setInt(6, docenteLaboral.getPerteneceCA());
-			ps.setString(7, docenteLaboral.getPerteneceCADesc());
-			ps.setInt(8, docenteLaboral.getInnovadoraConocimiento());
-			ps.setString(9, docenteLaboral.getInnovadoraConocimientoDesc());
-			ps.setInt(10, docenteLaboral.getPtcRegistradoSNI());
-			ps.setString(11, docenteLaboral.getPtcRegistradoSNIDesc());
-			ps.setString(12, docenteLaboral.getEspecialidadDesc());
-			ps.setInt(13, docenteLaboral.getContinuidadEstudios());
-			ps.setString(14, docenteLaboral.getContinuidadEstudiosQueEstudio());
-			ps.setString(15, docenteLaboral.getContinuidadEstudiosLugar());
-			ps.setInt(16, docenteLaboral.getContinuidadEstudiosTieneBeca());
-			ps.setString(17, docenteLaboral.getContinuidadEstudiosTieneBecaDesc());
-			ps.setInt(18, docenteLaboral.getImparteLicOtroPe());
-			ps.setString(19, docenteLaboral.getImparteLicOtroPeDesc());
-			ps.setString(20, docenteLaboral.getfIngreso());
-			ps.setInt(21, docenteLaboral.getExperienciaLaboral());
-			ps.setInt(22, docenteLaboral.getExperienciaDocente());
-			ps.setInt(23, docenteLaboral.getAlertOpcionActializar());
+			ps.setInt(1, docenteLaboral.getIdUsuario());
+			ps.setInt(2, docenteLaboral.getIdCarreraC());
+			ps.setInt(3, docenteLaboral.getReconocimientoPerfilPromepSep());
+			ps.setString(4, docenteLaboral.getReconocimientoPerfilPromepSepDesc());
+			ps.setInt(5, docenteLaboral.getPerteneceCA());
+			ps.setString(6, docenteLaboral.getPerteneceCADesc());
+			ps.setInt(7, docenteLaboral.getInnovadoraConocimiento());
+			ps.setString(8, docenteLaboral.getInnovadoraConocimientoDesc());
+			ps.setInt(9, docenteLaboral.getPtcRegistradoSNI());
+			ps.setString(10, docenteLaboral.getPtcRegistradoSNIDesc());
+			ps.setInt(11, docenteLaboral.getImparteLicOtroPe());
+			ps.setString(12, docenteLaboral.getImparteLicOtroPeDesc());
+			ps.setInt(13, docenteLaboral.getExperienciaDocente());
+			ps.setInt(14, docenteLaboral.getAlertOpcionActializar());
 			
 			ps.executeUpdate();
 			ps.close();

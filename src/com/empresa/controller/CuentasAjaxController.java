@@ -265,8 +265,6 @@ public class CuentasAjaxController extends HttpServlet {
 					docenteLaboral.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
 					docenteLaboral.setIdCarreraC(Integer.parseInt(request.getParameter("idCarreraC")));
 					docenteLaboral.setAlertOpcionActializar(Integer.parseInt(request.getParameter("alertOpcionActializar")));
-					docenteLaboral.setIdNivelEstudio(Integer.parseInt(request.getParameter("idNivelEstudio")));
-					docenteLaboral.setEspecialidadDesc(request.getParameter("especialidadDesc"));
 					docenteLaboral.setReconocimientoPerfilPromepSep(Integer.parseInt(request.getParameter("reconocimientoPerfilPromepSep")));
 					docenteLaboral.setReconocimientoPerfilPromepSepDesc(request.getParameter("reconocimientoPerfilPromepSepDesc"));
 					docenteLaboral.setPerteneceCA(Integer.parseInt(request.getParameter("perteneceCA")));
@@ -275,15 +273,8 @@ public class CuentasAjaxController extends HttpServlet {
 					docenteLaboral.setInnovadoraConocimientoDesc(request.getParameter("innovadoraConocimientoDesc"));
 					docenteLaboral.setPtcRegistradoSNI(Integer.parseInt(request.getParameter("ptcRegistradoSNI")));
 					docenteLaboral.setPtcRegistradoSNIDesc(request.getParameter("ptcRegistradoSNIDesc"));
-					docenteLaboral.setContinuidadEstudios(Integer.parseInt(request.getParameter("continuidadEstudios")));
-					docenteLaboral.setContinuidadEstudiosQueEstudio(request.getParameter("continuidadEstudiosQueEstudio"));
-					docenteLaboral.setContinuidadEstudiosLugar(request.getParameter("continuidadEstudiosLugar"));
-					docenteLaboral.setContinuidadEstudiosTieneBeca(Integer.parseInt(request.getParameter("continuidadEstudiosTieneBeca")));
-					docenteLaboral.setContinuidadEstudiosTieneBecaDesc(request.getParameter("continuidadEstudiosTieneBecaDesc"));
 					docenteLaboral.setImparteLicOtroPe(Integer.parseInt(request.getParameter("imparteLicOtroPe")));
 					docenteLaboral.setImparteLicOtroPeDesc(request.getParameter("imparteLicOtroPeDesc"));
-					docenteLaboral.setfIngreso(request.getParameter("fIngreso"));
-					docenteLaboral.setExperienciaLaboral(Integer.parseInt(request.getParameter("experienciaLaboral")));
 					docenteLaboral.setExperienciaDocente(Integer.parseInt(request.getParameter("experienciaDocente")));
 					
 					DocenteLaboralDao docenteLaboralDao = new DocenteLaboralDaoImpl(con);

@@ -3,17 +3,15 @@ package com.empresa.pojo;
 public class CarreraC {
 
 	private Integer idCarreraC;
-	private Integer idEdificio;
 	private String nombreCarrera;
 	private String acronimoCarrera;
 	private String nivelEstudio;
 	
 	public CarreraC(){}
 
-	public CarreraC(Integer idCarreraC, Integer idEdificio, String nombreCarrera, String acronimoCarrera,
+	public CarreraC(Integer idCarreraC, String nombreCarrera, String acronimoCarrera,
 			String nivelEstudio) {
 		this.idCarreraC = idCarreraC;
-		this.idEdificio = idEdificio;
 		this.nombreCarrera = nombreCarrera;
 		this.acronimoCarrera = acronimoCarrera;
 		this.nivelEstudio = nivelEstudio;
@@ -25,14 +23,6 @@ public class CarreraC {
 
 	public void setIdCarreraC(Integer idCarreraC) {
 		this.idCarreraC = idCarreraC;
-	}
-
-	public Integer getIdEdificio() {
-		return idEdificio;
-	}
-
-	public void setIdEdificio(Integer idEdificio) {
-		this.idEdificio = idEdificio;
 	}
 
 	public String getNombreCarrera() {
@@ -61,7 +51,7 @@ public class CarreraC {
 
 	@Override
 	public String toString() {
-		return "CarreraC [idCarreraC=" + idCarreraC + ", idEdificio=" + idEdificio + ", nombreCarrera=" + nombreCarrera
-				+ ", acronimoCarrera=" + acronimoCarrera + ", nivelEstudio=" + nivelEstudio + "]";
-	};
+		return "CarreraC [idCarreraC=" + idCarreraC + ", nombreCarrera=" + nombreCarrera + ", acronimoCarrera="
+				+ acronimoCarrera + ", nivelEstudio=" + nivelEstudio + "]";
+	}
 }

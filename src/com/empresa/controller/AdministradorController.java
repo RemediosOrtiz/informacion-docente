@@ -22,18 +22,25 @@ import com.empresa.hash.Hasher;
 import com.empresa.modelo.CarreraCDaoImpl;
 import com.empresa.modelo.ContactoDao;
 import com.empresa.modelo.ContactoDaoImpl;
+import com.empresa.modelo.CuatriCDaoImpl;
 import com.empresa.modelo.DireccionDaoImpl;
 import com.empresa.modelo.DocenteLaboralDaoImpl;
+import com.empresa.modelo.GrupoCDaoImpl;
+import com.empresa.modelo.GrupoDao;
+import com.empresa.modelo.GrupoDaoImpl;
+import com.empresa.modelo.MateriaCDaoImpl;
+import com.empresa.modelo.MateriaDao;
+import com.empresa.modelo.MateriaDaoImpl;
 import com.empresa.modelo.NivelEstudioCDaoImpl;
 import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
+import com.empresa.pojo.CarreraC;
 import com.empresa.pojo.Contacto;
-import com.empresa.pojo.Direccion;
+import com.empresa.pojo.Grupo;
+import com.empresa.pojo.Materia;
 import com.empresa.pojo.Usuario;
-import com.empresa.pojo.UsuarioRol;
-import com.mysql.jdbc.log.Log;
 
 /**
  * Servlet implementation class AdministradorController
@@ -76,8 +83,10 @@ public class AdministradorController extends HttpServlet {
 		HttpSession sesion = request.getSession();
 		Integer myRol = (Integer) sesion.getAttribute("id_usuario_rol");
 		
+		System.out.println(myRol);
+		
 		// Valida si existe una sesion activa y valida el rol del usuario
-		if (myRol == null || myRol != 1) {
+		if ((myRol == null) || (myRol != 1 && myRol != 6)) {
 			// Cierra sesion
 			sesion.invalidate();
 			// Redirecionar a la URL login
@@ -102,6 +111,8 @@ public class AdministradorController extends HttpServlet {
 				// Listar Usuarios
 				if (accion.equals("usuarios")) {
 					request.setAttribute("usuarios", new UsuarioDaoImpl(con).getAll());
+					request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+					
 					setResponseController("admin_usuarios").forward(request, response);
 				}
 				
@@ -142,6 +153,86 @@ public class AdministradorController extends HttpServlet {
 				}
 				
 				
+				// Listar Usuarios
+				if (accion.equals("grupos")) {
+					request.setAttribute("usuarios", new UsuarioDaoImpl(con).getAll());
+					request.setAttribute("cuatriCatalogo", new CuatriCDaoImpl(con).getAll());
+					request.setAttribute("carreraCatalogo", new CarreraCDaoImpl(con).getAll());
+					request.setAttribute("grupoCatalogo", new GrupoCDaoImpl(con).getAll());
+					request.setAttribute("grupos", new GrupoDaoImpl(con).getAll());
+					
+					setResponseController("admin_grupos").forward(request, response);
+				}
+				
+				
+				// Consultar grupo y materias
+				if (accion.equals("consultar-grupo")) {
+					
+					Grupo grupo = new GrupoDaoImpl(con).getGrupoById(Integer.parseInt(request.getParameter("id-grupo")));
+					
+					request.setAttribute("usuarios", new UsuarioDaoImpl(con).getAll());
+					request.setAttribute("cuatriCatalogo", new CuatriCDaoImpl(con).getAll());
+					request.setAttribute("carreraCatalogo", new CarreraCDaoImpl(con).getAll());
+					request.setAttribute("grupoCatalogo", new GrupoCDaoImpl(con).getAll());
+					
+					request.setAttribute("materiaCatalogo",
+							new MateriaCDaoImpl(con).getAllByIdCuatriAndByIdCarrera(grupo.getIdCuatriC(), grupo.getIdCarreraC()));
+					
+					request.setAttribute("grupo", grupo);
+					request.setAttribute("materias", new MateriaDaoImpl(con).getAllByIdGrupo(grupo.getIdGrupo()));
+					
+					setResponseController("admin_consultar_grupo").forward(request, response);
+				}
+				
+				
+				
+				// REPORTES ADMINISTRATIVO
+				if (accion.equals("reporte-info-profesores")) {
+					request.setAttribute("usuarios", new UsuarioDaoImpl(con).getAll());
+					request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+					
+					setResponseController("administrativo_reporte_info_profesores").forward(request, response);
+				}
+				
+				
+				// REPORTE CONSULTAR PROFESOR
+				if (accion.equals("consultar-usuario")) {
+					
+					// Campturar varible desde la URL
+					Integer idUsuarioAConsultar = Integer.parseInt(request.getParameter("id-usuario"));
+					
+					Usuario usurio = new UsuarioDaoImpl(con).getUsuarioById(idUsuarioAConsultar);
+					request.setAttribute("usuario", usurio);
+
+					request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+					
+					// Consultar catalogo tipo lugar
+					request.setAttribute("tipoLugarCatalogo", new TipoLugarDaoImpl(con).getAll());
+					
+					// Consultar direcciones de un usuario
+					request.setAttribute("direcciones", new DireccionDaoImpl(con).getAllByContactoId(usurio.getContacto().getIdContacto()));
+					
+					
+					// Consultar Docente Labora por id usuario
+					request.setAttribute("docenteLaboral", new DocenteLaboralDaoImpl(con).getDocenteLaboralByIdUsuario(idUsuarioAConsultar));
+					
+					
+					// Consultar catalogo carrera
+					request.setAttribute("carreraCatalogo", new CarreraCDaoImpl(con).getAll());
+					
+					// Consultar catalogo nivel de estudio
+					request.setAttribute("nivelEstudioCatalogo", new NivelEstudioCDaoImpl(con).getAll());
+					
+					
+					request.setAttribute("isModificable", 1);
+					
+					
+					setResponseController("administrativo_reporte_info_profesor").forward(request, response);
+				}
+				
+				
+				
+				
 			} catch (ClassNotFoundException | SQLException e) {
 				LOG.error("DO GET: " + e.getMessage());
 				
@@ -175,7 +266,8 @@ public class AdministradorController extends HttpServlet {
 		Integer myRol = (Integer) sesion.getAttribute("id_usuario_rol");
 		
 		// Valida si existe una sesion activa y valida el rol del usuario
-		if (myRol == null || myRol != 1) {
+		if (myRol == null || (myRol != 1 && myRol != 6)) {
+			
 			// Cierra sesion
 			sesion.invalidate();
 			// Redirecionar a la URL login
@@ -186,7 +278,6 @@ public class AdministradorController extends HttpServlet {
 			setResponseController("admin_dashboard").forward(request, response);
 			
 		} else {
-			
 			// LLamado de vistas en base al nombre del parametro accion
 			
 			try {
@@ -244,6 +335,61 @@ public class AdministradorController extends HttpServlet {
 					
 					// Redireccionar a la URL de admin para usuarios
 					response.sendRedirect("admin?accion=usuarios");
+				}
+				
+				
+				
+				// nuevo-grupo
+				if (accion.equals("nuevo-grupo")) {
+					
+					Grupo grupo = new Grupo();
+					grupo.setIdCuatriC(Integer.parseInt(request.getParameter("idCuatriC")));
+					grupo.setIdCarreraC(Integer.parseInt(request.getParameter("idCarreraC")));
+					grupo.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+					grupo.setIdGrupoC(Integer.parseInt(request.getParameter("idGrupoC")));
+					
+					
+					GrupoDao grupoDao = new GrupoDaoImpl(con);
+					ArrayList<CarreraC> carrerasC = new CarreraCDaoImpl(con).getAll();
+					
+					for (CarreraC carreraC : carrerasC) {
+						
+						if (carreraC.getIdCarreraC() == grupo.getIdCarreraC()) {
+							grupo.setNombreGrupo(grupo.getIdCuatriC() + carreraC.getAcronimoCarrera() + grupo.getIdGrupoC() );
+						}
+					}
+					
+					if (grupoDao.save(grupo)) {
+						System.out.println("Grupo guardado correctamente");
+					} else {
+						System.out.println("Error al crear el usuario");
+					}
+					
+					// Redireccionar a la URL de admin para grupo
+					response.sendRedirect("admin?accion=grupos");
+				}
+				
+				
+				// nueva-materia
+				if (accion.equals("nueva-materia")) {
+					
+					Materia materia = new Materia();
+					materia.setIdMateriaC(Integer.parseInt(request.getParameter("idMateriaC")));
+					materia.setIdGrupo(Integer.parseInt(request.getParameter("idGrupo")));
+					materia.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+					materia.setHorasGeneral(Integer.parseInt(request.getParameter("horasGeneral")));
+					materia.setHorasApoyo(Integer.parseInt(request.getParameter("horasApoyo")));
+					
+					MateriaDao materiaDao = new MateriaDaoImpl(con);
+					
+					if (materiaDao.save(materia)) {
+						System.out.println("Materia creada");
+					} else {
+						System.out.println("Error al crear la materia");
+					}
+					
+					// Redireccionar a la URL de admin para grupo
+					response.sendRedirect("admin?accion=consultar-grupo&id-grupo=" + materia.getIdGrupo());
 				}
 				
 				

@@ -4,17 +4,17 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<t:admin_layout>
+<t:SecretariaLayout>
 	<jsp:attribute name="viewtitlename">
-     	<title>Admin - Usuarios</title>
+     	<title>Secretaria - Profesores</title>
     </jsp:attribute>
 
 	<jsp:attribute name="viewuserrol">
-     	Administrador
+     	Secretaria
     </jsp:attribute>
 
 	<jsp:attribute name="viewtitleseccion">
-     	Usuarios
+     	Profesores
     </jsp:attribute>
 
 	<jsp:attribute name="extracss"> </jsp:attribute>
@@ -139,33 +139,15 @@
 		       
     <div>
 	    <ul class="nav nav-tabs" id="myTabs" role="tablist">
-		    <li role="presentation" class="active">
-		    	<a href="#admin-tab-x" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Administradores</a>
-		    </li>
-		    <li role="presentation" class="">
-		    	<a href="#direc-tab-x" role="tab" id="profile-tab" data-toggle="tab" aria-controls="direc-tab-x" aria-expanded="false">Directivos</a>
-		    </li>
-		    <li role="presentation" class="">
-		    	<a href="#secreta-tab-x" role="tab" id="profile-tab" data-toggle="tab" aria-controls="secreta-tab-x" aria-expanded="false">Secretarias</a>
-		    </li>
-		    <li role="presentation" class="">
-		    	<a href="#docen-tab-x" role="tab" id="profile-tab" data-toggle="tab" aria-controls="docen-tab-x" aria-expanded="false">Docente</a>
-		    </li>
-		    <li role="presentation" class="">
-		    	<a href="#labora-tab-x" role="tab" id="profile-tab" data-toggle="tab" aria-controls="labora-tab-x" aria-expanded="false">Laboratoristas</a>
-		    </li>
-		    <li role="presentation" class="">
-		    	<a href="#administrativo-tab-x" role="tab" id="profile-tab" data-toggle="tab" aria-controls="administrativo-tab-x" aria-expanded="false">Administrativo</a>
-		    </li>
 		    
-		    <li role="presentation">
-				<button type="button" class="btn btn-sm btn-link" data-toggle="modal" data-target="#modal-nuevo-usuario">Nuevo Usuario</button>
-	    	</li>
+		    <li role="presentation" class="">
+		    	<a href="#docen-tab-x" role="tab" id="profile-tab" data-toggle="tab" aria-controls="docen-tab-x" aria-expanded="true">Docente</a>
+		    </li>
 	    </ul>
     
 	    <!-- Tab panes -->
 		  <div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="admin-tab-x">
+			<div role="tabpanel" class="tab-pane" id="admin-tab-x">
 				<div class="card">
 		               <div class="header">
 		                   <h4 class="title"><b>ADMINISTRADORES</b></h4>
@@ -347,7 +329,7 @@
 		               </div>
 		           </div>
 			</div>
-			<div role="tabpanel" class="tab-pane" id="docen-tab-x">
+			<div role="tabpanel" class="tab-pane active" id="docen-tab-x">
 				<div class="card">
 		               <div class="header">
 		                   <h4 class="title"><b>DOCENTES</b></h4>
@@ -377,11 +359,11 @@
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
 					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
 					                           	<td>
-													<c:url value="/admin" var="urlModificarUsuario">
-					                           			<c:param name="accion" value="modificar-usuario" />
+													<c:url value="/secretaria" var="urlModificarUsuario">
+					                           			<c:param name="accion" value="consultar-usuario" />
 													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
 													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
+													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar</a>
 					                           	</td>
 				                           </tr>
 				                       	</c:if>
@@ -447,4 +429,4 @@
     </div>
 </jsp:body>
 	
-</t:admin_layout>
+</t:SecretariaLayout>

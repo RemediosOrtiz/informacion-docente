@@ -4,22 +4,22 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<t:LaboratoristaLayout>
+<t:SecretariaLayout>
 	<jsp:attribute name="viewtitlename">
-     	<title>Laboratorista - Consultar Usuario</title>
+     	<title>Secretaria - Consultar Usuario</title>
     </jsp:attribute>
 
 	<jsp:attribute name="viewuserrol">
-     	Laboratorista
+     	Secretaria
     </jsp:attribute>
 
 	<jsp:attribute name="viewtitleseccion">
-     	Usuario
+     	Consultar Usuario
     </jsp:attribute>
 
 	<jsp:attribute name="extracss"> </jsp:attribute>
 	
-		<jsp:attribute name="extrajs">
+	<jsp:attribute name="extrajs">
 
 	<!-- Script AJAX para actualizar la cuenta -->
 	<script src='<c:url value="assets/js/cuenta.js"></c:url>'></script>
@@ -53,7 +53,7 @@
 						
 						<input type="hidden" name="id_usuario" value="${usuario.idUsuario}">
 						
-							<div class="form-group" style="display: none;">
+							<div class="form-group">
 								<label>Rol de usuario</label>
 								<select name="id-usuario-rol" class="id-usuario-rol form-control" required>
 									<c:forEach items="${usuariosRolCatalogo}" var="usuarioRolCatalogo">
@@ -61,7 +61,7 @@
 									</c:forEach>
 								</select>
 							</div>
-							<div class="form-group" style="display: none;">
+							<div class="form-group">
 								<label>Matricula</label>
 								<input type="text" name="matricula" class="matricula form-control" placeholder="Ingrea la matricula unica del usuario" minlength="10" required/>
 							</div>
@@ -74,7 +74,7 @@
 								<input type="password" name="password-confirmar" class="password-confirmar form-control" placeholder="Ingresa nuevamente la contraseña" minlength="8" required/>
 							</div>
 							
-							<div class="form-group" style="display: none;">
+							<div class="form-group">
 								<label>Estatus del usuario</label>
 								<select name="estatus" class="estatus form-control" required>
 									<option value="1">Activo</option>
@@ -515,7 +515,6 @@
 					
 					<c:if test="${requestScope.isModificable == 1 }">
 						<div style="width100%; text-align: right;">
-							<a href="#" class="btn-get-cuenta-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-cuenta">Modificar cuenta</a>
 						</div>
 					</c:if>
 				</div>
@@ -571,7 +570,6 @@
 					
 					<c:if test="${requestScope.isModificable == 1 }">
 						<div style="width100%; text-align: right;">
-							<a href="#" class="btn-get-contacto-x btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-contacto">Modificar contacto</a>
 						</div>
 					</c:if>
 				</div>
@@ -613,10 +611,6 @@
 								</table>
 						
 							<c:if test="${requestScope.isModificable == 1 }">
-								<div style="width100%; text-align: right;">
-									<a href="#!" class="btn-get-direccion-actualizar btn btn-sm btn-primary btn-modificar-direccion"" data-toggle="modal" data-target="#modal-direccion" data-id-direccion="${direcciones.idDireccion}">Modificar</a>
-									<a href="#!" class="btn-get-direccion-eliminar btn btn-sm btn-danger" data-id-direccion="${direcciones.idDireccion}">Eliminar</a>
-								</div>
 							</c:if>
 					</div>
 									
@@ -630,7 +624,6 @@
 					<c:if test="${requestScope.isModificable == 1 }">
 						<br/>
 						<div style="width100%; text-align: right;">
-							<a href="#" class="btn btn-sm btn-primary btn-crear-direccion" data-toggle="modal" data-target="#modal-direccion" data-id-contacto="${usuario.contacto.idContacto}">Nueva dirección</a>
 						</div>
 					</c:if>
 					
@@ -732,7 +725,6 @@
 						
 							<c:if test="${requestScope.isModificable == 1 }">
 								<div style="width100%; text-align: right;">
-									<a href="#!" class="btn btn-sm btn-primary btn-modificar-docente-laboral"" data-toggle="modal" data-target="#modal-info-docente" data-id-usuario="${usuario.contacto.idUsuario}">Modificar Inf. laboral</a>
 								</div>
 							</c:if>
 						</div>
@@ -741,10 +733,7 @@
 						<c:otherwise>
 							<p>El usuario no tiene datos como docente laboral</p>
 							<c:if test="${requestScope.isModificable == 1 }">
-								<br/>
-								<div style="width100%; text-align: right;">
-									<a href="#" class="btn btn-sm btn-primary btn-crear-docente-laboral" data-toggle="modal" data-target="#modal-info-docente" data-id-usuario="${usuario.contacto.idUsuario}">Agregar Info. Laboral</a>
-								</div>
+								
 							</c:if>
 						</c:otherwise>
 					</c:choose>
@@ -761,4 +750,4 @@
 
 </jsp:body>
 
-</t:LaboratoristaLayout>
+</t:SecretariaLayout>

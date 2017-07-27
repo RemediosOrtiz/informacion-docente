@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
@@ -20,7 +19,7 @@ import org.apache.log4j.Logger;
 public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger log = LogManager.getLogger("ControllerGeneral: ");
+	private static final Logger LOG = LogManager.getLogger("ControllerGeneral: ");
 	private String rutaVistaJSP;
        
     /**
@@ -51,7 +50,7 @@ public class IndexController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		// Accion a realizar (Como mandar a llamar una vista)
-		String accion = request.getParameter("accion");
+		// String accion = request.getParameter("accion");
 		
 		// Manda a llamar la vista Index
 		setResponseController("index").forward(request, response);
@@ -63,6 +62,8 @@ public class IndexController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
+		LOG.info("Se realiza una petición POST");
 	}
 	
 	

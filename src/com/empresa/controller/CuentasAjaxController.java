@@ -24,13 +24,11 @@ import com.empresa.modelo.DireccionDao;
 import com.empresa.modelo.DireccionDaoImpl;
 import com.empresa.modelo.DocenteLaboralDao;
 import com.empresa.modelo.DocenteLaboralDaoImpl;
-import com.empresa.modelo.NivelEstudioCDao;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Direccion;
 import com.empresa.pojo.DocenteLaboral;
-import com.empresa.pojo.NivelEstudioC;
 import com.empresa.pojo.Usuario;
 
 /**

@@ -41,14 +41,29 @@
 </c:url>
 					
 <div class="wrapper">
-    <div class="sidebar" data-color=blue data-image="assets/img/sidebar-4.jpg">
+	<c:choose>
+		<c:when test="${sessionScope.id_usuario_rol == 1}">
+			<div class="sidebar" data-color="blue" data-image="assets/img/sidebar-4.jpg">
+		</c:when>
+		<c:otherwise>
+			<div class="sidebar" data-color="azure" data-image="assets/img/sidebar-4.jpg">
+		</c:otherwise>
+	</c:choose>
+    
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    <jsp:invoke fragment="viewuserrol" />
+                    <c:choose>
+					<c:when test="${sessionScope.id_usuario_rol == 1}">
+						ADMINISTRADOR
+					</c:when>
+					<c:otherwise>
+						ADMINISTRATIVO
+					</c:otherwise>
+				</c:choose>
                 </a>
             </div>
 
@@ -65,10 +80,30 @@
                         <p>Perfil de Usuario</p>
                     </a>
                 </li>
+                
+                <c:choose>
+					<c:when test="${sessionScope.id_usuario_rol == 1}">
+						 <li>
+		                    <a href='<c:url value="/admin?accion=usuarios" />'>
+		                        <i class="pe-7s-users"></i>
+		                        <p>Usuarios</p>
+		                    </a>
+		                </li>
+					</c:when>
+					<c:otherwise>
+						<li>
+		                    <a href='<c:url value="/admin?accion=reporte-info-profesores" />'>
+		                        <i class="pe-7s-user"></i>
+		                        <p>Reporte Profesores</p>
+		                    </a>
+		                </li>
+					</c:otherwise>
+				</c:choose>
+               
                 <li>
-                    <a href='<c:url value="/admin?accion=usuarios" />'>
+                    <a href='<c:url value="/admin?accion=grupos" />'>
                         <i class="pe-7s-users"></i>
-                        <p>Usuarios</p>
+                        <p>Grupos</p>
                     </a>
                 </li>
                 <li>

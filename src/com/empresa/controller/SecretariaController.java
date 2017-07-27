@@ -127,6 +127,50 @@ public class SecretariaController extends HttpServlet {
 						}
 						
 						
+						// Listar Usuarios
+						if (accion.equals("reporte-info-profesores")) {
+							request.setAttribute("usuarios", new UsuarioDaoImpl(con).getAll());
+							request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+							
+							setResponseController("secretaria_reporte_info_profesores").forward(request, response);
+						}
+						
+						// Consultar o Modificar
+						if (accion.equals("consultar-usuario")) {
+							
+							// Campturar varible desde la URL
+							Integer idUsuarioAConsultar = Integer.parseInt(request.getParameter("id-usuario"));
+							
+							Usuario usurio = new UsuarioDaoImpl(con).getUsuarioById(idUsuarioAConsultar);
+							request.setAttribute("usuario", usurio);
+
+							request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+							
+							// Consultar catalogo tipo lugar
+							request.setAttribute("tipoLugarCatalogo", new TipoLugarDaoImpl(con).getAll());
+							
+							// Consultar direcciones de un usuario
+							request.setAttribute("direcciones", new DireccionDaoImpl(con).getAllByContactoId(usurio.getContacto().getIdContacto()));
+							
+							
+							// Consultar Docente Labora por id usuario
+							request.setAttribute("docenteLaboral", new DocenteLaboralDaoImpl(con).getDocenteLaboralByIdUsuario(idUsuarioAConsultar));
+							
+							
+							// Consultar catalogo carrera
+							request.setAttribute("carreraCatalogo", new CarreraCDaoImpl(con).getAll());
+							
+							// Consultar catalogo nivel de estudio
+							request.setAttribute("nivelEstudioCatalogo", new NivelEstudioCDaoImpl(con).getAll());
+							
+							
+							request.setAttribute("isModificable", 1);
+							
+							
+							setResponseController("secretaria_reporte_info_profesor").forward(request, response);
+						}
+						
+						
 					} catch (ClassNotFoundException | SQLException e) {
 						LOG.error("DO GET: " + e.getMessage());
 						

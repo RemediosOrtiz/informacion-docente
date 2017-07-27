@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import com.empresa.pojo.Usuario;
 import com.empresa.pojo.UsuarioRol;
 
 public class UsuarioRolDaoImpl implements UsuarioRolDao {

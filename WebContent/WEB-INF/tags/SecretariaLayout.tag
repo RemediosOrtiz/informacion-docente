@@ -65,6 +65,12 @@
                         <p>Perfil de Usuario</p>
                     </a>
                 </li>
+                 <li>
+                    <a href='<c:url value="/secretaria?accion=reporte-info-profesores" />'>
+                        <i class="pe-7s-user"></i>
+                        <p>Reporte Profesores</p>
+                    </a>
+                </li>
                 <li>
                     <a href="#!">
                         <i class="pe-7s-bell"></i>

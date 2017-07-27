@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
@@ -132,7 +131,7 @@ public class LoginController extends HttpServlet {
 							request.setAttribute("usuario", usuario);
 							
 							// Mostrar vista Administrador
-							if (usuario.getIdUsuarioRol() == 1) {
+							if (usuario.getIdUsuarioRol() == 1 || usuario.getIdUsuarioRol() == 6) {
 								
 								// Redirecionar a la URL Admin
 								response.sendRedirect("admin");

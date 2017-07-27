@@ -8,10 +8,10 @@ public final class ConexionBD {
 	
 	private static final ConexionBD conexionBD = new ConexionBD();
 	
-	private final String USERNAME = "root"; // "homestead";
-	private final String PASSWORD = "root"; // "secret";
+	private final String USERNAME = "homestead"; // "homestead";
+	private final String PASSWORD = "secret"; // "secret";
 	private final String HOST = "127.0.0.1";
-	private final String PORT = "3306"; // "33060";
+	private final String PORT = "33060"; // "33060";
 	private final String DATABASE = "SISTEMA_GESTOR_DOCENTE";
 	private final String CLASSNAME = "com.mysql.jdbc.Driver";
 	private final String SSL = "?autoReconnect=true&useSSL=false";

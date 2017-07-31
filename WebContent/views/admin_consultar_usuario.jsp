@@ -33,6 +33,9 @@
 	<!-- Scrip AJAX para actualizar direccion -->
 	<script src='<c:url value="assets/js/docente-laboral.js"></c:url>'></script>
 	
+	<!-- Scrip AJAX para actualizar nombramiento -->
+	<script src='<c:url value="assets/js/nombramiento.js"></c:url>'></script>
+	
 	
     
     <!-- MODAL PARA ACTUALIZAR CUENTA -->  	
@@ -213,6 +216,57 @@
 	</div>
 </div><!-- FIN MODAL PARA DIRECCIONES -->
 
+
+
+
+
+<!-- MODAL PARA NOMBRAMIENTO -->
+<div class="modal fade" id="modal-nombramiento" tabindex="-1" role="dialog" aria-labelledby="modal-nombramiento">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">
+				<b>DATOS DEL NOMBRAMIENTO</b>
+				</h4>
+			</div>
+			<form action='<c:url value="/cuenta-ajax?accion=" />' method="POST" id="form-nombramiento" name="form-nombramiento">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+						
+						<input type="hidden" name="idUsuario" class="idUsuario">
+						
+							<div class="form-group">
+								<label>Tipo de nombramiento</label>
+								<select name="idNombramientoC" class="idNombramientoC form-control" required>
+									<c:forEach items="${nombramientoCatalogo}" var="nombramientoCatalogo">
+										
+										<c:choose>
+											<c:when test="${usuario.idUsuarioRol == 4 && nombramientoCatalogo.idNombramientoC < 8 }">
+												<option value="${nombramientoCatalogo.idNombramientoC}">${nombramientoCatalogo.descNombramiento}</option>
+											</c:when>
+											<c:when test="${usuario.idUsuarioRol == 5 && nombramientoCatalogo.idNombramientoC > 7 }">
+												<option value="${nombramientoCatalogo.idNombramientoC}">${nombramientoCatalogo.descNombramiento}</option>
+											</c:when>
+										</c:choose>
+										
+									</c:forEach>
+								</select>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="cerrar-form-nombramiento" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="button" id="guardar-form-nombramiento" class="btn btn-primary">Guardar</button>
+					<button type="button" id="actualizar-form-nombramiento" class="btn btn-primary">Actualizar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div><!-- FIN MODAL PARA NOMBRAMIENTO -->
 
 
 
@@ -636,6 +690,55 @@
 					
 				</div>
 				
+				
+				<c:if test="${usuario.idUsuarioRol == 4 || usuario.idUsuarioRol == 5}">
+				
+				<!-- Datos Nombramiento -->
+				<div class="header">
+					<h5 class="title" style="font-weight: bolder;">NOMBRAMIENTO</h5>
+				</div>
+				
+				<div class="content contenedor-nombramiento-base">
+					<c:choose>
+						<c:when test="${usuarioNombramiento.idUsuario > 0 }">
+							<div class="contenedor-direccion" style="border-bottom: solid 1px #E3E3E5; padding-bottom: 10px; margin-bottom: 10px;">
+								<table>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Nombramiento Asignado:</td>
+										<td>
+											<c:forEach items="${nombramientoCatalogo}" var="nombramientoCatalogo">
+												<c:if test="${usuarioNombramiento.idNombramientoC == nombramientoCatalogo.idNombramientoC }">
+													<c:out value="${nombramientoCatalogo.descNombramiento}"></c:out>
+												</c:if>
+											</c:forEach>
+										</td>
+									</tr>
+								</table>
+						
+							<c:if test="${requestScope.isModificable == 1 }">
+								<div style="width100%; text-align: right;">
+									<a href="#!" class="btn btn-sm btn-primary btn-modificar-nombramiento" data-toggle="modal" data-target="#modal-nombramiento" data-id-usuario="${usuario.contacto.idUsuario}">Modificar nombramiento</a>
+								</div>
+							</c:if>
+						</div>
+						</c:when>
+						
+						<c:otherwise>
+							<p>El usuario no tiene un nombramiento asignado.</p>
+							<c:if test="${requestScope.isModificable == 1 }">
+								<br/>
+								<div style="width100%; text-align: right;">
+									<a href="#" class="btn btn-sm btn-primary btn-crear-nombramiento" data-toggle="modal" data-target="#modal-nombramiento" data-id-usuario="${usuario.contacto.idUsuario}">Agregar nombramiento</a>
+								</div>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
+					
+				</div>
+				</c:if>
+				
+				
+				
 				<c:if test="${usuario.idUsuarioRol == 4}">
 				
 				<!-- Datos como docente laboral -->
@@ -732,7 +835,7 @@
 						
 							<c:if test="${requestScope.isModificable == 1 }">
 								<div style="width100%; text-align: right;">
-									<a href="#!" class="btn btn-sm btn-primary btn-modificar-docente-laboral"" data-toggle="modal" data-target="#modal-info-docente" data-id-usuario="${usuario.contacto.idUsuario}">Modificar Inf. laboral</a>
+									<a href="#!" class="btn btn-sm btn-primary btn-modificar-docente-laboral" data-toggle="modal" data-target="#modal-info-docente" data-id-usuario="${usuario.contacto.idUsuario}">Modificar Inf. laboral</a>
 								</div>
 							</c:if>
 						</div>
@@ -753,8 +856,6 @@
 				
 				</c:if>
 				
-				
-			</div>
 		</div>
 	</div>
 </div>

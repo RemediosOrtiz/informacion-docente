@@ -26,10 +26,12 @@ import com.empresa.modelo.DocenteLaboralDao;
 import com.empresa.modelo.DocenteLaboralDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
+import com.empresa.modelo.UsuarioNombramientoDaoImpl;
 import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Direccion;
 import com.empresa.pojo.DocenteLaboral;
 import com.empresa.pojo.Usuario;
+import com.empresa.pojo.UsuarioNombramiento;
 
 /**
  * Servlet implementation class CuentasAjaxController
@@ -278,6 +280,24 @@ public class CuentasAjaxController extends HttpServlet {
 					DocenteLaboralDao docenteLaboralDao = new DocenteLaboralDaoImpl(con);
 					
 					if (docenteLaboralDao.saveDocenteLaboral(docenteLaboral)) {
+						jsonObj.put("mensajeAccion", 1);
+					} else {
+						jsonObj.put("mensajeAccion", 0);
+					}
+					
+					out.println(jsonObj);
+				}
+				
+				
+				
+				// nuevo-nombramiento
+				if (accion.equals("nuevo-nombramiento")) {
+					
+					UsuarioNombramiento usuarioNombramiento = new UsuarioNombramiento(
+							Integer.parseInt(request.getParameter("idUsuario")),
+							Integer.parseInt(request.getParameter("idNombramientoC")));
+					
+					if (new UsuarioNombramientoDaoImpl(con).save(usuarioNombramiento)) {
 						jsonObj.put("mensajeAccion", 1);
 					} else {
 						jsonObj.put("mensajeAccion", 0);

@@ -32,9 +32,11 @@ import com.empresa.modelo.MateriaCDaoImpl;
 import com.empresa.modelo.MateriaDao;
 import com.empresa.modelo.MateriaDaoImpl;
 import com.empresa.modelo.NivelEstudioCDaoImpl;
+import com.empresa.modelo.NombramientoCDaoImpl;
 import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
+import com.empresa.modelo.UsuarioNombramientoDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
 import com.empresa.pojo.CarreraC;
 import com.empresa.pojo.Contacto;
@@ -83,7 +85,6 @@ public class AdministradorController extends HttpServlet {
 		HttpSession sesion = request.getSession();
 		Integer myRol = (Integer) sesion.getAttribute("id_usuario_rol");
 		
-		System.out.println(myRol);
 		
 		// Valida si existe una sesion activa y valida el rol del usuario
 		if ((myRol == null) || (myRol != 1 && myRol != 6)) {
@@ -144,6 +145,12 @@ public class AdministradorController extends HttpServlet {
 					
 					// Consultar catalogo nivel de estudio
 					request.setAttribute("nivelEstudioCatalogo", new NivelEstudioCDaoImpl(con).getAll());
+					
+					
+					
+					// Consultar catalogo nombramiento
+					request.setAttribute("nombramientoCatalogo", new NombramientoCDaoImpl(con).getAll());
+					request.setAttribute("usuarioNombramiento", new UsuarioNombramientoDaoImpl(con).getUsuarioNombramientoById(idUsuarioAConsultar));
 					
 					
 					request.setAttribute("isModificable", 1);

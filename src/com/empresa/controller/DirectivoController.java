@@ -21,6 +21,9 @@ import com.empresa.modelo.CarreraCDaoImpl;
 import com.empresa.modelo.DireccionDaoImpl;
 import com.empresa.modelo.DocenteLaboralDaoImpl;
 import com.empresa.modelo.NivelEstudioCDaoImpl;
+import com.empresa.modelo.NombramientoCDaoImpl;
+import com.empresa.modelo.ReporteDao;
+import com.empresa.modelo.ReporteDaoImpl;
 import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
@@ -125,6 +128,26 @@ public class DirectivoController extends HttpServlet {
 							
 							
 							setResponseController("directivo_consultar_perfil").forward(request, response);
+						}
+						
+						
+						// Reporte Nombramiento
+						if (accion.equals("r-nombramiento")) {
+							request.setAttribute("usuarios", new UsuarioDaoImpl(con).getAll());
+							request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+							
+							request.setAttribute("nombramientoCatalogo", new NombramientoCDaoImpl(con).getAll());
+							
+							ReporteDao reporteDao = new ReporteDaoImpl(con);
+							request.setAttribute("reportes1", reporteDao.getAllReporte1());
+							request.setAttribute("reportes2", reporteDao.getAllReporte2());
+							request.setAttribute("reportes4", reporteDao.getAllReporte4());
+							request.setAttribute("reportes6", reporteDao.getAllReporte6());
+							request.setAttribute("reportes7", reporteDao.getAllReporte7());
+							request.setAttribute("reportes8", reporteDao.getAllReporte8());
+							request.setAttribute("reportes9", reporteDao.getAllReporte9());
+							
+							setResponseController("directivo_r_nombramiento").forward(request, response);
 						}
 						
 						

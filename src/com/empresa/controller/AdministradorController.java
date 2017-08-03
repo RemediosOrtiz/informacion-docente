@@ -33,6 +33,8 @@ import com.empresa.modelo.MateriaDao;
 import com.empresa.modelo.MateriaDaoImpl;
 import com.empresa.modelo.NivelEstudioCDaoImpl;
 import com.empresa.modelo.NombramientoCDaoImpl;
+import com.empresa.modelo.ReporteDao;
+import com.empresa.modelo.ReporteDaoImpl;
 import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
@@ -160,7 +162,7 @@ public class AdministradorController extends HttpServlet {
 				}
 				
 				
-				// Listar Usuarios
+				// Listar Grupos
 				if (accion.equals("grupos")) {
 					request.setAttribute("usuarios", new UsuarioDaoImpl(con).getAll());
 					request.setAttribute("cuatriCatalogo", new CuatriCDaoImpl(con).getAll());
@@ -235,6 +237,27 @@ public class AdministradorController extends HttpServlet {
 					
 					
 					setResponseController("administrativo_reporte_info_profesor").forward(request, response);
+				}
+				
+				
+				
+				// Reporte Nombramiento
+				if (accion.equals("r-nombramiento")) {
+					request.setAttribute("usuarios", new UsuarioDaoImpl(con).getAll());
+					request.setAttribute("usuariosRolCatalogo", new UsuarioRolDaoImpl(con).getAll());
+					
+					request.setAttribute("nombramientoCatalogo", new NombramientoCDaoImpl(con).getAll());
+					
+					ReporteDao reporteDao = new ReporteDaoImpl(con);
+					request.setAttribute("reportes1", reporteDao.getAllReporte1());
+					request.setAttribute("reportes2", reporteDao.getAllReporte2());
+					request.setAttribute("reportes4", reporteDao.getAllReporte4());
+					request.setAttribute("reportes6", reporteDao.getAllReporte6());
+					request.setAttribute("reportes7", reporteDao.getAllReporte7());
+					request.setAttribute("reportes8", reporteDao.getAllReporte8());
+					request.setAttribute("reportes9", reporteDao.getAllReporte9());
+					
+					setResponseController("admin_r_nombramiento").forward(request, response);
 				}
 				
 				

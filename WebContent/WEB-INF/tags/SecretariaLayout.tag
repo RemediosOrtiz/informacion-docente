@@ -72,6 +72,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href='<c:url value="/secretaria?accion=r-nombramiento" />'>
+                        <i class="pe-7s-note2"></i>
+                        <p>R. Nombramiento</p>
+                    </a>
+                </li>
+                <li>
                     <a href="#!">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>

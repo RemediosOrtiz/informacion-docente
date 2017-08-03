@@ -66,6 +66,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href='<c:url value="/directivo?accion=r-nombramiento" />'>
+                        <i class="pe-7s-note2"></i>
+                        <p>R. Nombramiento</p>
+                    </a>
+                </li>
+                <li>
                     <a href="#!">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>

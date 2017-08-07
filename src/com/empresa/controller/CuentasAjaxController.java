@@ -24,12 +24,14 @@ import com.empresa.modelo.DireccionDao;
 import com.empresa.modelo.DireccionDaoImpl;
 import com.empresa.modelo.DocenteLaboralDao;
 import com.empresa.modelo.DocenteLaboralDaoImpl;
+import com.empresa.modelo.EstudioDaoImpl;
 import com.empresa.modelo.UsuarioDao;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioNombramientoDaoImpl;
 import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Direccion;
 import com.empresa.pojo.DocenteLaboral;
+import com.empresa.pojo.Estudio;
 import com.empresa.pojo.Usuario;
 import com.empresa.pojo.UsuarioNombramiento;
 
@@ -298,6 +300,33 @@ public class CuentasAjaxController extends HttpServlet {
 							Integer.parseInt(request.getParameter("idNombramientoC")));
 					
 					if (new UsuarioNombramientoDaoImpl(con).save(usuarioNombramiento)) {
+						jsonObj.put("mensajeAccion", 1);
+					} else {
+						jsonObj.put("mensajeAccion", 0);
+					}
+					
+					out.println(jsonObj);
+				}
+				
+				
+				// nuevo-estudio
+				
+				if (accion.equals("nuevo-estudio")) {
+					
+					Estudio estudio = new Estudio();
+					estudio.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+					estudio.setIdCarreraUsuarioC(Integer.parseInt(request.getParameter("IdCarreraUsuarioC")));
+					estudio.setIdNivelEstudioC(Integer.parseInt(request.getParameter("idNivelEstudio")));
+					estudio.setEspecialidadDesc(request.getParameter("especialidadDesc"));
+					estudio.setContinuidadEstudios(Integer.parseInt(request.getParameter("continuidadEstudios")));
+					estudio.setContinuidadEstudiosQueEstudia(request.getParameter("continuidadEstudiosQueEstudio"));
+					estudio.setContinuidadEstudiosLugar(request.getParameter("continuidadEstudiosLugar"));
+					estudio.setContinuidadEstudiosTieneBeca(Integer.parseInt(request.getParameter("continuidadEstudiosTieneBeca")));
+					estudio.setContinuidadEstudiosTieneBecaDesc(request.getParameter("continuidadEstudiosTieneBecaDesc"));
+					estudio.setfIngreso(request.getParameter("fIngreso"));
+					estudio.setExperienciaLaboral(Integer.parseInt(request.getParameter("experienciaLaboral")));
+					
+					if (new EstudioDaoImpl(con).save(estudio)) {
 						jsonObj.put("mensajeAccion", 1);
 					} else {
 						jsonObj.put("mensajeAccion", 0);

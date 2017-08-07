@@ -27,6 +27,9 @@
 	<!-- Script AJAX para actualizar el contacto -->
 	<script src='<c:url value="assets/js/contacto.js"></c:url>'></script>
 	
+	<!-- Script AJAX para actualizar el estudios -->
+	<script src='<c:url value="assets/js/estudios.js"></c:url>'></script>
+	
 	<!-- Scrip AJAX para actualizar direccion -->
 	<script src='<c:url value="assets/js/direccion.js"></c:url>'></script>
 	
@@ -402,23 +405,31 @@
 </div><!-- FIN MODAL PARA INFORMACION DOCENTE -->
 
 
-
-<!-- MODAL PARA EDUCACION USUARIO -->
-<div class="modal fade" id="modal-educacion" tabindex="-1" role="dialog" aria-labelledby="modal-educacion">
+<!-- MODAL PARA ESTUDIOS USUARIO -->
+<div class="modal fade" id="modal-estudios" tabindex="-1" role="dialog" aria-labelledby="modal-estudios">
 	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">
-				<b>EDUCACIÓN USUARIO</b>
+				<b>ESTUDIOS USUARIO</b>
 				</h4>
 			</div>
-			<form action='<c:url value="/cuenta-ajax?accion=" />' method="POST" id="form-educacion" name="form-educacion">
+			<form action='<c:url value="/cuenta-ajax?accion=" />' method="POST" id="form-estudios" name="form-estudios">
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-12">
 						
 							<input type="hidden" name="idUsuario" class="idUsuario">
+							
+							<div class="form-group">
+								<label>Carrera del Usuario:</label>
+								<select name="IdCarreraUsuarioC" class="IdCarreraUsuarioC form-control" required>
+									<c:forEach items="${carreraUsuarioCatalogo}" var="carreraUsuarioCatalogo">
+										<option value="${carreraUsuarioCatalogo.idCarreraUsuarioC}">${carreraUsuarioCatalogo.nombreCarreraUsuario}</option>
+									</c:forEach>
+								</select>
+							</div>
 							
 							<!-- especialidadDesc -->
 							<div class="form-group">
@@ -499,14 +510,15 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="cerrar-form-educacion" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-					<button type="button" id="guardar-form-educacion" class="btn btn-primary">Guardar</button>
-					<button type="button" id="actualizar-form-educacion" class="btn btn-primary">Actualizar</button>
+					<button type="button" id="cerrar-form-estudios" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="button" id="guardar-form-estudios" class="btn btn-primary">Guardar</button>
+					<button type="button" id="actualizar-form-estudios" class="btn btn-primary">Actualizar</button>
 				</div>
 			</form>
 		</div>
 	</div>
-</div><!-- FIN MODAL PARA EDUCACION USUARIO -->
+</div><!-- FIN MODAL PARA estudios USUARIO -->
+
 
 
 	
@@ -630,6 +642,155 @@
 					</c:if>
 				</div>
 				
+				
+				
+				
+				<!-- ESTUDIOS -->
+				<div class="header">
+					<h5 class="title" style="font-weight: bolder;">INFORMACIÓN ESTUDIOS</h5>
+				</div>
+				
+				<div class="content contenedor-estudios-base">
+				
+				<!--  
+				<c:forEach items="${carreraUsuarioCatalogo}" var="carreraUsuarioCatalogo">
+										<option value="${carreraUsuarioCatalogo.idCarreraUsuarioC}">${carreraUsuarioCatalogo.nombreCarreraUsuario}</option>
+									</c:forEach>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<label>Nivel de Estudios:</label>
+								<select name="idNivelEstudio" class="idNivelEstudio form-control" required>
+									<c:forEach items="${nivelEstudioCatalogo}" var="nivelEstudioCatalogo">
+										<option value="${nivelEstudioCatalogo.idNivelEstudioC}">${nivelEstudioCatalogo.descNivelEstudio}</option>
+									</c:forEach>
+									-->
+				
+					<c:choose>
+						<c:when test="${estudio.idUsuario > 0 }">
+							<div class="contenedor-direccion" style="border-bottom: solid 1px #E3E3E5; padding-bottom: 10px; margin-bottom: 10px;">
+								<table>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Carrera Usuario:</td>
+										<td>
+										
+											<c:forEach items="${carreraUsuarioCatalogo}" var="carreraUsuarioCatalogo">
+												<c:if test="${estudio.idCarreraUsuarioC == carreraUsuarioCatalogo.idCarreraUsuarioC }">
+													<c:out value="${carreraUsuarioCatalogo.nombreCarreraUsuario}"></c:out>
+												</c:if>
+											</c:forEach>
+											
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Nivel de estudios:</td>
+										<td>
+											<c:forEach items="${nivelEstudioCatalogo}" var="nivelEstudioCatalogo">
+											
+												<c:if test="${estudio.idNivelEstudioC == nivelEstudioCatalogo.idNivelEstudioC }">
+													<c:out value="${nivelEstudioCatalogo.descNivelEstudio}"></c:out>
+													
+													<c:if test="${estudio.idNivelEstudioC == 4 }">
+													 EN: <c:out value="${estudio.especialidadDesc}"></c:out>
+													</c:if>
+												
+												</c:if>
+												
+											</c:forEach>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">¿Continuidad de estudios?:</td>
+										<td>
+											<c:choose>
+												<c:when test="${estudio.continuidadEstudios == 1 }">
+													SI
+												</c:when>
+												<c:otherwise>
+												NO
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									
+									
+									<c:choose>
+										<c:when test="${estudio.continuidadEstudios == 1 }">
+											
+											<tr>
+												<td style="font-weight: bolder; padding-right: 20px;">¿Qué estudia?:</td>
+												<td>
+													<c:out value="${estudio.continuidadEstudiosQueEstudia}"></c:out>
+												</td>
+											</tr>
+											<tr>
+												<td style="font-weight: bolder; padding-right: 20px;">¿Dónde estudia?:</td>
+												<td>
+													<c:out value="${estudio.continuidadEstudiosLugar}"></c:out>
+												</td>
+											</tr>
+											
+											<tr>
+												<td style="font-weight: bolder; padding-right: 20px;">¿Tiene beca?:</td>
+												<td>
+													<c:choose>
+														<c:when test="${estudio.continuidadEstudiosTieneBeca == 1 }">
+															SI - <c:out value="${estudio.continuidadEstudiosTieneBecaDesc}"></c:out>
+														</c:when>
+														<c:otherwise>
+														NO
+														</c:otherwise>
+													</c:choose>
+												</td>
+											</tr>
+									
+											
+										</c:when>
+										<c:otherwise>
+										
+										</c:otherwise>
+									</c:choose>
+									
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Fecha de ingreso:</td>
+										<td>
+											<c:out value="${estudio.fIngreso}"></c:out>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bolder; padding-right: 20px;">Años de experiencia laboral:</td>
+										<td><c:out value="${estudio.experienciaLaboral}"></c:out> Años</td>
+									</tr>
+								</table>
+						
+							<c:if test="${requestScope.isModificable == 1 }">
+								<div style="width100%; text-align: right;">
+									<a href="#!" class="btn btn-sm btn-primary btn-modificar-estudios" data-toggle="modal" data-target="#modal-estudios" data-id-usuario="${usuario.contacto.idUsuario}">Modificar Estudios</a>
+								</div>
+							</c:if>
+						</div>
+						</c:when>
+						
+						<c:otherwise>
+							<p>El usuario no tiene datos de su educación</p>
+							<c:if test="${requestScope.isModificable == 1 }">
+								<br/>
+								<div style="width100%; text-align: right;">
+									<a href="#" class="btn btn-sm btn-primary btn-crear-estudios" data-toggle="modal" data-target="#modal-estudios" data-id-usuario="${usuario.contacto.idUsuario}">Agregar Estudios</a>
+								</div>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
 				<!-- DIRECCION -->
 				<div class="header">
 					<h5 class="title" style="font-weight: bolder;">DIRECCIÓN</h5>
@@ -736,6 +897,12 @@
 					
 				</div>
 				</c:if>
+				
+				
+				
+				
+				
+				
 				
 				
 				

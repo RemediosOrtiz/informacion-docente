@@ -20,11 +20,13 @@ import org.apache.log4j.Logger;
 import com.empresa.conexion.ConexionBD;
 import com.empresa.hash.Hasher;
 import com.empresa.modelo.CarreraCDaoImpl;
+import com.empresa.modelo.CarreraUsuarioCDaoImpl;
 import com.empresa.modelo.ContactoDao;
 import com.empresa.modelo.ContactoDaoImpl;
 import com.empresa.modelo.CuatriCDaoImpl;
 import com.empresa.modelo.DireccionDaoImpl;
 import com.empresa.modelo.DocenteLaboralDaoImpl;
+import com.empresa.modelo.EstudioDaoImpl;
 import com.empresa.modelo.GrupoCDaoImpl;
 import com.empresa.modelo.GrupoDao;
 import com.empresa.modelo.GrupoDaoImpl;
@@ -120,7 +122,7 @@ public class AdministradorController extends HttpServlet {
 				}
 				
 				
-				// Consultar o Modificar
+				// Consultar o Modificar usuario
 				if (accion.equals("modificar-usuario")) {
 					
 					// Campturar varible desde la URL
@@ -145,8 +147,12 @@ public class AdministradorController extends HttpServlet {
 					// Consultar catalogo carrera
 					request.setAttribute("carreraCatalogo", new CarreraCDaoImpl(con).getAll());
 					
+					// Consultar catalogo carrera usuario
+					request.setAttribute("carreraUsuarioCatalogo", new CarreraUsuarioCDaoImpl(con).getAll());
+					
 					// Consultar catalogo nivel de estudio
 					request.setAttribute("nivelEstudioCatalogo", new NivelEstudioCDaoImpl(con).getAll());
+					request.setAttribute("estudio", new EstudioDaoImpl(con).getEstudioByIdUsuario(idUsuarioAConsultar));
 					
 					
 					

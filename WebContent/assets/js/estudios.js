@@ -1,40 +1,40 @@
 $(document).ready(function() {
 	
-	function btnActualizarNuevoInfoEstudios(formInfDocenteAction) {
+	function btnActualizarNuevoInfoEstudios(formInfestudiosAction) {
 		
-		var formularioNombre = "#form-info-docente";
+		var formularioNombre = "#form-estudios";
 		
 		// Al dar click en boton de nueva direccion, cambiar URL action del formulario, ocultar boton de actuzaliar y mostar boton de guardar
-		$(".btn-crear-docente-laboral").on("click", function() {
+		$(".btn-crear-estudios").on("click", function() {
 			$(formularioNombre)[0].reset();
 			
 			// Agregar idContacto al formulario de nueva direccion
-			$(formularioNombre + " .idUsuario").val($(".btn-crear-docente-laboral").attr("data-id-usuario"));
-			$(formularioNombre).attr("action", formInfDocenteAction+"nueva-info-laboral");
+			$(formularioNombre + " .idUsuario").val($(".btn-crear-estudios").attr("data-id-usuario"));
+			$(formularioNombre).attr("action", formInfestudiosAction+"nuevo-estudio");
 			
-			$("#guardar-form-info-docente").show();
-			$("#actualizar-form-info-docente").hide();
+			$("#guardar-form-estudios").show();
+			$("#actualizar-form-estudios").hide();
 		});
-		
-		$(".btn-modificar-docente-laboral").on("click", function() {
+	
+		$(".btn-modificar-estudios").on("click", function() {
 			$(formularioNombre)[0].reset();
 			
 			// Agregar idContacto al formulario de nueva direccion
-			$(formularioNombre + " .idUsuario").val($(".btn-modificar-docente-laboral").attr("data-id-usuario"));
-			$(formularioNombre).attr("action", formInfDocenteAction+"actualizar-info-laboral");
+			$(formularioNombre + " .idUsuario").val($(".btn-modificar-estudios").attr("data-id-usuario"));
+			$(formularioNombre).attr("action", formInfestudiosAction+"actualizar-estudio");
 			
-			$("#guardar-form-info-docente").hide();
-			$("#actualizar-form-info-docente").show();
+			$("#guardar-form-estudios").hide();
+			$("#actualizar-form-estudios").show();
 		});
 		
 	}
 	
 	
 	//Almacena la ruta de la accion para direcciones (CRUD)
-	var formInfDocenteAction = $("#form-info-docente").attr("action");
+	var formInfestudiosAction = $("#form-estudios").attr("action");
 	
 	// Se llama al metodo
-	btnActualizarNuevoInfoEstudios(formInfDocenteAction);
+	btnActualizarNuevoInfoEstudios(formInfestudiosAction);
 	
 	
 	
@@ -92,7 +92,7 @@ $(document).ready(function() {
 	
 	function mostrarOcultarSelectCambio() {
 		
-		$("#form-info-docente").on("change", "select", function() {
+		$("#form-estudios").on("change", "select", function() {
 			mostrarOcultarSelect();
 		});
 		
@@ -107,11 +107,11 @@ $(document).ready(function() {
 (function($){ 	
 	
 	var App = { init: function(){
-		App.FormDatepickerInfDocente();
-		App.NuevaInfDocente();
+		App.FormDatepickerInfestudios();
+		App.NuevaInfestudios();
 	},
 	
-	FormDatepickerInfDocente: function() {
+	FormDatepickerInfestudios: function() {
 		
 	    $("#fIngreso").datepicker({
 	    	dateFormat: 'yy-mm-dd',
@@ -121,9 +121,9 @@ $(document).ready(function() {
 	    });
 	},
 	
-	NuevaInfDocente: function() {
-		$("#guardar-form-info-docente").click(function() {
-			var formularioNombre = "#form-info-docente";
+	NuevaInfestudios: function() {
+		$("#guardar-form-estudios").click(function() {
+			var formularioNombre = "#form-estudios";
 			
 			// Validar los campos
 			var vErrores = [];
@@ -190,7 +190,7 @@ $(document).ready(function() {
 			
 			if (vErrores.length == 0) {
 				// Iniciar guardado
-				initGuardarInfDocente(formularioNombre);
+				initGuardarInfestudios(formularioNombre);
 				
 			} else {
 				
@@ -205,7 +205,7 @@ $(document).ready(function() {
 			}
 		});
 		
-		function initGuardarInfDocente(formularioNombre) {
+		function initGuardarInfestudios(formularioNombre) {
 			var form = $(formularioNombre);
 			var data = form.serializeArray();
 			var route = form.attr("action");
@@ -226,9 +226,9 @@ $(document).ready(function() {
 					
 					if (result.mensajeAccion == 1) {
 						// Cerrar Formulario Actualizar
-						$("#cerrar-form-info-docente").click();
-						$(".btn-crear-docente-laboral").hide();
-						nuevaAlerta("OK al crear", "<p>Info Docente creada correctamente.</p>", "verde");
+						$("#cerrar-form-info-estudios").click();
+						$(".btn-crear-estudios").hide();
+						nuevaAlerta("OK al crear", "<p>Info estudios creada correctamente.</p>", "verde");
 						nuevaAlerta("OK al crear", "<p>Para ver los cambios por favor actualize la pagina:</p> <a href='#!' onclick='location.reload();'>Actualizar pagina</a>", "azul");
 						
 					} else {

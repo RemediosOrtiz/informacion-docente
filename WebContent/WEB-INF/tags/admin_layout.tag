@@ -108,6 +108,13 @@
                 </li>
                 
                 <li>
+                    <a href='<c:url value="/admin?accion=reportes" />'>
+                        <i class="pe-7s-note2"></i>
+                        <p>Reportes</p>
+                    </a>
+                </li>
+                
+                <li>
                     <a href='<c:url value="/admin?accion=r-nombramiento" />'>
                         <i class="pe-7s-note2"></i>
                         <p>R. Nombramiento</p>

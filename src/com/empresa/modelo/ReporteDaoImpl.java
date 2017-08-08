@@ -13,6 +13,7 @@ import com.empresa.pojo.Reporte1;
 import com.empresa.pojo.Reporte2;
 import com.empresa.pojo.Reporte4;
 import com.empresa.pojo.ReporteGenerico;
+import com.empresa.pojo.ReporteHorasContratacion;
 
 public class ReporteDaoImpl implements ReporteDao {
 
@@ -302,6 +303,49 @@ ArrayList<ReporteGenerico> reporteGenericos = new ArrayList<ReporteGenerico>();
 		}
 		
 		return reporteGenericos;
+	}
+
+	@Override
+	public ArrayList<ReporteHorasContratacion> getAllReporteHorasContratacion() {
+
+		ArrayList<ReporteHorasContratacion> reportesHorasContratacion = new ArrayList<ReporteHorasContratacion>();
+		
+		String sql = "SELECT B.nombre, B.ap_paterno, B.ap_materno, (SELECT AA.desc_nombramiento FROM NOMBRAMIENTO_C AA INNER JOIN USUARIO_NOMBRAMIENTO AB ON AA.id_nombramiento_c=AB.id_nombramiento_c WHERE AB.id_usuario = A.id_usuario) AS desc_nombramiento, (SELECT SUM(horas_general) FROM MATERIA WHERE id_usuario = A.id_usuario) AS hrs_grupo, (SELECT SUM(horas_apoyo) FROM MATERIA WHERE id_usuario = A.id_usuario) AS hrs_apoyo, (SELECT SUM(horas_general + horas_apoyo) FROM MATERIA WHERE id_usuario = A.id_usuario) AS hrs_total FROM USUARIO A INNER JOIN CONTACTO B ON A.id_usuario=B.id_usuario WHERE A.id_usuario_rol = 4";
+		try {
+			
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				
+				ReporteHorasContratacion reporteHorasContratacion = new ReporteHorasContratacion();
+				reporteHorasContratacion.setNombre(rs.getString("nombre"));
+				reporteHorasContratacion.setApPaterno(rs.getString("ap_paterno"));
+				reporteHorasContratacion.setApMaterno(rs.getString("ap_materno"));
+				reporteHorasContratacion.setDescNombramiento(rs.getString("desc_nombramiento"));
+				reporteHorasContratacion.setHrsGrupo(rs.getInt("hrs_grupo"));
+				reporteHorasContratacion.setHrsApoyo(rs.getInt("hrs_apoyo"));
+				reporteHorasContratacion.setHrsTotal(rs.getInt("hrs_total"));
+				
+				reportesHorasContratacion.add(reporteHorasContratacion);
+			}
+
+		} catch (SQLException e) {
+			reportesHorasContratacion.clear();
+			LOG.error("getAllReporte1(): " + e.getMessage());
+			
+		} finally {
+			
+			try {
+				if(rs!= null) rs.close();
+				if(ps!= null) ps.close();
+				
+			} catch (SQLException e) {
+				LOG.error("Al cerrar conexiones - getAllReporte1(): " + e.getMessage());
+			}
+		}
+		
+		return reportesHorasContratacion;
 	}
 
 }

@@ -46,6 +46,7 @@ import com.empresa.pojo.CarreraC;
 import com.empresa.pojo.Contacto;
 import com.empresa.pojo.Grupo;
 import com.empresa.pojo.Materia;
+import com.empresa.pojo.ReporteHorasContratacion;
 import com.empresa.pojo.Usuario;
 
 /**
@@ -264,6 +265,31 @@ public class AdministradorController extends HttpServlet {
 					request.setAttribute("reportes9", reporteDao.getAllReporte9());
 					
 					setResponseController("admin_r_nombramiento").forward(request, response);
+				}
+				
+				// Reportes
+				if (accion.equals("reportes")) {
+					
+					ReporteDao reporteDao = new ReporteDaoImpl(con);
+					
+					ArrayList<ReporteHorasContratacion> reporteHorasContratacion = reporteDao.getAllReporteHorasContratacion();
+					
+					Integer totalHrsGrupo = 0;
+					Integer totalHrsApoyo = 0;
+					Integer totalHrsGeneral = 0;
+					
+					for (ReporteHorasContratacion x : reporteHorasContratacion) {
+						totalHrsGrupo = totalHrsGrupo + x.getHrsGrupo();
+						totalHrsApoyo = totalHrsApoyo + x.getHrsApoyo();
+						totalHrsGeneral = totalHrsGeneral + x.getHrsTotal();
+					}
+					
+					request.setAttribute("ReporteHorasContratacion", reporteHorasContratacion);
+					request.setAttribute("totalHrsGrupo", totalHrsGrupo);
+					request.setAttribute("totalHrsApoyo", totalHrsApoyo);
+					request.setAttribute("totalHrsGeneral", totalHrsGeneral);
+					
+					setResponseController("admin_reportes").forward(request, response);
 				}
 				
 				

@@ -6,6 +6,7 @@ import com.empresa.pojo.Reporte1;
 import com.empresa.pojo.Reporte2;
 import com.empresa.pojo.Reporte4;
 import com.empresa.pojo.ReporteGenerico;
+import com.empresa.pojo.ReporteHorasContratacion;
 
 public interface ReporteDao {
 
@@ -16,4 +17,6 @@ public interface ReporteDao {
 	ArrayList<ReporteGenerico> getAllReporte7();
 	ArrayList<ReporteGenerico> getAllReporte8();
 	ArrayList<ReporteGenerico> getAllReporte9();
+	
+	ArrayList<ReporteHorasContratacion> getAllReporteHorasContratacion();
 }

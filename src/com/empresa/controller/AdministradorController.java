@@ -267,6 +267,9 @@ public class AdministradorController extends HttpServlet {
 					setResponseController("admin_r_nombramiento").forward(request, response);
 				}
 				
+				
+				
+				
 				// Reportes
 				if (accion.equals("reportes")) {
 					
@@ -291,8 +294,6 @@ public class AdministradorController extends HttpServlet {
 					
 					setResponseController("admin_reportes").forward(request, response);
 				}
-				
-				
 				
 				
 			} catch (ClassNotFoundException | SQLException e) {

@@ -3,6 +3,7 @@ package com.empresa.controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -27,6 +28,7 @@ import com.empresa.modelo.ReporteDaoImpl;
 import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
+import com.empresa.pojo.ReporteHorasContratacion;
 import com.empresa.pojo.Usuario;
 
 /**
@@ -191,6 +193,32 @@ public class SecretariaController extends HttpServlet {
 							request.setAttribute("reportes9", reporteDao.getAllReporte9());
 							
 							setResponseController("secretaria_r_nombramiento").forward(request, response);
+						}
+						
+						
+						// Reportes
+						if (accion.equals("reportes")) {
+							
+							ReporteDao reporteDao = new ReporteDaoImpl(con);
+							
+							ArrayList<ReporteHorasContratacion> reporteHorasContratacion = reporteDao.getAllReporteHorasContratacion();
+							
+							Integer totalHrsGrupo = 0;
+							Integer totalHrsApoyo = 0;
+							Integer totalHrsGeneral = 0;
+							
+							for (ReporteHorasContratacion x : reporteHorasContratacion) {
+								totalHrsGrupo = totalHrsGrupo + x.getHrsGrupo();
+								totalHrsApoyo = totalHrsApoyo + x.getHrsApoyo();
+								totalHrsGeneral = totalHrsGeneral + x.getHrsTotal();
+							}
+							
+							request.setAttribute("ReporteHorasContratacion", reporteHorasContratacion);
+							request.setAttribute("totalHrsGrupo", totalHrsGrupo);
+							request.setAttribute("totalHrsApoyo", totalHrsApoyo);
+							request.setAttribute("totalHrsGeneral", totalHrsGeneral);
+							
+							setResponseController("secretaria_reportes").forward(request, response);
 						}
 						
 						

@@ -4,13 +4,13 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<t:admin_layout>
+<t:SecretariaLayout>
 	<jsp:attribute name="viewtitlename">
-     	<title>Admin - R. Nombramiento</title>
+     	<title>Secretaria - Reportes</title>
     </jsp:attribute>
 
 	<jsp:attribute name="viewuserrol">
-     	Administrador
+     	Secretaria
     </jsp:attribute>
 
 	<jsp:attribute name="viewtitleseccion">
@@ -42,10 +42,8 @@
 		       
     <div>
 	    <ul class="nav nav-tabs" id="myTabs" role="tablist">
+		    
 		    <li role="presentation" class="active">
-		    	<a href="#reporte1-tab-x" id="tab-reporte1" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">R. Horas de Contratación</a>
-		    </li>
-		    <li role="presentation" class="">
 		    	<a href="#reporte2-tab-x" role="tab" id="tab-reporte2" data-toggle="tab" aria-controls="direc-tab-x" aria-expanded="false">R. General</a>
 		    </li>
 	    </ul>
@@ -53,7 +51,7 @@
     
 	    <!-- Tab panes -->
 		  <div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="reporte1-tab-x">
+			<div role="tabpanel" class="tab-pane" id="reporte1-tab-x">
 				<div class="card">
 	               <div class="header">
 	               </div>
@@ -110,7 +108,7 @@
 			</div>
 			
 			
-			<div role="tabpanel" class="tab-pane" id="reporte2-tab-x">
+			<div role="tabpanel" class="tab-pane active" id="reporte2-tab-x">
 				<div class="card">
 	               	<div class="header">
 	                   <p class="category">REPORTE GENERAL</p>
@@ -700,4 +698,4 @@
     </div>
 </jsp:body>
 	
-</t:admin_layout>
+</t:SecretariaLayout>

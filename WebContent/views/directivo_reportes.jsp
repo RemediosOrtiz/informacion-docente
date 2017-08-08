@@ -4,13 +4,13 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<t:admin_layout>
+<t:DirectivoLayout>
 	<jsp:attribute name="viewtitlename">
-     	<title>Admin - R. Nombramiento</title>
+     	<title>Directivo - Reportes</title>
     </jsp:attribute>
 
 	<jsp:attribute name="viewuserrol">
-     	Administrador
+     	Directivo
     </jsp:attribute>
 
 	<jsp:attribute name="viewtitleseccion">
@@ -700,4 +700,4 @@
     </div>
 </jsp:body>
 	
-</t:admin_layout>
+</t:DirectivoLayout>

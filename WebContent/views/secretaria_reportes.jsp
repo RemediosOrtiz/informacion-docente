@@ -107,7 +107,6 @@
 		           </div>
 			</div>
 			
-			
 			<div role="tabpanel" class="tab-pane active" id="reporte2-tab-x">
 				<div class="card">
 	               	<div class="header">
@@ -150,6 +149,7 @@
 						        <th rowspan="3" style="color: #000;">CATEGORIAS</th>
 						        <th colspan="2" style="color: #000;">No. DE PROFESORES QUE IMPARTEN TSU</th>
 						        <th rowspan="3" style="color: #000;">TOTAL PROFESORES QUE IMPARTEN TSU</th>
+						        
 						        <th rowspan="3" style="color: #000;">TOTAL HORAS TSU</th>
 						        <th rowspan="3" style="color: #000;">EN CASO DE NO CUMPLIR LOS PTC CON LAS 40HRS, ANOTAR EN ESTA CELDA LAS HORAS REALES ASIGNADAS (realizar actividades administrativas)</th>
 						      	<th rowspan="3" style="color: #000;">INDICAR EL POR QUE NO ESTAN CUMPLIENDO CON SUS 40 HORAS O POR QUE SE PASAN DE LAS 40 HRS ASIGNADAS</th>
@@ -205,30 +205,96 @@
 						      <tr class="separador-normal">
 						      	<td rowspan="4">PTC TITULARES</td>
 						      	<td>A</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+							      		<c:if test="${reporteTSUHombres.descNombramiento == '1'}">
+							      			<c:out value="${reporteTSUHombres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '1'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '1'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '1'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '1'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
-						      	<td>0</td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '1'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '1'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '1'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '1'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '1'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '1'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
@@ -236,61 +302,194 @@
 						      </tr>
 						      <tr class="separador-normal">
 						      	<td>B</td>
-						      	<td>3</td>
-						      	<td>0</td>
-						      	<td>3</td>
-						      	<td>120</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+							      		<c:if test="${reporteTSUHombres.descNombramiento == '2'}">
+							      			<c:out value="${reporteTSUHombres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '2'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '2'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '2'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '2'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '2'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '2'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '2'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>1</td>
-						      	<td>1</td>
-						      	<td>1</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>3</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>3</td>
-						      	<td>1</td>
-						      	<td>0</td>
-						      	<td>1</td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '2'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '2'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '2'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
 						      </tr>
 						      <tr class="separador-normal">
 						      	<td>C</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+							      		<c:if test="${reporteTSUHombres.descNombramiento == '3'}">
+							      			<c:out value="${reporteTSUHombres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '3'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '3'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '3'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '3'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '3'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '3'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '3'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '3'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '3'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '3'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
@@ -298,63 +497,169 @@
 						      </tr>
 						      <tr class="separador-normal fila-separadora">
 						      	<td></td>
-						      	<td class="fila-totales">3</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">3</td>
-						      	<td class="fila-totales">120</td>
-						      	<td class="fila-totales">0</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoA1" value="${0}"/>
+									<c:forEach var="reporteTSUHombres" items="${reporteTSUHombres}">
+										<c:if test="${reporteTSUHombres.descNombramiento == '1'}"> <c:set var="grupoA1" value="${grupoA1 + reporteTSUHombres.total}" /></c:if>
+										<c:if test="${reporteTSUHombres.descNombramiento == '2'}"> <c:set var="grupoA1" value="${grupoA1 + reporteTSUHombres.total}" /></c:if>
+										<c:if test="${reporteTSUHombres.descNombramiento == '3'}"> <c:set var="grupoA1" value="${grupoA1 + reporteTSUHombres.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoA1}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoA2" value="${0}"/>
+									<c:forEach var="reporteTSUMujeres" items="${reporteTSUMujeres}">
+										<c:if test="${reporteTSUMujeres.descNombramiento == '1'}"> <c:set var="grupoA2" value="${grupoA2 + reporteTSUMujeres.total}" /></c:if>
+										<c:if test="${reporteTSUMujeres.descNombramiento == '2'}"> <c:set var="grupoA2" value="${grupoA2 + reporteTSUMujeres.total}" /></c:if>
+										<c:if test="${reporteTSUMujeres.descNombramiento == '3'}"> <c:set var="grupoA2" value="${grupoA2 + reporteTSUMujeres.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoA2}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoA3" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '1'}"> <c:set var="grupoA3" value="${grupoA3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '2'}"> <c:set var="grupoA3" value="${grupoA3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '3'}"> <c:set var="grupoA3" value="${grupoA3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoA3}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoA5" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '1'}"> <c:set var="grupoA5" value="${grupoA5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '2'}"> <c:set var="grupoA5" value="${grupoA5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '3'}"> <c:set var="grupoA5" value="${grupoA5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoA3*40}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoA4" value="${0}"/>
+									<c:forEach var="reporteTSUTotalHoras" items="${reporteTSUTotalHoras}">
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '1'}"> <c:set var="grupoA4" value="${grupoA4 + reporteTSUTotalHoras.total}" /></c:if>
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '2'}"> <c:set var="grupoA4" value="${grupoA4 + reporteTSUTotalHoras.total}" /></c:if>
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '3'}"> <c:set var="grupoA4" value="${grupoA4 + reporteTSUTotalHoras.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoA4}"/>
+						      	</td>
 						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales">0</td>
 						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">1</td>
-						      	<td class="fila-totales">1</td>
-						      	<td class="fila-totales">1</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">3</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">3</td>
-						      	<td class="fila-totales">1</td>
-						      	<td class="fila-totales">1</td>
-						      	<td class="fila-totales">0</td>
-						      	<td class="fila-totales">1</td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales"></td>
 						      </tr>
 						      
 						      <tr class="separador-normal">
 						      	<td rowspan="4">PTC ASOCIADOS</td>
 						      	<td>A</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+										<c:if test="${reporteTSUHombres.descNombramiento == '4'}">
+											<c:out value="${reporteTSUHombres.total}"/>
+										</c:if>
+									</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '4'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '4'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '4'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '4'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '4'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '4'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '4'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '4'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '4'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '4'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
@@ -362,61 +667,193 @@
 						      </tr>
 						      <tr class="separador-normal">
 						      	<td>B</td>
-						      	<td>6</td>
-						      	<td>6</td>
-						      	<td>12</td>
-						      	<td>480</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+										<c:if test="${reporteTSUHombres.descNombramiento == '5'}">
+											<c:out value="${reporteTSUHombres.total}"/>
+										</c:if>
+									</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '5'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '5'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '5'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '5'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '5'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '5'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '5'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>2</td>
-						      	<td>5</td>
-						      	<td>2</td>
-						      	<td>3</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>7</td>
-						      	<td>5</td>
-						      	<td>0</td>
-						      	<td>0</td>
-						      	<td>3</td>
-						      	<td>9</td>
-						      	<td>1</td>
-						      	<td>1</td>
-						      	<td>0</td>
-						      	<td>1</td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '5'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '5'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '5'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
 						      </tr>
 						      <tr class="separador-normal">
 						      	<td>C</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+										<c:if test="${reporteTSUHombres.descNombramiento == '6'}">
+											<c:out value="${reporteTSUHombres.total}"/>
+										</c:if>
+									</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '6'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '6'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '6'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '6'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '6'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '6'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '6'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '6'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '6'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '6'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
@@ -424,11 +861,51 @@
 						      </tr>
 						      <tr class="separador-normal fila-separadora">
 						      	<td></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoB1" value="${0}"/>
+									<c:forEach var="reporteTSUHombres" items="${reporteTSUHombres}">
+										<c:if test="${reporteTSUHombres.descNombramiento == '4'}"> <c:set var="grupoB1" value="${grupoB1 + reporteTSUHombres.total}" /></c:if>
+										<c:if test="${reporteTSUHombres.descNombramiento == '5'}"> <c:set var="grupoB1" value="${grupoB1 + reporteTSUHombres.total}" /></c:if>
+										<c:if test="${reporteTSUHombres.descNombramiento == '6'}"> <c:set var="grupoB1" value="${grupoB1 + reporteTSUHombres.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoB1}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoB2" value="${0}"/>
+									<c:forEach var="reporteTSUMujeres" items="${reporteTSUMujeres}">
+										<c:if test="${reporteTSUMujeres.descNombramiento == '4'}"> <c:set var="grupoB2" value="${grupoB2 + reporteTSUMujeres.total}" /></c:if>
+										<c:if test="${reporteTSUMujeres.descNombramiento == '5'}"> <c:set var="grupoB2" value="${grupoB2 + reporteTSUMujeres.total}" /></c:if>
+										<c:if test="${reporteTSUMujeres.descNombramiento == '6'}"> <c:set var="grupoB2" value="${grupoB2 + reporteTSUMujeres.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoB2}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoB3" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '4'}"> <c:set var="grupoB3" value="${grupoB3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '5'}"> <c:set var="grupoB3" value="${grupoB3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '6'}"> <c:set var="grupoB3" value="${grupoB3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoB3}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoB5" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '4'}"> <c:set var="grupoB5" value="${grupoB5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '5'}"> <c:set var="grupoB5" value="${grupoB5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '6'}"> <c:set var="grupoB5" value="${grupoB5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoB5*40}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoB4" value="${0}"/>
+									<c:forEach var="reporteTSUTotalHoras" items="${reporteTSUTotalHoras}">
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '4'}"> <c:set var="grupoB4" value="${grupoB4 + reporteTSUTotalHoras.total}" /></c:if>
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '5'}"> <c:set var="grupoB4" value="${grupoB4 + reporteTSUTotalHoras.total}" /></c:if>
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '6'}"> <c:set var="grupoB4" value="${grupoB4 + reporteTSUTotalHoras.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoB4}"/>
+						      	</td>
 						      	<td class="fila-totales"></td>
 						      	<td class="fila-totales"></td>
 						      	<td class="fila-totales"></td>
@@ -458,30 +935,96 @@
 						   	<tr class="separador-normal">
 						      	<td rowspan="4">TÈCNICOS ACADÈMICOS</td>
 						      	<td>A</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+										<c:if test="${reporteTSUHombres.descNombramiento == '8'}">
+											<c:out value="${reporteTSUHombres.total}"/>
+										</c:if>
+									</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '8'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '8'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '8'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '8'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '8'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '8'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '8'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '8'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '8'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '8'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
@@ -489,30 +1032,96 @@
 						      </tr>
 						      <tr class="separador-normal">
 						      	<td>B</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+										<c:if test="${reporteTSUHombres.descNombramiento == '9'}">
+											<c:out value="${reporteTSUHombres.total}"/>
+										</c:if>
+									</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '9'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '9'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '9'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '9'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '9'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '9'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '9'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '9'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '9'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '9'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
@@ -520,30 +1129,96 @@
 						      </tr>
 						      <tr class="separador-normal">
 						      	<td>C</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+										<c:if test="${reporteTSUHombres.descNombramiento == '10'}">
+											<c:out value="${reporteTSUHombres.total}"/>
+										</c:if>
+									</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '10'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '10'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '10'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '10'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '10'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '10'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '10'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '10'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '10'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '10'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
@@ -551,11 +1226,51 @@
 						      </tr>
 						      <tr class="separador-normal fila-separadora">
 						      	<td></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoC1" value="${0}"/>
+									<c:forEach var="reporteTSUHombres" items="${reporteTSUHombres}">
+										<c:if test="${reporteTSUHombres.descNombramiento == '8'}"> <c:set var="grupoC1" value="${grupoC1 + reporteTSUHombres.total}" /></c:if>
+										<c:if test="${reporteTSUHombres.descNombramiento == '9'}"> <c:set var="grupoC1" value="${grupoC1 + reporteTSUHombres.total}" /></c:if>
+										<c:if test="${reporteTSUHombres.descNombramiento == '10'}"> <c:set var="grupoC1" value="${grupoC1 + reporteTSUHombres.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoC1}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoC2" value="${0}"/>
+									<c:forEach var="reporteTSUMujeres" items="${reporteTSUMujeres}">
+										<c:if test="${reporteTSUMujeres.descNombramiento == '8'}"> <c:set var="grupoC2" value="${grupoC2 + reporteTSUMujeres.total}" /></c:if>
+										<c:if test="${reporteTSUMujeres.descNombramiento == '9'}"> <c:set var="grupoC2" value="${grupoC2 + reporteTSUMujeres.total}" /></c:if>
+										<c:if test="${reporteTSUMujeres.descNombramiento == '10'}"> <c:set var="grupoC2" value="${grupoC2 + reporteTSUMujeres.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoC2}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoC3" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '8'}"> <c:set var="grupoC3" value="${grupoC3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '9'}"> <c:set var="grupoC3" value="${grupoC3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '10'}"> <c:set var="grupoC3" value="${grupoC3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoC3}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoC5" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '8'}"> <c:set var="grupoC5" value="${grupoC5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '9'}"> <c:set var="grupoC5" value="${grupoC5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '10'}"> <c:set var="grupoC5" value="${grupoC5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoC5*40}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoC4" value="${0}"/>
+									<c:forEach var="reporteTSUTotalHoras" items="${reporteTSUTotalHoras}">
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '8'}"> <c:set var="grupoC4" value="${grupoC4 + reporteTSUTotalHoras.total}" /></c:if>
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '9'}"> <c:set var="grupoC4" value="${grupoC4 + reporteTSUTotalHoras.total}" /></c:if>
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '10'}"> <c:set var="grupoC4" value="${grupoC4 + reporteTSUTotalHoras.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoC4}"/>
+						      	</td>
 						      	<td class="fila-totales"></td>
 						      	<td class="fila-totales"></td>
 						      	<td class="fila-totales"></td>
@@ -586,30 +1301,96 @@
 						      <tr class="separador-normal">
 						      	<td rowspan="2">PA</td>
 						      	<td>B</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombres}" var="reporteTSUHombres">
+										<c:if test="${reporteTSUHombres.descNombramiento == '7'}">
+											<c:out value="${reporteTSUHombres.total}"/>
+										</c:if>
+									</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUMujeres}" var="reporteTSUMujeres">
+							      		<c:if test="${reporteTSUMujeres.descNombramiento == '7'}">
+							      			<c:out value="${reporteTSUMujeres.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '7'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUHombresMujeresTotal}" var="reporteTSUHombresMujeresTotal">
+							      		<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '7'}">
+							      			<c:out value="${reporteTSUHombresMujeresTotal.total*40}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteTSUTotalHoras}" var="reporteTSUTotalHoras">
+							      		<c:if test="${reporteTSUTotalHoras.descNombramiento == '7'}">
+							      			<c:out value="${reporteTSUTotalHoras.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td></td>
+						      	<td></td>
+						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioTSU}" var="reporteGradoEstudioTSU">
+							      		<c:if test="${reporteGradoEstudioTSU.descNombramiento == '7'}">
+							      			<c:out value="${reporteGradoEstudioTSU.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioSinLicenciatura}" var="reporteGradoEstudioSinLicenciatura">
+							      		<c:if test="${reporteGradoEstudioSinLicenciatura.descNombramiento == '7'}">
+							      			<c:out value="${reporteGradoEstudioSinLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteGradoEstudioConLicenciatura}" var="reporteGradoEstudioConLicenciatura">
+							      		<c:if test="${reporteGradoEstudioConLicenciatura.descNombramiento == '7'}">
+							      			<c:out value="${reporteGradoEstudioConLicenciatura.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente0}" var="reporteExperienciaDocente0">
+							      		<c:if test="${reporteExperienciaDocente0.descNombramiento == '7'}">
+							      			<c:out value="${reporteExperienciaDocente0.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaDocente1A4}" var="reporteExperienciaDocente1A4">
+							      		<c:if test="${reporteExperienciaDocente1A4.descNombramiento == '7'}">
+							      			<c:out value="${reporteExperienciaDocente1A4.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
-						      	<td></td>
+						      	<td>
+						      		<c:forEach items="${reporteExperienciaLaboralMayorA10}" var="reporteExperienciaLaboralMayorA10">
+							      		<c:if test="${reporteExperienciaLaboralMayorA10.descNombramiento == '7'}">
+							      			<c:out value="${reporteExperienciaLaboralMayorA10.total}"/>
+							      		</c:if>
+						      		</c:forEach>
+						      	</td>
 						      	<td></td>
 						      	<td></td>
 						      	<td></td>
@@ -617,10 +1398,41 @@
 						      </tr>
 						      <tr class="separador-normal fila-separadora">
 						      	<td></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales"></td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoD1" value="${0}"/>
+									<c:forEach var="reporteTSUHombres" items="${reporteTSUHombres}">
+										<c:if test="${reporteTSUHombres.descNombramiento == '7'}"> <c:set var="grupoD1" value="${grupoD1 + reporteTSUHombres.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoD1}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoD2" value="${0}"/>
+									<c:forEach var="reporteTSUMujeres" items="${reporteTSUMujeres}">
+										<c:if test="${reporteTSUMujeres.descNombramiento == '7'}"> <c:set var="grupoD2" value="${grupoD2 + reporteTSUMujeres.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoD2}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoD3" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '7'}"> <c:set var="grupoD3" value="${grupoD3 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoD3}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoD5" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:if test="${reporteTSUHombresMujeresTotal.descNombramiento == '7'}"> <c:set var="grupoD5" value="${grupoD5 + reporteTSUHombresMujeresTotal.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoD5*40}"/>
+						      	</td>
+						      	<td class="fila-totales">
+						      		<c:set var="grupoD4" value="${0}"/>
+									<c:forEach var="reporteTSUTotalHoras" items="${reporteTSUTotalHoras}">
+										<c:if test="${reporteTSUTotalHoras.descNombramiento == '7'}"> <c:set var="grupoD4" value="${grupoD4 + reporteTSUTotalHoras.total}" /></c:if>
+									</c:forEach>
+									<c:out value="${grupoD4}"/>
+						      	</td>
 						      	<td class="fila-totales"></td>
 						      	<td class="fila-totales"></td>
 						      	<td class="fila-totales"></td>
@@ -651,34 +1463,100 @@
 						      <tr class="separador-normal fila-separadora">
 						      	<td class="fila-totales">TOTAL</td>
 						      	<td class="fila-totales"></td>
-						      	<td class="fila-totales-final">21</td>
-						      	<td class="fila-totales-final">23</td>
-						      	<td class="fila-totales-final">44</td>
-						      	<td class="fila-totales-final">1477</td>
-						      	<td class="fila-totales-final">0</td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal1" value="${0}"/>
+									<c:forEach var="reporteTSUHombres" items="${reporteTSUHombres}">
+										<c:set var="grupoTotal1" value="${grupoTotal1 + reporteTSUHombres.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal1}"/>
+						      	</td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal2" value="${0}"/>
+									<c:forEach var="reporteTSUMujeres" items="${reporteTSUMujeres}">
+										<c:set var="grupoTotal2" value="${grupoTotal2 + reporteTSUMujeres.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal2}"/>
+						      	</td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal3" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:set var="grupoTotal3" value="${grupoTotal3 + reporteTSUHombresMujeresTotal.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal3}"/>
+						      	</td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal5" value="${0}"/>
+									<c:forEach var="reporteTSUHombresMujeresTotal" items="${reporteTSUHombresMujeresTotal}">
+										<c:set var="grupoTotal5" value="${grupoTotal5 + reporteTSUHombresMujeresTotal.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal5*40}"/>
+						      	</td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal4" value="${0}"/>
+									<c:forEach var="reporteTSUTotalHoras" items="${reporteTSUTotalHoras}">
+										<c:set var="grupoTotal4" value="${grupoTotal4 + reporteTSUTotalHoras.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal4}"/>
+						      	</td>
 						      	<td class="fila-totales-final"></td>
-						      	<td class="fila-totales-final">0</td>
 						      	<td class="fila-totales-final"></td>
-						      	<td class="fila-totales-final">5</td>
-						      	<td class="fila-totales-final">3</td>
-						      	<td class="fila-totales-final">18</td>
-						      	<td class="fila-totales-final">7</td>
-						      	<td class="fila-totales-final">4</td>
-						      	<td class="fila-totales-final">7</td>
-						      	<td class="fila-totales-final">0</td>
-						      	<td class="fila-totales-final">0</td>
-						      	<td class="fila-totales-final">9</td>
-						      	<td class="fila-totales-final">12</td>
-						      	<td class="fila-totales-final">12</td>
-						      	<td class="fila-totales-final">11</td>
-						      	<td class="fila-totales-final">0</td>
-						      	<td class="fila-totales-final">13</td>
-						      	<td class="fila-totales-final">12</td>
-						      	<td class="fila-totales-final">19</td>
-						      	<td class="fila-totales-final">2</td>
-						      	<td class="fila-totales-final">2</td>
-						      	<td class="fila-totales-final">0</td>
-						      	<td class="fila-totales-final">2</td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal9" value="${0}"/>
+									<c:forEach var="reporteGradoEstudioTSU" items="${reporteGradoEstudioTSU}">
+										<c:set var="grupoTotal9" value="${grupoTotal9 + reporteGradoEstudioTSU.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal9}"/>
+						      	</td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal10" value="${0}"/>
+									<c:forEach var="reporteGradoEstudioSinLicenciatura" items="${reporteGradoEstudioSinLicenciatura}">
+										<c:set var="grupoTotal10" value="${grupoTotal10 + reporteGradoEstudioSinLicenciatura.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal10}"/>
+						      	</td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal11" value="${0}"/>
+									<c:forEach var="reporteGradoEstudioConLicenciatura" items="${reporteGradoEstudioConLicenciatura}">
+										<c:set var="grupoTotal11" value="${grupoTotal11 + reporteGradoEstudioConLicenciatura.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal11}"/>
+						      	</td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal17" value="${0}"/>
+									<c:forEach var="reporteExperienciaDocente0" items="${reporteExperienciaDocente0}">
+										<c:set var="grupoTotal17" value="${grupoTotal17 + reporteExperienciaDocente0.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal17}"/>
+						      	</td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal18" value="${0}"/>
+									<c:forEach var="reporteExperienciaDocente1A4" items="${reporteExperienciaDocente1A4}">
+										<c:set var="grupoTotal18" value="${grupoTotal18 + reporteExperienciaDocente1A4.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal18}"/>
+						      	</td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final">
+						      		<c:set var="grupoTotal24" value="${0}"/>
+									<c:forEach var="reporteExperienciaLaboralMayorA10" items="${reporteExperienciaLaboralMayorA10}">
+										<c:set var="grupoTotal24" value="${grupoTotal24 + reporteExperienciaLaboralMayorA10.total}" />
+									</c:forEach>
+									<c:out value="${grupoTotal24}"/>
+						      	</td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
+						      	<td class="fila-totales-final"></td>
 						      </tr>
 						      
 	              			</tbody>
@@ -687,6 +1565,7 @@
 	           		</div>
 		         </div>
 			</div>
+			
 			
 			<!-- AQUI LAS DEMÀS TABS -->
 			

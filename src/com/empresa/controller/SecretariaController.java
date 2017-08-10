@@ -25,6 +25,8 @@ import com.empresa.modelo.NivelEstudioCDaoImpl;
 import com.empresa.modelo.NombramientoCDaoImpl;
 import com.empresa.modelo.ReporteDao;
 import com.empresa.modelo.ReporteDaoImpl;
+import com.empresa.modelo.ReporteGeneralDao;
+import com.empresa.modelo.ReporteGeneralDaoImpl;
 import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
@@ -199,24 +201,45 @@ public class SecretariaController extends HttpServlet {
 						// Reportes
 						if (accion.equals("reportes")) {
 							
+							// SECCION REPORTE TOTAL HORAS
 							ReporteDao reporteDao = new ReporteDaoImpl(con);
-							
+
 							ArrayList<ReporteHorasContratacion> reporteHorasContratacion = reporteDao.getAllReporteHorasContratacion();
-							
+
 							Integer totalHrsGrupo = 0;
 							Integer totalHrsApoyo = 0;
 							Integer totalHrsGeneral = 0;
-							
+
 							for (ReporteHorasContratacion x : reporteHorasContratacion) {
 								totalHrsGrupo = totalHrsGrupo + x.getHrsGrupo();
 								totalHrsApoyo = totalHrsApoyo + x.getHrsApoyo();
 								totalHrsGeneral = totalHrsGeneral + x.getHrsTotal();
 							}
-							
+
 							request.setAttribute("ReporteHorasContratacion", reporteHorasContratacion);
 							request.setAttribute("totalHrsGrupo", totalHrsGrupo);
 							request.setAttribute("totalHrsApoyo", totalHrsApoyo);
 							request.setAttribute("totalHrsGeneral", totalHrsGeneral);
+
+
+							// SECCION REPORTE GENERAL
+							ReporteGeneralDao reporteGeneralDao = new ReporteGeneralDaoImpl(con);
+
+							request.setAttribute("reporteTSUHombres", reporteGeneralDao.getTSUHombres());
+							request.setAttribute("reporteTSUMujeres", reporteGeneralDao.getTSUMujeres());
+							request.setAttribute("reporteTSUHombresMujeresTotal", reporteGeneralDao.getTSUTotal());
+
+							request.setAttribute("reporteTSUTotalHoras", reporteGeneralDao.getTSUTotalHoras());
+
+							request.setAttribute("reporteGradoEstudioTSU", reporteGeneralDao.getGradoEstudioTSU());
+							request.setAttribute("reporteGradoEstudioSinLicenciatura", reporteGeneralDao.getGradoEstudioSinLicenciatura());
+							request.setAttribute("reporteGradoEstudioConLicenciatura", reporteGeneralDao.getGradoEstudioConLicenciatura());
+
+
+							request.setAttribute("reporteExperienciaDocente0", reporteGeneralDao.getExperienciaDocente0());
+							request.setAttribute("reporteExperienciaDocente1A4", reporteGeneralDao.getExperienciaDocente1A4());
+
+							request.setAttribute("reporteExperienciaLaboralMayorA10", reporteGeneralDao.getExperienciaLaboralMayorA10());
 							
 							setResponseController("secretaria_reportes").forward(request, response);
 						}

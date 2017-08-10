@@ -1,15 +1,13 @@
 package com.empresa.pojo;
 
-public class ReporteGenerico {
+public class ReporteGeneral {
 
 	private String descNombramiento;
 	private Integer total;
 	
-	public ReporteGenerico() {
-		super();
+	public ReporteGeneral() {
 	}
-	public ReporteGenerico(String descNombramiento, Integer total) {
-		super();
+	public ReporteGeneral(String descNombramiento, Integer total) {
 		this.descNombramiento = descNombramiento;
 		this.total = total;
 	}
@@ -29,5 +27,4 @@ public class ReporteGenerico {
 	public String toString() {
 		return "ReporteGenerico [descNombramiento=" + descNombramiento + ", total=" + total + "]";
 	}
-	
 }

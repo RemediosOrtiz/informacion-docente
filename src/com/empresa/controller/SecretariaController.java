@@ -224,22 +224,36 @@ public class SecretariaController extends HttpServlet {
 
 							// SECCION REPORTE GENERAL
 							ReporteGeneralDao reporteGeneralDao = new ReporteGeneralDaoImpl(con);
-
+							
 							request.setAttribute("reporteTSUHombres", reporteGeneralDao.getTSUHombres());
 							request.setAttribute("reporteTSUMujeres", reporteGeneralDao.getTSUMujeres());
 							request.setAttribute("reporteTSUHombresMujeresTotal", reporteGeneralDao.getTSUTotal());
-
 							request.setAttribute("reporteTSUTotalHoras", reporteGeneralDao.getTSUTotalHoras());
-
+							
 							request.setAttribute("reporteGradoEstudioTSU", reporteGeneralDao.getGradoEstudioTSU());
 							request.setAttribute("reporteGradoEstudioSinLicenciatura", reporteGeneralDao.getGradoEstudioSinLicenciatura());
 							request.setAttribute("reporteGradoEstudioConLicenciatura", reporteGeneralDao.getGradoEstudioConLicenciatura());
-
-
+							request.setAttribute("reporteGradoEstudioEspecialidad", reporteGeneralDao.getGradoEstudioEspecialidad());
+							request.setAttribute("reporteGradoEstudioTeacher", reporteGeneralDao.getGradoEstudioTeacher());
+							request.setAttribute("reporteGradoEstudioSinMastria", reporteGeneralDao.getGradoEstudioSinMastria());
+							request.setAttribute("reporteGradoEstudioConMastria", reporteGeneralDao.getGradoEstudioConMastria());
+							request.setAttribute("reporteGradoEstudioSinDoctorado", reporteGeneralDao.getGradoEstudioSinDoctorado());
+							request.setAttribute("reporteGradoEstudioConDoctorado", reporteGeneralDao.getGradoEstudioConDoctorado());
+							
 							request.setAttribute("reporteExperienciaDocente0", reporteGeneralDao.getExperienciaDocente0());
 							request.setAttribute("reporteExperienciaDocente1A4", reporteGeneralDao.getExperienciaDocente1A4());
-
+							request.setAttribute("reporteExperienciaDocente5A10", reporteGeneralDao.getExperienciaDocente5A10());
+							request.setAttribute("reporteExperienciaDocenteMayorA10", reporteGeneralDao.getExperienciaDocenteMayorA10());
+							
 							request.setAttribute("reporteExperienciaLaboralMayorA10", reporteGeneralDao.getExperienciaLaboralMayorA10());
+							request.setAttribute("reporteExperienciaLaboral0", reporteGeneralDao.getExperienciaLaboral0());
+							request.setAttribute("reporteExperienciaLaboral1A4", reporteGeneralDao.getExperienciaLaboral1A4());
+							request.setAttribute("reporteExperienciaLaboral5A10", reporteGeneralDao.getExperienciaLaboral5A10());
+							
+							request.setAttribute("reporteDocenteParticipaEnCA", reporteGeneralDao.getDocenteParticipaEnCA()); 
+							request.setAttribute("reporteDocentePerteneceEnLineasInnovadoras", reporteGeneralDao.getDocenteParticipaEnLineasInnovadoras());
+							request.setAttribute("reporteDocenteCuentaConPTC", reporteGeneralDao.getDocenteCuentaConPTC());
+							request.setAttribute("reporteDocenteCuentaConPROMEP", reporteGeneralDao.getDonceteCuentaConPROMEP());
 							
 							setResponseController("secretaria_reportes").forward(request, response);
 						}

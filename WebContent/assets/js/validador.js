@@ -20,7 +20,7 @@ function vSoloNumeros(nombreElemento, vErrores, mensaje) {
 
 
 function vSoloTexto(nombreElemento, vErrores, mensaje) {
-	if ( !(/^[a-z]+$/i.test($(nombreElemento).val())) ) {
+	if ( !(/^[a-z á-ú]+$/i.test($(nombreElemento).val())) ) {
 		vErrores.push(mensaje);
 	}
 }

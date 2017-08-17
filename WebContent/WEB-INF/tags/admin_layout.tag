@@ -66,14 +66,16 @@
 				</c:choose>
                 </a>
             </div>
-
+			
             <ul class="nav">
+            <!-- 
                 <li>
                     <a href='<c:url value="/admin?accion=dashboard" />'>
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
+                 -->
                 <li>
                     <a href="${urlModificarMyUsuario}">
                         <i class="pe-7s-user"></i>
@@ -120,7 +122,7 @@
                         <p>R. Nombramiento</p>
                     </a>
                 </li>
-                
+                <!-- 
                 <li>
                     <a href="#!">
                         <i class="pe-7s-bell"></i>
@@ -133,6 +135,7 @@
                         <p>Upgrade to PRO</p>
                     </a>
                 </li>
+                 -->
             </ul>
     	</div>
     </div>

@@ -24,8 +24,14 @@
     </jsp:attribute>
 
 	<jsp:body>
-    
-   	            
+    <h1 class="modal-title">
+    <br>
+<!--  
+   				<center>
+				<b>¡Bienvenido al “Sistema de información Docente” hecho por SystemLink!</b>
+				</center>
+	-->
+    </h1>
 	</jsp:body>
 
 </t:DirectivoLayout>

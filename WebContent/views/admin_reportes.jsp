@@ -21,6 +21,29 @@
 
 	<jsp:attribute name="extrajs">
 	
+		<script src='<c:url value="assets/js/print-this/printThis.js"></c:url>'></script>
+		
+		<script>
+		$(document).ready(function() {
+			
+			$(".btn-imprimir-reporte-1").click(function() {
+				$('.imprimir-reporte-1').printThis({
+					importCSS: false,
+				    importStyle: "<style>table {border-collapse: collapse;} table, th, td {border: 1px solid black;}</style>",
+					header: "<h1>REPORTE HORAS</h1>"
+				});
+			});
+			
+			$(".btn-imprimir-reporte-2").click(function() {
+				$('.imprimir-reporte-2').printThis({
+					importCSS: false,
+				    importStyle: "<style>table {border-collapse: collapse;} table, th, td {border: 1px solid black;}</style>",
+					header: "<h1>REPORTE GENERAL DE DOCENTES</h1>"
+				});
+			});
+		});
+		</script>
+	
 		<c:if test="${sessionScope.mensaje-estatus == 1}">
 			<script>
 				$.notify({
@@ -67,7 +90,7 @@
 		           	</div>
 		               
 	               <div class="content table-responsive table-full-width">
-	               		<table class="table table-bordered">
+	               		<table class="table table-bordered imprimir-reporte-1">
 	               		
 						   <thead style="background-color: #C0C0C0;">
 						      <tr>
@@ -104,6 +127,8 @@
 							   </tr>
 							</tbody>
 						</table>
+						
+						<button class="btn btn-primary btn-sm btn-imprimir-reporte-1">Imprimir reporte</button>
 		               </div>
 		           </div>
 		           </div>
@@ -113,10 +138,11 @@
 			<div role="tabpanel" class="tab-pane" id="reporte2-tab-x">
 				<div class="card">
 	               	<div class="header">
-	                   <p class="category">REPORTE GENERAL</p>
+	                   <p class="category">REPORTE GENERAL - <button class="btn btn-primary btn-sm btn-imprimir-reporte-2">Imprimir reporte</button></p>
 	               	</div>
 	               	
 	               	<style>
+	               		
                			.header-reporte tr th {
 						    text-align: center;
 						    font-size: 10px !important;
@@ -144,7 +170,7 @@
 	               	</style>
 
 	               	<div class="header">
-	              		<table class="table table-bordered ">
+	              		<table class="table table-bordered imprimir-reporte-2">
 	               		
 						   <thead class="header-reporte" style="background-color: #C0C0C0; text-aling: center;">
 						      <tr>

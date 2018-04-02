@@ -26,11 +26,11 @@
 	<jsp:body>
    	<h1 class="modal-title">
     <br>
-    <!--
+    
    				<center>
-				<b>¡Bienvenido al “Sistema de información Docente” echo por SystemLink!</b>
+				<b>¡Bienvenido al “Sistema de información Docente” creado por SystemLink!</b>
 				</center>
-	-->
+	
     </h1>
    	            
 	</jsp:body>

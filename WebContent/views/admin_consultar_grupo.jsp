@@ -140,7 +140,7 @@
 			<div role="tabpanel" class="tab-pane active" id="admin-tab-x">
 				<div class="card">
 		               <div class="header">
-		                   <h4 class="title"><b>GRUPO: ${grupo.nombreGrupo}</b></h4></br>
+		                   <h4 class="title"><b>GRUPO: ${grupo.nombreGrupo}</b></h4><br>
 		                   <h5 class="title"><b>Asesor:</b></h5>
 		                   <p class="category"><b>
 		                   	<c:forEach items="${usuarios}" var="usuario">

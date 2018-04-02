@@ -1,5 +1,4 @@
-function llenarFormularioContacto(formularioNombre, result) {
-	
+function llenarFormularioContacto(formularioNombre, result) {	
 	console.log(result);
 	
 	$(formularioNombre + " .id_contacto").val(result.idContacto);

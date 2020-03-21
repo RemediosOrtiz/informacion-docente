@@ -829,7 +829,7 @@
 						
 							<c:if test="${requestScope.isModificable == 1 }">
 								<div style="width100%; text-align: right;">
-									<a href="#!" class="btn-get-direccion-actualizar btn btn-sm btn-primary btn-modificar-direccion"" data-toggle="modal" data-target="#modal-direccion" data-id-direccion="${direcciones.idDireccion}">Modificar</a>
+									<a href="#!" class="btn-get-direccion-actualizar btn btn-sm btn-primary btn-modificar-direccion" data-toggle="modal" data-target="#modal-direccion" data-id-direccion="${direcciones.idDireccion}">Modificar</a>
 									<a href="#!" class="btn-get-direccion-eliminar btn btn-sm btn-danger" data-id-direccion="${direcciones.idDireccion}">Eliminar</a>
 								</div>
 							</c:if>

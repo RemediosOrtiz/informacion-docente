@@ -31,7 +31,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		String sql = "SELECT * FROM USUARIO";
 		
 		try {
-			
+		
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			

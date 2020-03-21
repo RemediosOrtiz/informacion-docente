@@ -41,7 +41,7 @@
 </c:url>
 
 <div class="wrapper">
-    <div class="sidebar" data-color=purple data-image="assets/img/sidebar-4.jpg">
+    <div class="sidebar" data-color=purple data-image="assets/img/sidebar-8.jpeg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -83,6 +83,7 @@
                         <p>R. Nombramiento</p>
                     </a>
                 </li>
+                <!--
                 <li>
                     <a href="#!">
                         <i class="pe-7s-bell"></i>
@@ -95,6 +96,7 @@
                         <p>Upgrade to PRO</p>
                     </a>
                 </li>
+                -->
             </ul>
     	</div>
     </div>
@@ -115,12 +117,14 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
+                    	<!--
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
 								<p class="hidden-lg hidden-md">Dashboard</p>
                             </a>
                         </li>
+                        
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-globe"></i>
@@ -142,6 +146,7 @@
 								<p class="hidden-lg hidden-md">Search</p>
                             </a>
                         </li>
+                        -->
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -169,6 +174,7 @@
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
+                    	<!-- 
                         <li>
                             <a href="#">
                                 Home
@@ -189,10 +195,11 @@
                                Blog
                             </a>
                         </li>
+                        -->
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://www.pinterest.com.mx/remediosortizmartinez/portafolio/">Remedios Web</a>
                 </p>
             </div>
         </footer>

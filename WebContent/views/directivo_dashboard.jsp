@@ -23,15 +23,11 @@
       	<!-- <script>$(function() { $('#to-atm-int').addClass("active-section"); });</script> -->
     </jsp:attribute>
 
-	<jsp:body>
-    <h1 class="modal-title">
-    <br>
-<!--  
-   				<center>
-				<b>¡Bienvenido al “Sistema de información Docente” hecho por SystemLink!</b>
-				</center>
-	-->
+    <jsp:body>
+    <h1 class="modal-title text-center">
+  		<b>¡Bienvenido! al “Sistema de Información Docente”</b>
     </h1>
+   	            
 	</jsp:body>
 
 </t:DirectivoLayout>

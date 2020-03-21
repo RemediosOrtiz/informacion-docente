@@ -398,7 +398,7 @@ public class AdministradorController extends HttpServlet {
 					usuario.setPassword(new Hasher().generateHash(request.getParameter("password")));
 					usuario.setEstatus(Integer.parseInt(request.getParameter("estatus")));
 					
-					// Guardar usuario
+					// Guardar usuario -----------------------------------------------------------------------------------------------
 					if (usuarioDao.save(usuario)) {
 						LOG.info("Usuario creado");
 						
@@ -436,7 +436,7 @@ public class AdministradorController extends HttpServlet {
 					// Redireccionar a la URL de admin para usuarios
 					response.sendRedirect("admin?accion=usuarios");
 				}
-				
+				//-------------------------------------------------------------------------------------------------------------------
 				
 				
 				// nuevo-grupo

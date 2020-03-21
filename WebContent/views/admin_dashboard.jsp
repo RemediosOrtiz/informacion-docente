@@ -17,20 +17,15 @@
      	Dashboard
     </jsp:attribute>
 
-	<jsp:attribute name="extracss"> </jsp:attribute>
+	<jsp:attribute name="extracss"></jsp:attribute>
 
 	<jsp:attribute name="extrajs">
       	<!-- <script>$(function() { $('#to-atm-int').addClass("active-section"); });</script> -->
     </jsp:attribute>
 
 	<jsp:body>
-   	<h1 class="modal-title">
-    <br>
-    
-   				<center>
-				<b>¡Bienvenido al “Sistema de información Docente” creado por SystemLink!</b>
-				</center>
-	
+   	<h1 class="modal-title text-center">
+		<b>¡Bienvenido! al “Sistema de Información Docente”</b>
     </h1>
    	            
 	</jsp:body>

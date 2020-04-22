@@ -18,7 +18,7 @@
 	<div class="bg-content">
 
 		<div class="login-content"
-			style="background-image: url('assets/img/bg.jpg')">
+			style="background-image: url('assets/img/login.jpg')">
 
 			<div class="login-content-color">
 

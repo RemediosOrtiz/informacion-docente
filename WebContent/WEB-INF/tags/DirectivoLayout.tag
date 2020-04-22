@@ -41,7 +41,7 @@
 </c:url>
 
 <div class="wrapper">
-    <div class="sidebar" data-color=azure data-image="assets/img/sidebar-8.jpeg">
+    <div class="sidebar" data-color=azure data-image="assets/img/sidebar-7.png">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -119,13 +119,14 @@
                                 <li><a href="#">Notification 2</a></li>
                               </ul>
                         </li>
+                        -->
                         <li>
                            <a href="">
                                 <i class="fa fa-search"></i>
 								<p class="hidden-lg hidden-md">Search</p>
                             </a>
                         </li>
-                        -->
+                        
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

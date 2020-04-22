@@ -350,10 +350,10 @@
 			                       <tbody>
 			                       
 			                       <c:set var="contadorDocentes" scope="session" value="${0}"/>
-			                       	<c:forEach var="usuario" items="${usuarios}">
+			                       	<c:forEach var="usuario" var="contadorDocentes" items="${usuarios}">
 				                       	<c:if test="${usuario.idUsuarioRol == 4}">
 				                       		<tr>
-					                           	<td><c:out value = "${contadorDocentes+1}"/></td>
+					                           	<td><c:out value="${contadorDocentes}"/></td>
 					                           	<td><c:out value="${usuario.matricula}"/></td>
 					                           	<td><c:out value="${usuario.contacto.nombre}"/></td>
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>

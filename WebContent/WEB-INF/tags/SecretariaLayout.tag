@@ -140,13 +140,14 @@
                                 <li><a href="#">Notification 2</a></li>
                               </ul>
                         </li>
+                        -->
                         <li>
                            <a href="">
                                 <i class="fa fa-search"></i>
 								<p class="hidden-lg hidden-md">Search</p>
                             </a>
                         </li>
-                        -->
+                        
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

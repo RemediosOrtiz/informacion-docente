@@ -41,7 +41,7 @@
 </c:url>
 
 <div class="wrapper">
-    <div class="sidebar" data-color=green data-image="assets/img/sidebar-4.jpg">
+    <div class="sidebar" data-color=green data-image="assets/img/sidebar-7.png">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -65,18 +65,6 @@
                         <p>Perfil de Usuario</p>
                     </a>
                 </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
             </ul>
     	</div>
     </div>
@@ -97,27 +85,6 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                              </ul>
-                        </li>
                         <li>
                            <a href="">
                                 <i class="fa fa-search"></i>
@@ -151,6 +118,7 @@
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
+                    	<!-- 
                         <li>
                             <a href="#">
                                 Home
@@ -171,10 +139,11 @@
                                Blog
                             </a>
                         </li>
+                        -->
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://www.pinterest.com.mx/remediosortizmartinez/portafolio/">Remedios Web</a>
                 </p>
             </div>
         </footer>

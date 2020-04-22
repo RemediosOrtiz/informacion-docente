@@ -43,10 +43,10 @@
 <div class="wrapper">
 	<c:choose>
 		<c:when test="${sessionScope.id_usuario_rol == 1}">
-			<div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpeg">
+			<div class="sidebar" data-color="blue" data-image="assets/img/sidebar-7.png">
 		</c:when>
 		<c:otherwise>
-			<div class="sidebar" data-color="azure" data-image="assets/img/sidebar-8.jpeg">
+			<div class="sidebar" data-color="azure" data-image="assets/img/sidebar-7.png">
 		</c:otherwise>
 	</c:choose>
     
@@ -178,14 +178,14 @@
                                 <li><a href="#">Notification 2</a></li>
                               </ul>
                         </li>
-                        
+                        -->
                         <li>
                            <a href="">
                                 <i class="fa fa-search"></i>
 								<p class="hidden-lg hidden-md">Search</p>
                             </a>
                         </li>
-            			-->
+            			
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

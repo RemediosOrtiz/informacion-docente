@@ -173,27 +173,28 @@
 			                       
 			                       <c:set var="contadorGrupo" value="${0}"/>
 			                       	<c:forEach var="materias" items="${materias}">
-				                       		<tr>
-					                           	<td><c:out value="${contadorGrupo+1}"/></td>
-					                           	<td>
-													<c:forEach items="${materiaCatalogo}" var="materiaCatalogo">
-															<c:if test="${materias.idMateriaC == materiaCatalogo.idMateriaC}">
-																<c:out value="${materiaCatalogo.nombreMateria}"/>
-															</c:if>
-													</c:forEach>
-					                           	</td>
-					                           	<td>
-					                           		<c:forEach items="${usuarios}" var="usuario">
-														<c:if test="${usuario.idUsuario == materias.idUsuario}">
-															${usuario.contacto.nombre} ${usuario.contacto.apPaterno} ${usuario.contacto.apMaterno}
+			                       		<c:set var="contadorGrupo" value="${contadorGrupo + 1}"/>
+			                       		<tr>
+				                           	<td><c:out value="${contadorGrupo}"/></td>
+				                           	<td>
+												<c:forEach items="${materiaCatalogo}" var="materiaCatalogo">
+														<c:if test="${materias.idMateriaC == materiaCatalogo.idMateriaC}">
+															<c:out value="${materiaCatalogo.nombreMateria}"/>
 														</c:if>
-													</c:forEach>
-					                           	</td>
-					                           	<td><c:out value="${materias.horasGeneral}"/> horas
-					                           	</td>
-					                           	<td><c:out value="${materias.horasApoyo}"/> horas
-					                           	</td>
-				                           </tr>
+												</c:forEach>
+				                           	</td>
+				                           	<td>
+				                           		<c:forEach items="${usuarios}" var="usuario">
+													<c:if test="${usuario.idUsuario == materias.idUsuario}">
+														${usuario.contacto.nombre} ${usuario.contacto.apPaterno} ${usuario.contacto.apMaterno}
+													</c:if>
+												</c:forEach>
+				                           	</td>
+				                           	<td><c:out value="${materias.horasGeneral}"/> horas
+				                           	</td>
+				                           	<td><c:out value="${materias.horasApoyo}"/> horas
+				                           	</td>
+			                           </tr>
 			                       	</c:forEach>
 			                       	
 		                       </tbody>

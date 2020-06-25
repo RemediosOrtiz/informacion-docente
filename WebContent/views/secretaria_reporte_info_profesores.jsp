@@ -147,188 +147,7 @@
     
 	    <!-- Tab panes -->
 		  <div class="tab-content">
-			<div role="tabpanel" class="tab-pane" id="admin-tab-x">
-				<div class="card">
-		               <div class="header">
-		                   <h4 class="title"><b>ADMINISTRADORES</b></h4>
-		                   <p class="category">Usuarios Administradores</p>
-		               </div>
-		               <div class="content table-responsive table-full-width">
-		                   <table class="table table-hover table-striped">
-		                       <thead>
-		                           <tr>
-								        <th>No</th>
-				                       	<th>Matricula</th>
-				                       	<th>Nombre</th>
-				                       	<th>Apellidos</th>
-				                       	<th>Rol</th>
-				                       	<th></th>
-			                       </tr>
-					               </thead>
-			                       <tbody>
-			                       
-			                       <c:set var="contadorAdmin" scope="session" value="${0}"/>
-			                       	<c:forEach var="usuario" items="${usuarios}">
-				                       	<c:if test="${usuario.idUsuarioRol == 1}">
-				                       		<tr>
-					                           	<td><c:out value = "${contadorAdmin+1}"/></td>
-					                           	<td><c:out value="${usuario.matricula}"/></td>
-					                           	<td><c:out value="${usuario.contacto.nombre}"/></td>
-					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
-					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
-					                           	<td>
-													<c:url value="/admin" var="urlModificarUsuario">
-					                           			<c:param name="accion" value="modificar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
-					                           	</td>
-				                           </tr>
-				                       	</c:if>
-			                       	</c:forEach>
-			                       	
-		                       </tbody>
-		                   </table>
-		               </div>
-		           </div>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="administrativo-tab-x">
-				<div class="card">
-		               <div class="header">
-		                   <h4 class="title"><b>ADMINISTRATIVO</b></h4>
-		                   <p class="category">Usuarios Administrativo</p>
-		               </div>
-		               <div class="content table-responsive table-full-width">
-		                   <table class="table table-hover table-striped">
-		                       <thead>
-		                           <tr>
-								        <th>No</th>
-				                       	<th>Matricula</th>
-				                       	<th>Nombre</th>
-				                       	<th>Apellidos</th>
-				                       	<th>Rol</th>
-				                       	<th></th>
-			                       </tr>
-					               </thead>
-			                       <tbody>
-			                       
-			                       <c:set var="contadorAdmin" scope="session" value="${0}"/>
-			                       	<c:forEach var="usuario" items="${usuarios}">
-				                       	<c:if test="${usuario.idUsuarioRol == 6}">
-				                       		<tr>
-					                           	<td><c:out value = "${contadorAdmin+1}"/></td>
-					                           	<td><c:out value="${usuario.matricula}"/></td>
-					                           	<td><c:out value="${usuario.contacto.nombre}"/></td>
-					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
-					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
-					                           	<td>
-													<c:url value="/admin" var="urlModificarUsuario">
-					                           			<c:param name="accion" value="modificar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
-					                           	</td>
-				                           </tr>
-				                       	</c:if>
-			                       	</c:forEach>
-			                       	
-		                       </tbody>
-		                   </table>
-		               </div>
-		           </div>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="direc-tab-x">
-				<div class="card">
-		               <div class="header">
-		                   <h4 class="title"><b>DIRECTIVOS</b></h4>
-		                   <p class="category">Usuarios Directivos</p>
-		               </div>
-		               <div class="content table-responsive table-full-width">
-		                    <table class="table table-hover table-striped">
-		                       <thead>
-		                           <tr>
-								        <th>No</th>
-				                       	<th>Matricula</th>
-				                       	<th>Nombre</th>
-				                       	<th>Apellidos</th>
-				                       	<th>Rol</th>
-				                       	<th></th>
-			                       </tr>
-					               </thead>
-			                       <tbody>
-			                       
-			                       <c:set var="contadorDirectivo" scope="session" value="${0}"/>
-			                       	<c:forEach var="usuario" items="${usuarios}">
-				                       	<c:if test="${usuario.idUsuarioRol == 2}">
-				                       		<tr>
-					                           	<td><c:out value = "${contadorDirectivo+1}"/></td>
-					                           	<td><c:out value="${usuario.matricula}"/></td>
-					                           	<td><c:out value="${usuario.contacto.nombre}"/></td>
-					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
-					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
-					                           	<td>
-													<c:url value="/admin" var="urlModificarUsuario">
-					                           			<c:param name="accion" value="modificar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
-					                           	</td>
-				                           </tr>
-				                       	</c:if>
-			                       	</c:forEach>
-			                       	
-		                       </tbody>
-		                   </table>
-		
-		               </div>
-		           </div>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="secreta-tab-x">
-				<div class="card">
-		               <div class="header">
-		                   <h4 class="title"><b>SECRETARIAS</b></h4>
-		                   <p class="category">Usuarios Secretarias</p>
-		               </div>
-		               <div class="content table-responsive table-full-width">
-		                    <table class="table table-hover table-striped">
-		                       <thead>
-		                           <tr>
-								        <th>No</th>
-				                       	<th>Matricula</th>
-				                       	<th>Nombre</th>
-				                       	<th>Apellidos</th>
-				                       	<th>Rol</th>
-				                       	<th></th>
-			                       </tr>
-					               </thead>
-			                       <tbody>
-			                       
-			                       <c:set var="contadorSecretarias" scope="session" value="${0}"/>
-			                       	<c:forEach var="usuario" items="${usuarios}">
-				                       	<c:if test="${usuario.idUsuarioRol == 3}">
-				                       		<tr>
-					                           	<td><c:out value = "${contadorSecretarias+1}"/></td>
-					                           	<td><c:out value="${usuario.matricula}"/></td>
-					                           	<td><c:out value="${usuario.contacto.nombre}"/></td>
-					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
-					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
-					                           	<td>
-													<c:url value="/admin" var="urlModificarUsuario">
-					                           			<c:param name="accion" value="modificar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
-					                           	</td>
-				                           </tr>
-				                       	</c:if>
-			                       	</c:forEach>
-			                       	
-		                       </tbody>
-		                   </table>
-		
-		               </div>
-		           </div>
-			</div>
+		  
 			<div role="tabpanel" class="tab-pane active" id="docen-tab-x">
 				<div class="card">
 		               <div class="header">
@@ -340,7 +159,7 @@
 		                       <thead>
 		                           <tr>
 								        <th>No</th>
-				                       	<th>Matricula</th>
+				                       	<th>Matrícula</th>
 				                       	<th>Nombre</th>
 				                       	<th>Apellidos</th>
 				                       	<th>Rol</th>
@@ -350,8 +169,9 @@
 			                       <tbody>
 			                       
 			                       <c:set var="contadorDocentes" scope="session" value="${0}"/>
-			                       	<c:forEach var="usuario" var="contadorDocentes" items="${usuarios}">
+			                       	<c:forEach var="usuario" items="${usuarios}">
 				                       	<c:if test="${usuario.idUsuarioRol == 4}">
+				                       		<c:set var="contadorDocentes" value="${contadorDocentes + 1}"/> 
 				                       		<tr>
 					                           	<td><c:out value="${contadorDocentes}"/></td>
 					                           	<td><c:out value="${usuario.matricula}"/></td>
@@ -375,52 +195,7 @@
 		               </div>
 		           </div>
 			</div>
-			<div role="tabpanel" class="tab-pane" id="labora-tab-x">
-				<div class="card">
-		               <div class="header">
-		                   <h4 class="title"><b>LABORATORISTAS</b></h4>
-		                   <p class="category">Usuarios Administradores</p>
-		               </div>
-		               <div class="content table-responsive table-full-width">
-		                    <table class="table table-hover table-striped">
-		                       <thead>
-		                           <tr>
-								        <th>No</th>
-				                       	<th>Matricula</th>
-				                       	<th>Nombre</th>
-				                       	<th>Apellidos</th>
-				                       	<th>Rol</th>
-				                       	<th></th>
-			                       </tr>
-					               </thead>
-			                       <tbody>
-			                       
-			                       <c:set var="contadorLaboratoristas" scope="session" value="${0}"/>
-			                       	<c:forEach var="usuario" items="${usuarios}">
-				                       	<c:if test="${usuario.idUsuarioRol == 5}">
-				                       		<tr>
-					                           	<td><c:out value = "${contadorLaboratoristas+1}"/></td>
-					                           	<td><c:out value="${usuario.matricula}"/></td>
-					                           	<td><c:out value="${usuario.contacto.nombre}"/></td>
-					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
-					                           	<td><c:out value="${usuario.usuarioRol.descRol}"/></td>
-					                           	<td>
-													<c:url value="/admin" var="urlModificarUsuario">
-					                           			<c:param name="accion" value="modificar-usuario" />
-													    <c:param name="id-usuario" value="${usuario.idUsuario}" />
-													</c:url>
-													<a href="${urlModificarUsuario}" class="btn btn-sm btn-primary">Consultar / Modificar</a>
-					                           	</td>
-				                           </tr>
-				                       	</c:if>
-			                       	</c:forEach>
-			                       	
-		                       </tbody>
-		                   </table>
-		
-		               </div>
-		           </div>
-			</div>
+	
 		  </div>
     </div>
     

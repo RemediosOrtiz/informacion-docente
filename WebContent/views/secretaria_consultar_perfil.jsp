@@ -14,7 +14,7 @@
     </jsp:attribute>
 
 	<jsp:attribute name="viewtitleseccion">
-     	Usuario
+     	Consultar Usuario
     </jsp:attribute>
 
 	<jsp:attribute name="extracss"> </jsp:attribute>
@@ -35,8 +35,8 @@
 	
 	
     
-    <!-- MODAL PARA ACTUALIZAR CUENTA -->  	
-    <div class="modal fade" id="modal-cuenta" tabindex="-1" role="dialog" aria-labelledby="modal-cuenta">
+<!-- MODAL PARA ACTUALIZAR CUENTA -->  	
+<div class="modal fade" id="modal-cuenta" tabindex="-1" role="dialog" aria-labelledby="modal-cuenta">
 	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -91,7 +91,8 @@
 			</form>
 		</div>
 	</div>
-</div> <!-- FIN MODAL PARA ACTUALIZAR CUENTA -->
+</div> 
+<!-- FIN MODAL PARA ACTUALIZAR CUENTA -->
 
 
 <!-- MODAL PARA ACTUALIZAR CONTACTO -->
@@ -752,7 +753,6 @@
 				</div>
 				
 				</c:if>
-				
 				
 			</div>
 		</div>

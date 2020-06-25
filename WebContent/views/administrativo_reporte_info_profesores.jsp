@@ -203,7 +203,7 @@
 		                       <thead>
 		                           <tr>
 								        <th>No</th>
-				                       	<th>Matricula</th>
+				                       	<th>Matrícula</th>
 				                       	<th>Nombre</th>
 				                       	<th>Apellidos</th>
 				                       	<th>Rol</th>
@@ -215,8 +215,9 @@
 			                       <c:set var="contadorAdmin" scope="session" value="${0}"/>
 			                       	<c:forEach var="usuario" items="${usuarios}">
 				                       	<c:if test="${usuario.idUsuarioRol == 6}">
+				                       	<c:set var="contadorAdmin" value="${contadorAdmin + 1}"/>
 				                       		<tr>
-					                           	<td><c:out value = "${contadorAdmin+1}"/></td>
+					                           	<td><c:out value = "${contadorAdmin}"/></td>
 					                           	<td><c:out value="${usuario.matricula}"/></td>
 					                           	<td><c:out value="${usuario.contacto.nombre}"/></td>
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>
@@ -352,8 +353,9 @@
 			                       <c:set var="contadorDocentes" scope="session" value="${0}"/>
 			                       	<c:forEach var="usuario" items="${usuarios}">
 				                       	<c:if test="${usuario.idUsuarioRol == 4}">
+				                       		<c:set var="contadorDocentes" value="${contadorDocentes +1}"/>
 				                       		<tr>
-					                           	<td><c:out value = "${contadorDocentes+1}"/></td>
+					                           	<td><c:out value = "${contadorDocentes}"/></td>
 					                           	<td><c:out value="${usuario.matricula}"/></td>
 					                           	<td><c:out value="${usuario.contacto.nombre}"/></td>
 					                           	<td><c:out value="${usuario.contacto.apPaterno}"/> <c:out value="${usuario.contacto.apMaterno}"/></td>

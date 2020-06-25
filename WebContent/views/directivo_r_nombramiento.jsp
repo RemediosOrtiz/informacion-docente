@@ -74,6 +74,7 @@
     
 	    <!-- Tab panes -->
 		  <div class="tab-content">
+		  
 			<div role="tabpanel" class="tab-pane active" id="reporte1-tab-x">
 				<div class="card">
 		               <div class="header">
@@ -83,21 +84,28 @@
 		               
 		               <div class="header">
 		               <div class="content table-responsive table-full-width">
-							<c:forEach items="${reportes1}" var="reportes1">
-						        <table style="margin-bottom: 5px;">
-									<tr style="margin-top: 10px; margin-bottom: 5px; border-top: solid 1px #E5E5E5">
-										<td width="200px">
-											<h6>${reportes1.nombramiento}</h6>
-										</td>
-										<td width="200px" style="text-align: right;">${reportes1.sexoH}: </td>
-										<td width="20px" style="text-align: right;"><c:out value="${reportes1.sexoHTotal}"></c:out></td>
-										<td width="200px" style="text-align: right;">${reportes1.sexoM}: </td>
-										<td width="20px" style="text-align: right;"><c:out value="${reportes1.sexoMTotal}"></c:out></td>
-										<td width="200px" style="text-align: right;">TOTAL: </td>
-										<td width="20px" style="text-align: right;"><c:out value="${reportes1.total}"></c:out></td>
-									</tr>
-								</table>
+				        <table style="table margin-bottom: 5px;">
+					        <thead style="background-color: #C0C0C0;">
+						      <tr>
+						      	<th style="color: #000; text-align: left">Puesto nombramiento</th>
+						        <th style="color: #000; text-align: center">Hombres</th>
+						        <th style="color: #000; text-align: center">Mujeres</th>
+						        <th style="color: #000; text-align: center">Total</th>
+						      </tr>
+						   </thead>
+					   	   <tbody>
+					   	   	<c:forEach items="${reportes1}" var="reportes1">
+							<tr style="margin-top: 10px; margin-bottom: 5px; border-top: solid 1px #E5E5E5">
+								<td width="200px">
+									<h6>${reportes1.nombramiento}</h6>
+								</td>
+								<td width="200px" style="text-align: center;"><c:out value="${reportes1.sexoHTotal}"></c:out></td>
+								<td width="200px" style="text-align: center;"><c:out value="${reportes1.sexoMTotal}"></c:out></td>
+								<td width="200px" style="text-align: center;"><c:out value="${reportes1.total}"></c:out></td>
+							</tr>
 							</c:forEach>
+						  </tbody>
+						</table>
 		               </div>
 		           </div>
 		           </div>
@@ -113,21 +121,34 @@
 		               
 		               <div class="header">
 		               <div class="content table-responsive table-full-width">
-							<c:forEach items="${reportes2}" var="reportes2">
-						        <table style="margin-bottom: 5px;">
-									<tr style="margin-top: 10px; margin-bottom: 5px; border-top: solid 1px #E5E5E5">
-										<td width="200px">
-											<h6>${reportes2.descNombramiento}</h6>
-										</td>
-										<td width="20px" style="text-align: right;"><c:out value="${reportes2.clave}"></c:out></td>
-										<td width="200px" style="text-align: right;">${reportes2.nombreGrupo}: </td>
-										<td width="200px" style="text-align: right;"><c:out value="${reportes2.horas}"></c:out> Horas totales</td>
-									</tr>
-								</table>
-							</c:forEach>
+							
+				        <table style="margin-bottom: 5px;">
+				        	<thead style="background-color: #C0C0C0;">
+						      <tr>
+						      	<th style="color: #000; text-align: left">Puesto nombramiento</th>
+						        <th style="color: #000; text-align: left">Clave grupo</th>
+						        <th style="color: #000; text-align: left">Nombre Grupo</th>
+						        <th style="color: #000; text-align: left">Horas totales</th>
+						      </tr>
+						   </thead>
+						   <tbody>
+						   	<c:forEach items="${reportes2}" var="reportes2">
+						   
+							<tr style="margin-top: 10px; margin-bottom: 5px; border-top: solid 1px #E5E5E5">
+								<td width="200px">
+									<h6>${reportes2.descNombramiento}</h6>
+								</td>
+								<td width="200px" style="text-align: left;"><c:out value="${reportes2.clave}"></c:out></td>
+								<td width="200px" style="text-align: left;">${reportes2.nombreGrupo}</td>
+								<td width="200px" style="text-align: left;"><c:out value="${reportes2.horas}"></c:out></td>
+							</tr>
+						   </c:forEach>
+						  </tbody>
+						</table>
+							
 		               </div>
 		           </div>
-		           </div>
+		        </div>
 			</div>
 			
 			
@@ -156,22 +177,32 @@
 		               
 		               <div class="header">
 		               <div class="content table-responsive table-full-width">
-							<c:forEach items="${reportes4}" var="reportes4">
-						        <table style="margin-bottom: 5px;">
-									<tr style="margin-top: 10px; margin-bottom: 5px; border-top: solid 1px #E5E5E5">
-										<td width="200px">
-											<h6>${reportes4.descNombramiento}</h6>
-										</td>
-										<td width="20px" style="text-align: right;"><c:out value="${reportes4.sexo}"> </c:out></td>
-										<td width="20px" style="text-align: center;"></td>
-										<td width="200px" style="text-align: left;"> ${reportes4.nombre} ${reportes4.apPaterno} ${reportes4.apMaterno} </td>
-										<td width="200px" style="text-align: right;"><c:out value="${reportes4.anios}"></c:out> Años de experiencia docente</td>
-									</tr>
-								</table>
-							</c:forEach>
+							
+					        <table style="margin-bottom: 5px;">
+					        	<thead style="background-color: #C0C0C0;">
+							      <tr>
+							      	<th style="color: #000; text-align: left">Puesto nombramiento</th>
+							        <th style="color: #000; text-align: left">Género</th>
+							        <th style="color: #000; text-align: left">Nombre del docente</th>
+							        <th style="color: #000; text-align: center">Años de experiencia</th>
+							      </tr>
+							   </thead>
+							   <tbody>
+							   	<c:forEach items="${reportes4}" var="reportes4">
+								<tr style="margin-top: 10px; margin-bottom: 5px; border-top: solid 1px #E5E5E5">
+									<td width="200px">
+										<h6>${reportes4.descNombramiento}</h6>
+									</td>
+									<td width="200px" style="text-align: left;"><c:out value="${reportes4.sexo}"> </c:out></td>
+									<td width="200px" style="text-align: left;"> ${reportes4.nombre} ${reportes4.apPaterno} ${reportes4.apMaterno} </td>
+									<td width="200px" style="text-align: center;"><c:out value="${reportes4.anios}"></c:out></td>
+								</tr>
+								</c:forEach>
+							   </tbody>
+							</table>
 		               </div>
 		           </div>
-		           </div>
+	           </div>
 			</div>
 			
 			

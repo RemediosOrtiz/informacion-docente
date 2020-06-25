@@ -25,6 +25,8 @@ import com.empresa.modelo.NivelEstudioCDaoImpl;
 import com.empresa.modelo.NombramientoCDaoImpl;
 import com.empresa.modelo.ReporteDao;
 import com.empresa.modelo.ReporteDaoImpl;
+import com.empresa.modelo.ReporteGeneralDao;
+import com.empresa.modelo.ReporteGeneralDaoImpl;
 import com.empresa.modelo.TipoLugarDaoImpl;
 import com.empresa.modelo.UsuarioDaoImpl;
 import com.empresa.modelo.UsuarioRolDaoImpl;
@@ -157,6 +159,7 @@ public class DirectivoController extends HttpServlet {
 						// Reportes
 						if (accion.equals("reportes")) {
 							
+							// SECCION REPORTE TOTAL HORAS
 							ReporteDao reporteDao = new ReporteDaoImpl(con);
 							
 							ArrayList<ReporteHorasContratacion> reporteHorasContratacion = reporteDao.getAllReporteHorasContratacion();
@@ -175,6 +178,40 @@ public class DirectivoController extends HttpServlet {
 							request.setAttribute("totalHrsGrupo", totalHrsGrupo);
 							request.setAttribute("totalHrsApoyo", totalHrsApoyo);
 							request.setAttribute("totalHrsGeneral", totalHrsGeneral);
+							
+							
+							// SECCION REPORTE GENERAL
+							ReporteGeneralDao reporteGeneralDao = new ReporteGeneralDaoImpl(con);
+							
+							request.setAttribute("reporteTSUHombres", reporteGeneralDao.getTSUHombres());
+							request.setAttribute("reporteTSUMujeres", reporteGeneralDao.getTSUMujeres());
+							request.setAttribute("reporteTSUHombresMujeresTotal", reporteGeneralDao.getTSUTotal());
+							request.setAttribute("reporteTSUTotalHoras", reporteGeneralDao.getTSUTotalHoras());
+							
+							request.setAttribute("reporteGradoEstudioTSU", reporteGeneralDao.getGradoEstudioTSU());
+							request.setAttribute("reporteGradoEstudioSinLicenciatura", reporteGeneralDao.getGradoEstudioSinLicenciatura());
+							request.setAttribute("reporteGradoEstudioConLicenciatura", reporteGeneralDao.getGradoEstudioConLicenciatura());
+							request.setAttribute("reporteGradoEstudioEspecialidad", reporteGeneralDao.getGradoEstudioEspecialidad());
+							request.setAttribute("reporteGradoEstudioTeacher", reporteGeneralDao.getGradoEstudioTeacher());
+							request.setAttribute("reporteGradoEstudioSinMastria", reporteGeneralDao.getGradoEstudioSinMastria());
+							request.setAttribute("reporteGradoEstudioConMastria", reporteGeneralDao.getGradoEstudioConMastria());
+							request.setAttribute("reporteGradoEstudioSinDoctorado", reporteGeneralDao.getGradoEstudioSinDoctorado());
+							request.setAttribute("reporteGradoEstudioConDoctorado", reporteGeneralDao.getGradoEstudioConDoctorado());
+							
+							request.setAttribute("reporteExperienciaDocente0", reporteGeneralDao.getExperienciaDocente0());
+							request.setAttribute("reporteExperienciaDocente1A4", reporteGeneralDao.getExperienciaDocente1A4());
+							request.setAttribute("reporteExperienciaDocente5A10", reporteGeneralDao.getExperienciaDocente5A10());
+							request.setAttribute("reporteExperienciaDocenteMayorA10", reporteGeneralDao.getExperienciaDocenteMayorA10());
+							
+							request.setAttribute("reporteExperienciaLaboralMayorA10", reporteGeneralDao.getExperienciaLaboralMayorA10());
+							request.setAttribute("reporteExperienciaLaboral0", reporteGeneralDao.getExperienciaLaboral0());
+							request.setAttribute("reporteExperienciaLaboral1A4", reporteGeneralDao.getExperienciaLaboral1A4());
+							request.setAttribute("reporteExperienciaLaboral5A10", reporteGeneralDao.getExperienciaLaboral5A10());
+							
+							request.setAttribute("reporteDocenteParticipaEnCA", reporteGeneralDao.getDocenteParticipaEnCA()); 
+							request.setAttribute("reporteDocentePerteneceEnLineasInnovadoras", reporteGeneralDao.getDocenteParticipaEnLineasInnovadoras());
+							request.setAttribute("reporteDocenteCuentaConPTC", reporteGeneralDao.getDocenteCuentaConPTC());
+							request.setAttribute("reporteDocenteCuentaConPROMEP", reporteGeneralDao.getDonceteCuentaConPROMEP()); 	
 							
 							setResponseController("directivo_reportes").forward(request, response);
 						}

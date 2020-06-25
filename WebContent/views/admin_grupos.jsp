@@ -137,31 +137,32 @@
 			                       
 			                       <c:set var="contadorGrupo" value="${0}"/>
 			                       	<c:forEach var="grupo" items="${grupos}">
-				                       		<tr>
-					                           	<td><c:out value="${contadorGrupo+1}"/></td>
-					                           	<td><c:out value="${grupo.nombreGrupo}"/></td>
-					                           	<td>
-					                           		<c:forEach items="${usuarios}" var="usuario">
-														<c:if test="${usuario.idUsuario == grupo.idUsuario}">
-															${usuario.contacto.nombre} ${usuario.contacto.apPaterno} ${usuario.contacto.apMaterno}
-														</c:if>
-													</c:forEach>
-					                           	</td>
-					                           	<td>
-						                           	<c:forEach items="${carreraCatalogo}" var="carreraCatalogo">
-						                           		<c:if test="${carreraCatalogo.idCarreraC == grupo.idCarreraC}">
-															${carreraCatalogo.nombreCarrera}
-														</c:if>
-													</c:forEach>
-					                           	</td>
-					                           	<td>
-													<c:url value="/admin" var="urlConsultarGrupo">
-					                           			<c:param name="accion" value="consultar-grupo" />
-													    <c:param name="id-grupo" value="${grupo.idGrupo}" />
-													</c:url>
-													<a href="${urlConsultarGrupo}" class="btn btn-sm btn-primary">Consultar grupo</a>
-					                           	</td>
-				                           </tr>
+			                       		<c:set var="contadorGrupo" value="${contadorGrupo + 1}"/>
+			                       		<tr>
+				                           	<td><c:out value="${contadorGrupo}"/></td>
+				                           	<td><c:out value="${grupo.nombreGrupo}"/></td>
+				                           	<td>
+				                           		<c:forEach items="${usuarios}" var="usuario">
+													<c:if test="${usuario.idUsuario == grupo.idUsuario}">
+														${usuario.contacto.nombre} ${usuario.contacto.apPaterno} ${usuario.contacto.apMaterno}
+													</c:if>
+												</c:forEach>
+				                           	</td>
+				                           	<td>
+					                           	<c:forEach items="${carreraCatalogo}" var="carreraCatalogo">
+					                           		<c:if test="${carreraCatalogo.idCarreraC == grupo.idCarreraC}">
+														${carreraCatalogo.nombreCarrera}
+													</c:if>
+												</c:forEach>
+				                           	</td>
+				                           	<td>
+												<c:url value="/admin" var="urlConsultarGrupo">
+				                           			<c:param name="accion" value="consultar-grupo" />
+												    <c:param name="id-grupo" value="${grupo.idGrupo}" />
+												</c:url>
+												<a href="${urlConsultarGrupo}" class="btn btn-sm btn-primary">Consultar grupo</a>
+				                           	</td>
+			                           </tr>
 			                       	</c:forEach>
 			                       	
 		                       </tbody>

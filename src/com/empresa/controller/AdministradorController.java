@@ -82,7 +82,7 @@ public class AdministradorController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Accion a realizar (Como mandar a llamar una vista)
+		// Accion para que soporte caracteres especiales
 		request.setCharacterEncoding("UTF-8");
 		
 		// Accion a realizar (Como mandar a llamar una vista)
@@ -355,7 +355,6 @@ public class AdministradorController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Accion a realizar (Como mandar a llamar una vista)
 		request.setCharacterEncoding("UTF-8");
 		
 		// Accion a realizar (Como mandar a llamar una vista)

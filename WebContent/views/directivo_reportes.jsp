@@ -102,12 +102,13 @@
 						        <th style="color: #000;">HRS. TOTALES</th>
 						      </tr>
 						   </thead>
-						   <tbody>
 						   
+						   <tbody>
+						   	<c:set var="contador" scope="session" value="${0}"/>
 							<c:forEach items="${ReporteHorasContratacion}" var="ReporteHorasContratacion">
-						        
+						        <c:set var="contador" value="${contador + 1}"/>
 								<tr>
-							   		<td></td>
+							   		<td><c:out value="${contador}"></c:out></td>
 							   		<td>${ReporteHorasContratacion.nombre} ${ReporteHorasContratacion.apPaterno} ${ReporteHorasContratacion.apMaterno}</td>
 							   		<td>${ReporteHorasContratacion.descNombramiento}</td>
 							   		<td>${ReporteHorasContratacion.hrsGrupo}</td>

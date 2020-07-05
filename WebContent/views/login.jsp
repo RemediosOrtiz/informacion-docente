@@ -42,9 +42,9 @@
 		</div>
 
 		<div class="footer-company">
-			<a href="#0">
+			<a href="https://www.pinterest.com.mx/remediosortizmartinez/portafolio/">
 				<span class="thin-left"> </span>
-				<span class="text-left">Grupo: 5TIC3</span>
+				<span class="text-left">Remedios Ortiz</span>
 			</a>
 		</div>
 

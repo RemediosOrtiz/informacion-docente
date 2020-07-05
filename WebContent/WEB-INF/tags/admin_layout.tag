@@ -213,32 +213,32 @@
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
-                    	<!-- 
+                    	
                         <li>
-                            <a href="#">
-                                Home
+                            <a href="https://www.linkedin.com/in/remediosortizmartinez">
+                                Linkedin 
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                Company
+                            <a href="https://github.com/RemediosOrtiz">
+                                GitHub
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://www.pinterest.com.mx/remediosortizmartinez/portafolio/">
                                 Portfolio
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                               Blog
+                            <a href="https://www.instagram.com/remedios_web/">
+                               Social
                             </a>
                         </li>
-                        -->
+                        
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://www.pinterest.com.mx/remediosortizmartinez/portafolio/">Remedios Web</a>
+                    &copy; 2019 - <script>document.write(new Date().getFullYear())</script> Creado por <a href="https://www.pinterest.com.mx/remediosortizmartinez/portafolio/">Remedios Ortiz</a>
                 </p>
             </div>
         </footer>
